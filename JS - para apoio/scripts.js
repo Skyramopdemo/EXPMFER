@@ -129,7 +129,12 @@ function alteraDado(obj, id){
     document.getElementById(id).innerHTML = obj.value;
 }
 
-
+/** alteraDado()
+ * Adiciona o texto de um obj (input) a um id (texto em si ex: label, span, p, ...).
+ * @param {Object} obj - O input que está acionando este evento
+ * @param {String} id  - id do objeto alvo que terá seu innerHTML aletrado
+ */
+function alteraDado(obj, id){document.getElementById(id).innerHTML = obj.value;}
 
 
 function voidSort(array){
