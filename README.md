@@ -13,5 +13,7 @@ Temos 5 pastas principais, sendo elas
 - Termo
   - Arquivos de Termos
 
+```
+```
 
 ### Como Utilizar
