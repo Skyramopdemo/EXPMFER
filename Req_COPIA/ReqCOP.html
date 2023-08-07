@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta author="HGA">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Requerimento de Cópia</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+	
+    </head>
+    <body>
+        <style>
+            body{margin: 2% 10%;}
+            input:-webkit-autofill{-webkit-box-shadow: 0 0 0 30px white inset}
+            p, h3, td, li,select{font-family: 'Times New Roman', Times, serif;}
+            td{border: 0.1vw solid black}
+            td input, td select, td textarea{border: none; outline: none;}
+
+            td:has(p){
+                background-color: lightgray;
+                width: 10%;
+            }
+
+
+
+            td:has(:not(p)){
+                padding: 0.3%;
+            }
+
+            input, table, textarea, select{width: 100%; height: auto;}
+
+            .out, td{
+                font-weight: bold;
+            }
+
+            td{
+                padding: 0.1vw;
+            }
+            
+            td p{
+                margin: 0
+            }
+
+            .out{
+                margin-top: 1vw;
+                margin-bottom: 0.4vw;
+            }
+            
+            button{
+                font-size: 0.8vw;
+                width: 10vw;
+                border-width: 0.1vw;
+            }
+
+
+            #conclu{
+                margin-top: 4vw;
+            }
+
+            h3{font-size: 1.3vw;}
+            tr{font-size: 0.7vw;}
+            .text p, li, button{font-size: 0.8vw;}
+
+            img{width: 10%;height: 10%;}
+
+            @page{
+                margin: 0;
+            }
+            textarea{
+                overflow:hidden;
+                resize: none;
+            }
+            @media print {
+                @page{
+                    size: portrait;
+                }
+                select{
+                    appearance: none;
+                }
+                body{
+                    -webkit-print-color-adjust: exact;
+                    print-color-adjust: exact;
+                }
+                h3{
+                    font-size: 1em !important;
+                }
+                tr{
+                    font-size: 0.7em;   
+                }  
+            }
+            @media screen and (max-width: 720px){
+                h3{font-size: 2vw;}
+                tr{font-size: 1.1vw; line-height: 1vw;}
+                div p{margin-top: 0.5vh;}
+            }
+            @media screen and (max-width: 360px){
+                h3{font-size: 2.5vw;}
+                tr{font-size: 1.1vw; line-height: 1vw;}
+                button{
+                    font-size: 1vw;
+                    width: 15vw;
+                }
+            }
+        </style>
+        <div style="text-align: center;">
+            <img src="https://farroupilha.rs.gov.br/uploads/config/16025/brasaofarroupilhanovo.png">
+        </div>
+
+        <h3 style="text-align: center;">REQUERIMENTO DE C&Oacute;PIA</h3>
+
+        <form  onsubmit="imprime()">
+            <p class="out">DADOS DO REQUERENTE:</p>
+
+            <table>
+                <tr>
+                    <td>
+                        <p>Nome do Requerente:</p>
+                    </td>
+                    <td colspan="3">
+                        <input type="text" name="Nome do Requerente" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>CPF/CNPJ:</p>
+                    </td>
+                    <td>
+                        <input type="text" name="CPF/CNPJ" required>
+                    </td>
+                    <td>
+                        <p>RG:</p>
+                    </td>
+                    <td>
+                        <input type="text" name="RG" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>Endere&ccedil;o completo:</p>
+                    </td>
+                    <td colspan="3">
+                        <input type="text" name="Endereço completo" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>CEP:</p>
+                    </td>
+                    <td>
+                        <input type="text" name="CEP" required>
+                    </td>
+                    <td>
+                        <p>Bairro:</p>
+                    </td>
+                    <td>
+                        <input type="text" name="Bairro" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td><p>Cidade:</p></td>
+                    <td><input type="text" name="Cidade" required></td>
+                    <td><p>UF:</p></td>
+                    <td><select name="UF" required>
+                        <option value="" selected disabled></option>
+                        <option  value="Acre">Acre</option>
+                        <option  value="Alagoas">Alagoas</option>
+                        <option  value="Amapá">Amapá</option>
+                        <option  value="Amazonas">Amazonas</option>
+                        <option  value="Bahia">Bahia</option>
+                        <option  value="Ceará">Ceará</option>
+                        <option  value="Distrito Federal">Distrito Federal</option>
+                        <option  value="Espirito Santo">Espirito Santo</option>
+                        <option  value="Goiás">Goiás</option>
+                        <option  value="Maranhão">Maranhão</option>
+                        <option  value="Mato Grosso">Mato Grosso</option>
+                        <option  value="Mato Grosso do Sul">Mato Grosso do Sul</option>
+                        <option  value="Minas Gerais">Minas Gerais</option>
+                        <option  value="Pará">Pará</option>
+                        <option  value="Paraíba">Paraíba</option>
+                        <option  value="Paraná">Paraná</option>
+                        <option  value="Pernambuco">Pernambuco</option>
+                        <option  value="Piauí">Piauí</option>
+                        <option  value="Rio de Janeiro">Rio de Janeiro</option>
+                        <option  value="Rio Grande do Norte">Rio Grande do Norte</option>
+                        <option  value="Rio Grande do Sul">Rio Grande do Sul</option>
+                        <option  value="Rondônia">Rondônia</option>
+                        <option  value="Roraima">Roraima</option>
+                        <option  value="Santa Catarina">Santa Catarina</option>
+                        <option  value="São Paulo">São Paulo</option>
+                        <option  value="Sergipe">Sergipe</option>
+                        <option  value="Tocantins">Tocantins</option>
+                    </select></td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>Telefone fixo:</p>
+                    </td>
+                    <td>
+                        <input type="text" name="Telefone fixo">
+                    </td>
+                    <td>
+                        <p>Celular:</p>
+                    </td>
+                    <td>
+                        <input type="text" name="Celular" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>E-mail:</p>
+                    </td>
+                    <td colspan="3">
+                        <input type="text" name="E-mail" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>Cargo/Fun&ccedil;&atilde;o:</p>
+                    </td>
+                    <td>
+                        <input type="text" name="Cargo/Função">
+                    </td>
+                    <td>
+                        <p>Matr&iacute;cula:</p>
+                    </td>
+                    <td>
+                        <input type="text" name="Matrícula">
+                    </td>
+                </tr>
+    
+            </table>
+
+            <p class="out">DADOS DO PROCESSO: (máximo de 400 caractéres)</p>
+
+            <table id="texts">
+                <tr>
+                    <td><p>N&uacute;mero do(s) processo(s)</p></td>
+                    <td><textarea required name="Número do(s) processo(s)" rows="5" maxlength="400"></textarea></td>
+                </tr>
+                <tr>
+                    <td><p>Tipo do(s) processo(s)</p></td>
+                    <td><textarea required name="Tipo do(s) processo(s)" rows="5" maxlength="400"></textarea></td>
+                </tr>
+                <tr>
+                    <td><p>Nome do requerente do(s) processo(s)</p></td>
+                    <td><textarea required name="Nome do requerente do(s) processo(s)" rows="5" maxlength="400"></textarea></td>
+                </tr>
+                <tr>
+                    <td><p>Justificat&iacute;va</p></td>
+                    <td><textarea required name="Justificatíva" rows="5" maxlength="400"></textarea></td>
+                </tr>
+            </table>
+
+            
+
+            <div id="conclu">
+                <button type="submit" onclick="verify()">Salvar como PDF</button>
+            </div>
+        </form>
+
+        <script>
+
+            function imprime(){
+                var but = document.getElementById("conclu")           
+                but.innerHTML = "";
+                window.focus();
+                window.print();
+                location.reload();
+            }
+
+            function verify(){
+
+                var x = document.querySelectorAll("input, textarea, select")
+
+                for (var i = 0; i < x.length; i++) {  
+                    if(x[i].hasAttribute('required') && x[i].value == ""){
+                        alert("Não foi preenchido o campo: " + x[i].getAttribute("name"));
+                        break; 
+                    }
+                }
+        }
+        </script>
+    </body>
+</html>

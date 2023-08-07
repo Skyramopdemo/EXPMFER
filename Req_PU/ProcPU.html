@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta author="HGA">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Requerimento de Parâmetros Urbanísticos</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+	
+    </head>
+    <body>
+        <style>
+            body{margin: 2% 10%;}
+            input:-webkit-autofill{-webkit-box-shadow: 0 0 0 30px white inset}
+            td input, textarea, select{border: none; outline: none;}
+            p, h3, td, li, select{font-family: 'Times New Roman', Times, serif;}
+
+            table, td, input[type = "radio"]{border: 0.1vw solid black}
+            
+            a{
+                text-decoration: none;
+            }
+            
+            div p{
+                text-align: justify;
+                margin: 0.5vw 0vw;
+            }
+
+            table:has(textarea), table:has(textarea) td{
+                border-top: 0 !important;
+            }
+            
+            .out{
+                font-size: 1vw;
+                margin-top: 2vw;
+            }
+            ul, ol, td:has(input[type="checkbox"]), li p{
+                margin: 0;
+            }
+
+            input,table, textarea,select{width: 100%;}
+
+            .list p, .out{
+                margin-bottom: 0;
+            }
+
+            #text_area_text{
+                width: 10%;
+            }
+
+            textarea{
+                resize: none;
+            }
+            
+            td:has(input[type="checkbox"]){
+                text-align: center;
+            }
+
+            input[type = "checkbox"]{
+                accent-color: black;
+                height: 1vw;
+                width: 1vw;
+            }
+
+            td:not(:has(input)):first-child{
+                width: 25%;
+            }
+
+            td{
+                background-color: lightgray;
+            }
+
+            td:has(input, textarea, select){
+                background-color: white;
+            }
+
+            ul{
+                padding-left: 3vw;
+            }
+
+            .out, td{
+                font-weight: bold;
+            }
+            
+            table{
+                text-align: left;
+            }
+            button{
+                width: 10vw;
+                border-width: 0.1vw;
+            }
+
+            h3{font-size: 1.3vw;}
+            tr{font-size: 0.7vw; line-height: 1vw;}
+            .text p, li, button{font-size: 0.8vw;}
+
+
+            footer p{
+                text-align: center;
+                font-size: 1vw;
+                margin: 0;
+                font-size: 1vw;
+            }
+            footer{
+                margin-top: 4vh;
+                position: relative;
+                left: 40%;
+                border-top: 0.1vw solid black;
+                width: 20%;
+            }
+
+            img{width: 10%;height: 10%;}
+
+            @page{
+                margin: 0;
+            }
+            @media print {
+                @page{
+                    size: portrait;
+                }
+                td:has(input[type="checkbox"]){
+                    margin: 0;
+                    padding: 0.2vw;
+                }
+                body{
+                    -webkit-print-color-adjust: exact;
+                    print-color-adjust: exact;
+                }
+                footer p{
+                    font-size: 2.5vw !important;
+                }
+                li, .text p, .out{
+                    font-size: 1.5vw !important;
+                }
+                h3{
+                    font-size: 1em !important;
+                }
+                footer{
+                    margin-top: 9%;
+                }
+                tr{
+                    font-size: 0.7em;
+                    line-height: 1em;   
+                }  
+            }
+            @media screen and (max-width: 1440px){
+                li, .text p, .out{
+                    font-size: 1vw !important;
+                }
+                h3{font-size: 2vw;}
+                tr{font-size: 1.1vw; line-height: 1vw;}
+            }
+            @media screen and (max-width: 720px){
+                h3{font-size: 2vw;}
+                tr{font-size: 1.1vw; line-height: 1vw;}
+                div p{margin-top: 0.5vh;}
+            }
+            @media screen and (max-width: 360px){
+                li, .text p, .out{
+                    font-size: 1.5vw !important;
+                }
+                h3{font-size: 2.5vw;}
+                tr{font-size: 1.1vw; line-height: 1vw;}
+                button{
+                    font-size: 1vw;
+                    width: 15vw;
+                }
+            }
+        </style>
+        <div style="text-align: center;">
+            <img src="https://farroupilha.rs.gov.br/uploads/config/16025/brasaofarroupilhanovo.png">
+        </div>
+
+        <h3 style="text-align: center;">REQUERIMENTO DE PAR&Acirc;METROS URBAN&Iacute;STICOS</h3>
+
+        <form  onsubmit="imprime()">
+
+            <div class="text list">
+                <p><b>DOCUMENTA&Ccedil;&Atilde;O OBRIGAT&Oacute;RIA&nbsp;</b>(conforme Decreto Municipal n&ordm; <a href="https://leis.farroupilha.rs.gov.br/acessos/decreto/6k7MRDvg1UyMQnm.html#" target="_blank">7.276, de 18-01-2023</a>):</p>
+
+                <ul>
+                    <li>
+                    <p>C&oacute;pia do documento de identifica&ccedil;&atilde;o do requerente, com foto;</p>
+                    </li>
+                    <li>
+                    <p>C&oacute;pia da Matr&iacute;cula ou Transcri&ccedil;&atilde;o do im&oacute;vel atualizada, emitida pelo Registro de Im&oacute;veis a menos de 180 dias da data deste requerimento;</p>
+                    </li>
+                </ul>
+
+                <p><strong>Quando a matr&iacute;cula do im&oacute;vel n&atilde;o descrever a propriedade como lote urbano, n&atilde;o atribuindo-lhe numera&ccedil;&atilde;o de lote e quadra, a &aacute;rea dever&aacute; ser identificada atrav&eacute;s de:</strong></p>
+
+                <ul>
+                    <li>
+                    <p>Imagem de sat&eacute;lite ou levantamento topogr&aacute;fico, indicando o per&iacute;metro da &aacute;rea total da Matr&iacute;cula;</p>
+                    </li>
+                    <li>
+                    <p>Cart&atilde;o do CNPJ (caso a empresa seja existente)</p>
+                    </li>
+                </ul>
+
+                <p><strong>Caso atividade seja industrial, observar a seguinte documenta&ccedil;&atilde;o para anexo ao processo:</strong></p>
+
+                <ul>
+                    <li>
+                    <p>Declara&ccedil;&atilde;o se a atividade ter&aacute; ou n&atilde;o tratamento de superf&iacute;cie, fundi&ccedil;&atilde;o e/ ou pintura;</p>
+                    </li>
+                </ul>
+
+                <p ><strong>Caso atividade seja comercial (tratando-se de atividades de recrea&ccedil;&atilde;o e lazer, tais como bar e afins) observar a seguinte documenta&ccedil;&atilde;o para anexar ao processo:</strong></p>
+
+                <ul>
+                    <li>
+                    <p>Declara&ccedil;&atilde;o se a atividade ter&aacute; ou n&atilde;o som ambiente e/ ou m&uacute;sica ao vivo.</p>
+                    </li>
+                </ul>
+            </div>
+
+            <p class="out"><strong>CATEGORIA PRETENDIDA (marque a categoria pretendida)</strong></p>
+            <table id="radios">
+                <tr>
+                    <td><input type="checkbox" name="RU - Residência Unifamiliar Isolada"></td>
+                    <td>RU - Residência Unifamiliar Isolada</td>
+                    <td><input type="checkbox" name="RM - Residências Temporárias"></td>
+                    <td>RM - Residências Temporárias</td>
+                    <td><input type="checkbox" name="EUPP - Equipamentos públicos e privados"></td>
+                    <td colspan="2">EUPP - Equipamentos públicos e privados</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" name="RU - Condomínio residencial"></td>
+                    <td>RU - Condomínio residencial</td>
+                    <td><input type="checkbox" name="RM - Habitações coletivas"></td>
+                    <td>RM - Habitações coletivas</td>
+                    <td><input type="checkbox" name="UE - Uso Especial"></td>
+                    <td colspan="2">UE - Uso Especial</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" name="CS - Clínicas Veterinárias e afins"></td>
+                    <td>CS - Clínicas Veterinárias e afins</td>
+                    <td><input type="checkbox" name="CS - Restaurantes, lancherias e similares"></td>
+                    <td>CS - Restaurantes, lancherias e similares</td>
+                    <td><input type="checkbox" name="CS - Estabelecimentos de recreação e lazer"></td>
+                    <td colspan="2">CS - Estabelecimentos de recreação e lazer</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" name="CS - Geradores de Tráfego Pesado"></td>
+                    <td>CS - Geradores de Tráfego Pesado</td>
+                    <td><input type="checkbox" name="CS - Padarias e confeitarias"></td>
+                    <td>CS - Padarias e confeitarias</td>
+                    <td><input type="checkbox" name="CS - Produtos perigosos"></td>
+                    <td colspan="2">CS - Produtos perigosos</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" name="CS - Oficinas / Manutenção veicular"></td>
+                    <td>CS - Oficinas / Manutenção veicular</td>
+                    <td><input type="checkbox" name="CS - Diversificados"></td>
+                    <td>CS - Diversificados</td>
+                    <td><input type="checkbox" name="CS - Pontos de combustíveis"></td>
+                    <td colspan="2">CS - Pontos de combustíveis</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" name="AI - Indústrias até 300m² Baixo/Médio potencial poluidor"></td>
+                    <td>AI - Indústrias até 300m² Baixo/Médio potencial poluidor</td>
+                    <td><input type="checkbox" name="AI - Indústrias acima de 300m² Baixo/Médio potencial poluidor"></td>
+                    <td>AI - Indústrias acima de 300m² Baixo/Médio potencial poluidor</td>
+                    <td><input type="checkbox" name="AI - Indústrias com alto potencial poluidor"></td>
+                    <td colspan="2">AI - Indústrias com alto potencial poluidor</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" name="AI - Indústria de bebidas"></td>
+                    <td>AI - Indústria de bebidas</td>
+                    <td><input type="checkbox" name="AI - Agroindústria"></td>
+                    <td>AI - Agroindústria</td>
+                    <td><input type="checkbox" name="AI - Indústrias vinculadas a atividades rurais"></td>
+                    <td colspan="2">AI - Indústrias vinculadas a atividades rurais</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" name="AR - Atividades rurais"></td>
+                    <td>AR - Atividades rurais</td>
+                    <td><input type="checkbox" name="PS - Parcelamento de Solo"></td>
+                    <td>PS - Parcelamento de Solo</td>
+                    <td><input type="checkbox" name="Outra"></td>
+                    <td>Outra</td>
+                    <td><input type="text"></td>
+                </tr>
+            </table>
+            <table>
+                <tr>
+                    <td id="text_area_text">Atividade (nº de CNAE):</td>
+                    <td colspan="5"><input type="text" required name="Atividade (nº de CNAE)"></textarea></td>
+                </tr>
+            </table>
+
+            <p class="out"><strong>IDENTIFICAÇÃO DO REQUERENTE</strong></p>
+            <table>
+                <tr>
+                    <td >Nome Completo:</td>
+                    <td colspan="3"><input type="text" name="Nome Completo" required></td>
+                </tr>
+                <tr>
+                    <td >CPF/CNPJ:</td>
+                    <td colspan="3"><input type="text" name="CPF/CNPJ" required></td>
+                </tr>
+                <tr>
+                    <td >E-mail:</td>
+                    <td colspan="3"><input type="text" name="E-mail" required></td>
+
+                </tr>
+                <tr>
+                    <td>Telefone fixo:</td>
+                    <td><input type="text" name="Telefone fixo"></td>
+                    <td>Celular:</td>
+                    <td><input type="text" name="Celular" required></td>
+                </tr>
+                <tr>
+                    <td >Endere&ccedil;o:</td>
+                    <td colspan="3"><input type="text" name="Endereço" required></td>
+                </tr>
+                <tr>
+                    <td >CEP:</td>
+                    <td ><input type="text" name="CEP" required></td>
+                    <td >Bairro:</td>
+                    <td ><input type="text" name="Bairro" required></td>
+                </tr>
+                <tr>
+                    <td>Cidade:</td>
+                    <td><input type="text" name="Cidade" required></td>
+                    <td>UF:</td>
+                    <td><select name="UF" required>
+                        <option value="" selected disabled></option>
+                        <option  value="Acre">Acre</option>
+                        <option  value="Alagoas">Alagoas</option>
+                        <option  value="Amapá">Amapá</option>
+                        <option  value="Amazonas">Amazonas</option>
+                        <option  value="Bahia">Bahia</option>
+                        <option  value="Ceará">Ceará</option>
+                        <option  value="Distrito Federal">Distrito Federal</option>
+                        <option  value="Espirito Santo">Espirito Santo</option>
+                        <option  value="Goiás">Goiás</option>
+                        <option  value="Maranhão">Maranhão</option>
+                        <option  value="Mato Grosso">Mato Grosso</option>
+                        <option  value="Mato Grosso do Sul">Mato Grosso do Sul</option>
+                        <option  value="Minas Gerais">Minas Gerais</option>
+                        <option  value="Pará">Pará</option>
+                        <option  value="Paraíba">Paraíba</option>
+                        <option  value="Paraná">Paraná</option>
+                        <option  value="Pernambuco">Pernambuco</option>
+                        <option  value="Piauí">Piauí</option>
+                        <option  value="Rio de Janeiro">Rio de Janeiro</option>
+                        <option  value="Rio Grande do Norte">Rio Grande do Norte</option>
+                        <option  value="Rio Grande do Sul">Rio Grande do Sul</option>
+                        <option  value="Rondônia">Rondônia</option>
+                        <option  value="Roraima">Roraima</option>
+                        <option  value="Santa Catarina">Santa Catarina</option>
+                        <option  value="São Paulo">São Paulo</option>
+                        <option  value="Sergipe">Sergipe</option>
+                        <option  value="Tocantins">Tocantins</option>
+                    </select></td>
+                </tr>
+            </table>
+    
+            <p class="out">IDENTIFICA&Ccedil;&Atilde;O DO PROPRIET&Aacute;RIO:</p>
+
+            <table>
+                <tbody>
+                    <tr>
+                        <td>Nome:</td>
+                        <td><input type="text" name="Nome do Proprietário" required></td>
+                    </tr>
+                    <tr>
+                        <td>CPF/CNPJ:</td>
+                        <td><input type="text" name="CPF/CNPJ do Proprietário" required></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p class="out">IDENTIFICA&Ccedil;&Atilde;O DO IM&Oacute;VEL:</p>
+
+            <table>
+                <tbody>
+                    <tr>
+                        <td>Nº Registro de Imóveis*:</td>
+                        <td><input type="text" name="Nº Registro de Imóveis" required></td>
+                    </tr>
+                    <tr>
+                        <td>Data da Atualização**:</td>
+                        <td><input type="text" name="Data da Atualização" required></td>
+                    </tr>
+                    <tr>
+                        <td>Área Útil:</td>
+                        <td><input type="text" name="Área Útil" required></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="text">
+                <p>* Pode ser informado o número da matrícula ou da transcrição do imóvel a que se refere o requerimento.</p>
+
+                <p>** Menor do que 180 dias da data do requerimento.</p>
+            </div>
+
+            <footer class="text-center">
+                <p>Outorgante</p>
+            </footer>
+
+            <div id="conclu">
+                <button type="submit"  onclick="verify()">Salvar como PDF</button>
+            </div>
+
+        </form>
+
+        <script>
+            function imprime(){
+                var but = document.getElementById("conclu")           
+                but.style.display = "none";
+                window.focus();
+                window.print();
+                but.style.display = ""
+            }
+
+            function verify(){
+            var x = document.querySelectorAll("input, textarea, select")
+
+            for (var i = 0; i < x.length; i++) {  
+                if(x[i].hasAttribute('required') && x[i].value == ""){
+                    alert("Não foi preenchido o campo: " + x[i].getAttribute("name"));
+                    break; 
+                }
+                }
+            }
+        
+        </script>
+    </body>
+</html>

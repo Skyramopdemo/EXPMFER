@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta author="HGA">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Requerimento Padrão</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+	
+    </head>
+    <body>
+        <style>
+            body{margin: 2% 10%;}
+            input:-webkit-autofill{-webkit-box-shadow: 0 0 0 30px white inset}
+            td input{border: none; outline: none;}
+            p, h3, td, li{font-family: 'Times New Roman', Times, serif;}
+
+            table, td{border: 0.1vw solid black;}
+            
+            td p{
+                text-align: left;
+                vertical-align: middle;
+                margin: 0;
+            }
+
+            textarea{
+                width: 100%;
+                height: 20vh;
+            }
+
+            td:has(p){
+                background-color: lightgrey;
+            }
+
+            ul:first-child, ol:first-child{
+                margin-top: 2vh;
+            }
+            ul, ol{
+                margin: 0;
+            }
+
+            input,table{width: 100%;}
+
+            td{
+                font-weight: bold;
+            }
+
+            #text{
+                margin-bottom: 1vh;
+            }
+            
+            table, tr{
+                text-align: center;
+            }
+            button{
+                font-size: 0.8vw;
+                width: 10vw;
+                border-width: 0.1vw;
+            }
+
+            h3{font-size: 1vw  !important;}
+            tr{font-size: 0.9vw; line-height: 1vh !important;}
+
+            footer p{
+                font-size: 1vw;
+            }
+
+            div p{
+                text-align: justify;
+                margin: 1vh 0vh;
+            }
+            img{width: 10%;height: 10%;}
+            
+            footer p{
+                text-align: center;
+                font-size: 1vw;
+                margin: 0;
+            }
+            footer{
+                margin-top: 4vh;
+                position: relative;
+                left: 40%;
+                border-top: 0.1vw solid black;
+                width: 20%;
+            }
+            td:first-child{
+                width: 15%;
+            }
+
+            #text, li{
+                font-size: 0.8vw;
+            }
+            li p{
+                margin: 0;
+            }
+            @page{
+                margin: 0;
+            }
+            @media print {
+                @page{
+                    size: portrait;
+                }
+                footer p{
+                    font-size: 2.5vw !important;
+                }
+                #text, li{
+                    font-size: 1.5vw !important;
+                }
+                h3{
+                    font-size: 1em !important;
+                }
+                td:first-child{
+                    width: 15%;
+                }
+                footer{
+                    margin-top: 9%;
+                }
+                tr{
+                    font-size: 0.7em;   
+                }  
+            }
+            @media screen and (max-width: 1440px){
+                #text, li{
+                    font-size: 1vw !important;
+                }
+                h3{font-size: 1vw  !important;}
+                tr{font-size: 1.1vw; line-height: 1vw;}
+            }
+            @media screen and (max-width: 720px){
+                h3{font-size: 1vw  !important;}
+                tr{font-size: 1.1vw; line-height: 1vw;}
+                div p{margin-top: 0.5vh;}
+            }
+            @media screen and (max-width: 360px){
+                #text, li{
+                    font-size: 1.5vw !important;
+                }
+                h3{font-size: 2vw  !important;}
+                tr{font-size: 1.1vw; line-height: 1vw;}
+                button{
+                    font-size: 1vw;
+                    width: 15vw;
+                }
+            }
+        </style>
+<body>
+    <div class="text-center">
+        <img src="https://farroupilha.rs.gov.br/uploads/config/16025/brasaofarroupilhanovo.png">
+    </div>
+    <form onsubmit="imprime()">
+        <h3 class="text-center">REQUERIMENTO PADRÃO PARA PROTOCOLO DE PROCESSOS</h3>
+        <p id="text"><strong>DADOS DO REQUERENTE</strong></p>
+        <table>
+            <tr>
+                <td>
+                    <p>Nome do Requerente:</p>
+                </td>
+                <td colspan="3">
+                    <input type="text" name="Nome do Requerente" required>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>CPF/CNPJ:</p>
+                </td>
+                <td>
+                    <input type="text" name="CPF/CNPJ" required>
+                </td>
+                <td>
+                    <p>RG:</p>
+                </td>
+                <td>
+                    <input type="text" name="RG" required>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>Endere&ccedil;o completo:</p>
+                </td>
+                <td colspan="3">
+                    <input type="text" name="Endereço completo" required>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>CEP:</p>
+                </td>
+                <td>
+                    <input type="text" name="CEP" required>
+                </td>
+                <td>
+                    <p>Bairro:</p>
+                </td>
+                <td>
+                    <input type="text" name="Bairro" required>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>Telefone fixo:</p>
+                </td>
+                <td>
+                    <input type="text" name="Telefone fixo" required>
+                </td>
+                <td>
+                    <p>Celular:</p>
+                </td>
+                <td>
+                    <input type="text" name="Celular" required>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>E-mail:</p>
+                </td>
+                <td colspan="3">
+                    <input type="text" name="E-mail" required>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>Cargo/Fun&ccedil;&atilde;o:</p>
+                </td>
+                <td>
+                    <input type="text" name="Cargo/Função">
+                </td>
+                <td>
+                    <p>Matr&iacute;cula:</p>
+                </td>
+                <td>
+                    <input type="text" name="Matrícula">
+                </td>
+            </tr>
+
+        </table>
+        
+        <p>&nbsp;</p>
+        
+        <p id="text"><strong>ASSUNTO QUE REQUER:</strong></p>
+        
+        <textarea required name="Assunto"></textarea>
+        
+
+        <div id="conclu">
+            <button type="submit"  onclick="verify()">Salvar como PDF</button>
+        </div>
+    </form>
+
+    <script>
+        function imprime(){
+            var but = document.getElementById("conclu")           
+            but.style.display = "none";
+            window.focus();
+            window.print();
+            but.style.display = ""
+        }
+
+        function verify(){
+            var x = document.querySelectorAll("input, textarea")
+
+            for (var i = 0; i < x.length; i++) {  
+                if(x[i].hasAttribute('required') && x[i].value == ""){
+                    alert("Não foi preenchido o campo: " + x[i].getAttribute("name"));
+                    break; 
+                }
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<p>&nbsp;</p>
+
+<center>PROCURA&Ccedil;&Atilde;O DIGITAL &ndash; SEI &ndash; PESSOA F&Iacute;SICA</center>
+
+<p>&nbsp;</p>
+
+<p>OUTORGANTE PESSOA F&Iacute;SICA:</p>
+
+<table border="1" cellpadding="1" cellspacing="1" style="margin-left:3pt;margin-right:auto;width:800px;">
+	<tbody>
+		<tr>
+			<td style="width: 91px;">Nome:</td>
+			<td colspan="3" rowspan="1" style="width: 697px;">&nbsp;</td>
+		</tr>
+		<tr>
+			<td style="width: 91px;">CPF:</td>
+			<td style="width: 336px;">&nbsp;</td>
+			<td style="width: 74px;">RG:</td>
+			<td style="width: 279px;">&nbsp;</td>
+		</tr>
+		<tr>
+			<td style="width: 91px;">Endere&ccedil;o:</td>
+			<td style="width: 336px;">&nbsp;</td>
+			<td style="width: 74px;">Bairro:</td>
+			<td style="width: 279px;">&nbsp;</td>
+		</tr>
+		<tr>
+			<td style="width: 91px;">Cidade/UF:</td>
+			<td style="width: 336px;">&nbsp;</td>
+			<td style="width: 74px;">CEP:</td>
+			<td style="width: 279px;">&nbsp;</td>
+		</tr>
+		<tr>
+			<td style="width: 91px;">E-mail:</td>
+			<td style="width: 336px;">&nbsp;</td>
+			<td style="width: 74px;">Telefone:</td>
+			<td style="width: 279px;">&nbsp;</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>OUTORGADO (Usu&aacute;rio externo do SEI):</p>
+
+<table border="1" cellpadding="1" cellspacing="1" style="margin-left:3pt;margin-right:auto;width:500px;">
+	<tbody>
+		<tr>
+			<td style="width: 60px;">Nome:</td>
+			<td style="width: 429px;">&nbsp;</td>
+		</tr>
+		<tr>
+			<td style="width: 60px;">CPF:</td>
+			<td style="width: 429px;">&nbsp;</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>A presente Procura&ccedil;&atilde;o Digital &ndash; SEI &ndash; Pessoa F&iacute;sica concede, no &acirc;mbito do Munic&iacute;piode Farroupilha, ao Usu&aacute;rio Externo acima indicado como Outorgado poderes para:</p>
+
+<p>1. Gerenciar o cadastro da Pessoa F&iacute;sica Outorgante.</p>
+
+<p>2. Receber, Cumprir e Responder Intima&ccedil;&otilde;es Eletr&ocirc;nicas e realizar Peticionamento Eletr&ocirc;nico em nome da Pessoa F&iacute;sica Outorgante.</p>
+
+<p>3. Representar a Pessoa F&iacute;sica Outorgante com todos os poderes previstos no sistema, habilitando-o a praticar todos os atos processuais, inclusive confessar, reconhecer a proced&ecirc;ncia do pedido, transigir, desistir, renunciar, receber, dar quita&ccedil;&atilde;o e firmar compromisso.</p>
+
+<p>O Outorgante se declarou ciente de que:</p>
+
+<p>- A validade desta Procura&ccedil;&atilde;o est&aacute; circunscrita ao Munic&iacute;pio de Farroupilha e por tempo indeterminado, para uso exclusivo de peticionamento eletr&ocirc;nico no SEI.</p>
+
+<p>- Ser&aacute; considerada v&aacute;lida a procura&ccedil;&atilde;o digital, assinada pelo outorgante com certificado digital ou Gov.br.</p>
+
+<p>- N&atilde;o ser&aacute; aceita a procura&ccedil;&atilde;o digital com data superior a 90 dias da assinatura pelo outorgante.</p>
+
+<p>- A procura&ccedil;&atilde;o digital &ndash; SEI dever&aacute; ser juntada em cada peticionamento eletr&ocirc;nico, sob pena de indeferimento t&aacute;cito do pedido.</p>

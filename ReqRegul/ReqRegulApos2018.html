@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta author="HGA">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Requerimento do Regulariza Farroupilha e Carta de Habitação</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <style>
+            body{margin: 2% 10%;}
+            input:-webkit-autofill{-webkit-box-shadow: 0 0 0 30px white inset}
+            td input, td textarea, td select{border: none; outline: none;}
+            p, h3, h4, td, li, select{font-family: 'Times New Roman', Times, serif;}
+
+            table, td{border: 0.1vw solid black}
+            
+
+            table{
+                margin-top: 2vw;
+            }
+
+            div p{
+                text-align: justify;
+                margin: 1vh 0vh;
+            }
+
+            ul, ol, li p{
+                margin: 0;
+            }
+
+            input,table, textarea, select{width: 100%; line-height: 0.8;}
+
+            .list p{
+                margin-bottom: 0;
+            }
+
+            #text_area_text{
+                width: 10%;
+            }
+
+            .pav{
+                width: 10vw;
+            }
+
+            td, #cartHead{
+                font-weight: bold;
+            }
+            
+            table{
+                text-align: left;
+            }
+            button{
+                font-size: 1vw;
+                width: 10vw;
+                border-width: 0.1vw;
+            }
+
+            #cart p{
+                line-height: 2vh;
+                margin: 0;
+            }
+
+            #cartHead{
+                font-size: 1vw;
+            }
+
+            #classEdif{
+                width: 15vw;
+            }
+
+            img{width: 10%;height: 10%;}
+
+            .center{text-align: center;}
+
+            .bGrey{background-color: lightgrey;}
+
+            .bLGrey{background-color: rgb(240,240,240);}
+
+            td, p, #dataDecla{font-size: 0.8vw; line-height: 0.8vw; padding: 0vw;}
+            .tableh{font-size: 1vw; line-height: 1vw;}
+            .title, .docstitle{font-size: 1.3vw; margin-bottom: 1vw;}
+            .subtitle{font-size: 1.3vw; margin: 0;}
+            .titlename{font-size: 1.5vw; margin: 0; font-weight: bold; margin-bottom: 1vw;}
+            
+            #calc td:has(input[type="checkbox"]){
+                width: 2.5vw;
+            }
+
+            .w10{
+                width: 4vw;
+            }
+
+            #dataDecla{width: 5vw; border-width: 0.1vw;}
+
+            #title2page{
+                margin-top: 2vw;
+            }
+
+            .w80{
+                width: 80%;
+            }
+
+            .areatot{
+                width: 10vw;
+            }
+
+            td:has(input[type="checkbox"]){
+                text-align: center;
+            }
+
+            td:has(#rÁreaTotal){
+                width: 10vw;
+            }
+
+            input[type = "checkbox"]{
+                border-width: 0.1vw;
+                outline-width: 0.1vw;
+                accent-color: black;
+                height: 1vw;
+                width: 1vw;
+            }        
+
+            td{
+                word-wrap: break-word;
+            }
+
+            input[type="date"]::-webkit-calendar-picker-indicator {
+                display: none;
+                -webkit-appearance: none;
+            }
+
+            a{text-decoration: none;}
+
+            .mat{
+                width: 15vw;
+            }
+
+            @page{
+                margin: 0;
+            }
+            @media print {
+                @page{
+                    size: portrait;
+                }
+                input[type = "checkbox"]:not(:checked){
+                    opacity: 0;
+                }
+                table, td{border: 0.1vw solid black !important}
+                #pagebreak{
+                    page-break-after: always;
+                }
+                body{
+                    -webkit-print-color-adjust: exact;
+                    print-color-adjust: exact;
+                }
+                #dataDecla{border: none; outline: none;}
+                
+                td:has(input){
+                    padding: 0.2vw;
+                }
+
+                td, p, #dataDecla{font-size: 1.5vw; line-height: 1.5vw;}
+                .tableh{font-size: 1.7vw; line-height: 1.7vw;}
+                .subtitle, .title, .docstitle{font-size: 1.9vw; line-height: 1.9vw;}
+                .titlename{font-size: 2vw;}
+                input[type = "checkbox"]{
+                    height: 2vw;
+                    width: 2vw;
+                }   
+            }
+            @media screen and (max-width: 1440px){
+                    
+
+                input[type = "radio"]{
+                    width: 1vw;
+                    height: 1vw;
+                }
+                li, .text p{
+                    font-size: 1vw !important;
+                }
+                h3{font-size: 2vw;}
+                h4{font-size: 1.9vw;}
+                tr{font-size: 1.1vw; line-height: 1vw;}
+            }
+            @media screen and (max-width: 720px){
+                h3{font-size: 2vw;}
+                h4{font-size: 1.9vw;}
+                tr{font-size: 1.1vw; line-height: 1vw;}
+                div p{margin-top: 0.5vh;}
+            }
+            @media screen and (max-width: 360px){
+                li, .text p{
+                    font-size: 1.5vw !important;
+                }
+                h3{font-size: 2.5vw;}
+                h4{font-size: 2.4vw;}
+                tr{font-size: 1.1vw; line-height: 1vw;}
+                button{
+                    font-size: 1vw;
+                    width: 15vw;
+                }
+            }
+        </style>
+        <div class="center">
+            <img src="https://farroupilha.rs.gov.br/uploads/config/16025/brasaofarroupilhanovo.png">
+        </div>
+
+        <p class="center title">PREFEITURA MUNICIPAL DE FARROUPILHA-RS</p>
+        <h3 class="center titlename">REQUERIMENTO DO REGULARIZA FARROUPILHA E CARTA DE HABITA&Ccedil;&Atilde;O</h3>
+        <h4 class="center subtitle">para regulariza&ccedil;&atilde;o de edifica&ccedil;&otilde;es constru&iacute;das a partir de maio de 2018.</h4>
+        <p class="center subtitle">A documenta&ccedil;&atilde;o obrigat&oacute;ria consta no Anexo I, do Decreto Municipal nº <a href="https://leis.farroupilha.rs.gov.br/acessos/consolida/decreto/6k7MRDvg1UyMQnm.html">7.276</a>, de 18/01/2023 e suas altera&ccedil;&otilde;es.</p>
+
+
+        <form onsubmit="imprime()">
+
+            <table>
+                <thead>
+                    <th colspan="4" class="bGrey tableh">1. DADOS DO PROPRIET&Aacute;RIO</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="bLGrey">Nome Completo:</td>
+                        <td><input type="text" name="Nome Completo do Proprietário" required></td>
+                        <td class="bLGrey">CPF/CNPJ:</td>
+                        <td><input type="text" name="CPF/CNPJ do Proprietário" required></td>
+                    </tr>
+                    <tr>
+                        <td class="bLGrey">Endereço:</td>
+                        <td><input type="text" name="Endereço do Proprietário" required></td>
+                        <td class="bLGrey">CEP:</td>
+                        <td><input type="text" name="CEP do Proprietário" required></td>
+                    </tr>
+                    <tr>
+                        <td class="bLGrey">Bairro:</td>
+                        <td><input type="text" name="Bairro do Proprietário" required></td>
+                        <td class="bLGrey">Cidade/UF:</td>
+                        <td><input type="text" name="Cidade/UF do Proprietário" required></td>
+                    </tr>
+                    <tr>
+                        <td class="bLGrey">E-mail:</td>
+                        <td><input type="text" name="E-mail do Proprietário" required></td>
+                        <td class="bLGrey">Telefone:</td>
+                        <td><input type="text" name="Telefone do Proprietário" required></td>
+                    </tr>
+                </tbody>
+            </table>
+    
+            <table>
+                <thead>
+                    <th colspan="4" class="bGrey tableh">2. DADOS DO RESPONS&Aacute;VEL T&Eacute;CNICO</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="bLGrey">Nome Completo:</td>
+                        <td><input type="text" name="Nome Completo do Responsável Técnico" required></td>
+                        <td class="bLGrey">Registro:</td>
+                        <td><input type="text" name="Registro do Responsável Técnico" required></td>
+                    </tr>
+                    <tr>
+                        <td class="bLGrey">Endere&ccedil;o:</td>
+                        <td><input type="text" name="Endereço do Responsável Técnico" required></td>
+                        <td class="bLGrey">CEP:</td>
+                        <td><input type="text" name="CEP do Responsável Técnico" required></td>
+                    </tr>
+                    <tr>
+                        <td class="bLGrey">Bairro:</td>
+                        <td><input type="text" name="Bairro do Responsável Técnico" required></td>
+                        <td class="bLGrey">Cidade/UF:</td>
+                        <td><input type="text" name="Cidade/UF do Responsável Técnico" required></td>
+                    </tr>
+                    <tr>
+                        <td class="bLGrey">E-mail:</td>
+                        <td><input type="text" name="E-mail do Responsável Técnico" required></td>
+                        <td class="bLGrey">Telefone:</td>
+                        <td><input type="text" name="Telefone do Responsável Técnico" required></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <table>
+                <thead>
+                    <th colspan="4" class="bGrey tableh">3. DADOS DO LOTE</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="bLGrey">Logradouro:</td>
+                        <td><input type="text" name="Logradouro" required></td>
+                        <td class="bLGrey">Lote:</td>
+                        <td><input type="text" name="Lote" required></td>
+                    </tr>
+                    <tr>
+                        <td class="bLGrey">Loteamento:</td>
+                        <td><input type="text" name="Loteamento" required></td>
+                        <td  class="bLGrey">Quadra:</td>
+                        <td><input type="text" name="Quadra" required></td>
+                    </tr>
+                    <tr>
+                        <td  class="bLGrey">Bairro:</td>
+                        <td><input type="text" name="Bairro do Lote" required></td>
+                        <td  class="bLGrey">Área (m²):</td>
+                        <td><input type="text" name="Área (m²)" required></td>
+                    </tr>
+                    <tr>
+                        <td  class="bLGrey">Matrícula do RI*:</td>
+                        <td><input type="text" name="Matrícula do RI" required></td>
+                        <td class="bLGrey">Data Atualizada**:</td>
+                        <td><input type="date" name="Data Atualizada" required></td>
+                    </tr>
+                    <tr>
+                        <td colspan="4"  class="bLGrey">* Pode ser informado o número da matrícula ou da transcrição do imóvel a que se refere o requerimento <br> ** Menor do que 180 dias da data do requerimento</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <table>
+                <thead>
+                    <th colspan="4" class="bGrey tableh">4. NO CASO DE EXIST&Ecirc;NCIA DE &Aacute;REA J&Aacute; REGULARIZADA, PREENCHER OS CAMPOS ABAIXO: </th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="bLGrey">Nº de Licença de Construção:</td>
+                        <td><input type="text" name="Nº de Licença de Construção" required></td>
+                        <td class="bLGrey">Data da Aprovação do projeto:</td>
+                        <td><input type="date" name="Data da Aprovação do projeto" required></td>
+                    </tr>
+                    <tr>
+                        <td class="bLGrey">Nº Processo de Aprovação:</td>
+                        <td><input type="text" name="Nº Processo de Aprovação" required></td>
+                        <td class="bLGrey">Área já Regularizada:</td>
+                        <td><input type="text" name="Área já Regularizada" required></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <table onkeyup="calcula()">
+                <thead>
+                    <th colspan="13" class="bGrey tableh">5. INFORMA&Ccedil;&Otilde;ES DA EDIFICA&Ccedil;&Atilde;O</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="2" class="bLGrey center">ECONOMIAS</td>
+                        <td colspan="7" class="bLGrey center">ATIVIDADES</td>
+                        <td colspan="3" class="bLGrey center mat">MATERIAL</td>
+                        <td rowspan="2" class="bLGrey center pav">PAVIMENTOS</td>
+                    </tr>
+                    <tr>
+                        <td class="center">EDIFICAÇÃO</td>
+                        <td class="center areatot">ÁREA TOTAL</td>
+                        <td class="center">RU</td>
+                        <td class="center">RM</td>
+                        <td class="center">CS</td>
+                        <td class="center">EUPP</td>
+                        <td class="center">EU</td>
+                        <td class="center">DTAI</td>
+                        <td class="center">AR</td>
+                        <td class="center">ALVENARIA</td>
+                        <td class="center">MADEIRA</td>
+                        <td class="center">MISTA</td>
+                    </tr>
+                    <tr>
+                        <td class="center">1</td>
+                        <td><input type="text" name="Área Total" class="ativText"></td>
+                        <td><input type="checkbox" class="ativCarac" name="RU"></td>
+                        <td><input type="checkbox" class="ativCarac" name="RM"></td>
+                        <td><input type="checkbox" class="ativCarac" name="CS"></td>
+                        <td><input type="checkbox" class="ativCarac" name="EUPP"></td>
+                        <td><input type="checkbox" class="ativCarac" name="EU"></td>
+                        <td><input type="checkbox" class="ativCarac" name="DTAI"></td>
+                        <td><input type="checkbox" class="ativCarac" name="AR"></td>
+                        <td><input type="checkbox" name="ALVENARIA"></td>
+                        <td><input type="checkbox" name="MADEIRA"></td>
+                        <td><input type="checkbox" name="MISTA"></td>
+                        <td><input type="text" name="PAVIMENTO"></td>
+                    </tr>
+                    <tr>
+                        <td class="center">2</td>
+                        <td><input type="text" name="Área Total" class="ativText"></td>
+                        <td><input type="checkbox" class="ativCarac" name="RU"></td>
+                        <td><input type="checkbox" class="ativCarac" name="RM"></td>
+                        <td><input type="checkbox" class="ativCarac" name="CS"></td>
+                        <td><input type="checkbox" class="ativCarac" name="EUPP"></td>
+                        <td><input type="checkbox" class="ativCarac" name="EU"></td>
+                        <td><input type="checkbox" class="ativCarac" name="DTAI"></td>
+                        <td><input type="checkbox" class="ativCarac" name="AR"></td>
+                        <td><input type="checkbox" name="ALVENARIA"></td>
+                        <td><input type="checkbox" name="MADEIRA"></td>
+                        <td><input type="checkbox" name="MISTA"></td>
+                        <td><input type="text" name="PAVIMENTO"></td>
+                    </tr>
+                    <tr>
+                        <td class="center">3</td>
+                        <td><input type="text" name="Área Total" class="ativText"></td>
+                        <td><input type="checkbox" class="ativCarac" name="RU"></td>
+                        <td><input type="checkbox" class="ativCarac" name="RM"></td>
+                        <td><input type="checkbox" class="ativCarac" name="CS"></td>
+                        <td><input type="checkbox" class="ativCarac" name="EUPP"></td>
+                        <td><input type="checkbox" class="ativCarac" name="EU"></td>
+                        <td><input type="checkbox" class="ativCarac" name="DTAI"></td>
+                        <td><input type="checkbox" class="ativCarac" name="AR"></td>
+                        <td><input type="checkbox" name="ALVENARIA"></td>
+                        <td><input type="checkbox" name="MADEIRA"></td>
+                        <td><input type="checkbox" name="MISTA"></td>
+                        <td><input type="text" name="PAVIMENTO"></td>
+                    </tr>
+                    <tr>
+                        <td class="center">4</td>
+                        <td><input type="text" name="Área Total" class="ativText"></td>
+                        <td><input type="checkbox" class="ativCarac" name="RU"></td>
+                        <td><input type="checkbox" class="ativCarac" name="RM"></td>
+                        <td><input type="checkbox" class="ativCarac" name="CS"></td>
+                        <td><input type="checkbox" class="ativCarac" name="EUPP"></td>
+                        <td><input type="checkbox" class="ativCarac" name="EU"></td>
+                        <td><input type="checkbox" class="ativCarac" name="DTAI"></td>
+                        <td><input type="checkbox" class="ativCarac" name="AR"></td>
+                        <td><input type="checkbox" name="ALVENARIA"></td>
+                        <td><input type="checkbox" name="MADEIRA"></td>
+                        <td><input type="checkbox" name="MISTA"></td>
+                        <td><input type="text" name="PAVIMENTO"></td>
+                    </tr>
+                    <tr>
+                        <td class="center">5</td>
+                        <td><input type="text" name="Área Total" class="ativText"></td>
+                        <td><input type="checkbox" class="ativCarac" name="RU"></td>
+                        <td><input type="checkbox" class="ativCarac" name="RM"></td>
+                        <td><input type="checkbox" class="ativCarac" name="CS"></td>
+                        <td><input type="checkbox" class="ativCarac" name="EUPP"></td>
+                        <td><input type="checkbox" class="ativCarac" name="EU"></td>
+                        <td><input type="checkbox" class="ativCarac" name="DTAI"></td>
+                        <td><input type="checkbox" class="ativCarac" name="AR"></td>
+                        <td><input type="checkbox" name="ALVENARIA"></td>
+                        <td><input type="checkbox" name="MADEIRA"></td>
+                        <td><input type="checkbox" name="MISTA"></td>
+                        <td><input type="text" name="PAVIMENTO"></td>
+                    </tr>
+                    <tr id="calc">
+                        <td class="bGrey center">TOTAIS</td>
+                        <td class="bGrey w10"><input class="bGrey" id="rÁrea Total" value="0"></td>
+                        <td class="bGrey w10"><input class="bGrey"></td>
+                        <td class="bGrey w10"><input class="bGrey"></td>
+                        <td class="bGrey w10"><input class="bGrey"></td>
+                        <td class="bGrey w10"><input class="bGrey"></td>
+                        <td class="bGrey w10"><input class="bGrey"></td>
+                        <td class="bGrey w10"><input class="bGrey"></td>
+                        <td class="bGrey w10"><input class="bGrey"></td>
+                        <td><input type="checkbox" name="ALVENARIA"></td>
+                        <td><input type="checkbox" name="MADEIRA"></td>
+                        <td><input type="checkbox" name="MISTA"></td>
+                        <td><input type="text" name="PAVIMENTO"></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <table>
+                <thead>
+                    <th colspan="2" class="bGrey tableh">6. CLASSIFICA&Ccedil;&Atilde;O DAS EDIFICA&Ccedil;&Otilde;ES</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="bLGrey" id="classEdif">Conforme NBR 12721/2006:</td>
+                        <td><input type="text" name="Classificação das edificações" required></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div id="conclu">
+                <button type="submit"  onclick="verify()">Salvar como PDF</button>
+            </div>
+
+        </form>
+
+        <script>
+            formata();
+
+            function formata(){
+                var check = document.querySelectorAll(".ativCarac");
+                for (i = 0; i < check.length; i++) {
+                    check[i].addEventListener('change', checkTest);
+                }
+            }
+            
+            function calcula() {
+                var listEd = ["Área Total"];
+                if (listEd.includes(event.target.name)) {
+                    var x = document.querySelectorAll('[name="' + event.target.name + '"]');
+                    var z = document.getElementById("r" + event.target.name);
+                    var y = Array.from(x).reduce((sum, input) => {
+                        var p = input.value.replace(/[^\d.,]/g, "").replace(/[,]/g, ".");
+                        return isNaN(parseFloat(p)) ? sum : sum + parseFloat(p);
+                    }, 0);
+                    z.value = y;
+                    }
+                }
+
+            function  checkTest() {
+                var checkAt = document.getElementsByClassName("ativCarac");
+                var textAt = document.getElementsByClassName("ativText");
+
+                for (j = 0; j < 5; j++) { //Percorre cada linha da tabela
+                    for (k = 0; k < 7; k++) { //Percorre cada coluna de cada liha
+                        if (checkAt[k+(j*7)].checked){ //Verifica se cada coluna está checked (k vai pegar a coluna + (j linha * 7 a quantidade de colunas))
+                            textAt[j].setAttribute('required', 'required');
+                            j++; //Caso esteja ok alguma coluna ele irá pular a linha
+                        }
+                        else{
+                            textAt[j].removeAttribute('required');
+                        }
+                    }
+                }
+            }
+
+            function imprime(){
+                var but = document.getElementById("conclu");           
+                but.style.display = "none";
+                window.focus();
+                window.print();
+                but.style.display = "";
+            }
+
+            function verify(){
+                var x = document.querySelectorAll("input, textarea, select");
+
+                for (var i = 0; i < x.length; i++) {  
+                    if(x[i].hasAttribute('required') && x[i].value == ""){
+                        alert("Não foi preenchido o campo: " + x[i].getAttribute("name"));
+                        break; 
+                    }
+                }
+            }
+        
+        </script>
+    </body>
+</html>
