@@ -2,8 +2,7 @@
  * Este algoritmo é responsável por validar o CPF de UM campo com o name="CPF".
  * O validador utiliza de 2 for, cada um criando uma soma que será verificado posteriormente
  * 
- * @returns false
- * @returns true
+ * @returns {boolean} se está ou não ok o CPF
  */
 function validarCPF() {
     //Pega o valor do input que tem o name="CPF"
@@ -137,9 +136,8 @@ function alteraDado(obj, id){
 function alteraDado(obj, id){document.getElementById(id).innerHTML = obj.value;}
 
 
-function voidSort(array){
-    return [0];
-}
+function voidSort(array){return [0];}
+
 function integerSort(array, start) {
     n = []
     for (i = 0; i < array.length; i++) {
@@ -148,6 +146,7 @@ function integerSort(array, start) {
     }
     return n;
 }
+
 function caosSort(array) {
     n = Math.random();
     if(n < 0.5){
@@ -156,9 +155,11 @@ function caosSort(array) {
         return [1]
     }
 }
+
 function alreadSorted(array){
     return array
 }
+
 function communistSort(array){
     sum = 0
     arr = []
@@ -171,6 +172,7 @@ function communistSort(array){
     }
     return arr
 }
+
 function captalistSort(array) {
     sum = 0
     for (i = 0; i < array.length; i++) {
@@ -180,6 +182,7 @@ function captalistSort(array) {
     array[0] = sum;
     return array;
 }
+
 function investSort() {
     //percorre faz a média
     //percorre tira todos abaixo da média, soma os valores dos tirados, e pega o maior valor restante
@@ -199,7 +202,12 @@ function randArray(size){
     return array
 }
 
-
+/**
+ * 
+ * @param {number} mn - valor mínimo que deseja gerar
+ * @param {number} mx - valor máximo que deseja gerar
+ * @returns {number} retorna o valor entre os o minimo e o máximo
+ */
 function random(mn, mx) {
     return Math.floor(Math.random() * (mx - mn) + mn);
 }
