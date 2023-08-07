@@ -1,7 +1,18 @@
+/** validarCPF
+ * Este algoritmo é responsável por validar o CPF de UM campo com o name="CPF".
+ * O validador utiliza de 2 for, cada um criando uma soma que será verificado posteriormente
+ * 
+ * @returns false
+ * @returns true
+ */
 function validarCPF() {
+    //Pega o valor do input que tem o name="CPF"
     inputs = document.querySelector('input[name="CPF"]').value;
-    inputs = inputs.replace(/[^\d]/g, '');  
+    //Remove tudo que não é número do valor
+    inputs = inputs.replace(/[^\d]/g, ''); 
+    //Cria um array, com todos os digitos do input 
     num = inputs.toString().split("");
+    //Utiliza o array para tornalos númeors
     intnum = num.map(function(digito){return parseInt(digito, 10)})
 
     const regex = /^(\d)\1+$/;
@@ -11,23 +22,22 @@ function validarCPF() {
     var j = 10
     var k = 11
 
+    //Verifica se o array tem tamanho diferente de 11, caso seja verdade retorna false
     if(num.length != 11){return false;}
+    //Verifica se o texto não é apenas números repetidos.
     if(regex.test(inputs)){return false}
 
 
-
+    //Fors e Ifs para verificar a validade do cpf, caso esteje ok, o check se tornará true;
     for (var i = 0; i < 9; i++) {  
         count += intnum[i]*j;
         j--;
     }
-
     if((count*10)%11 == intnum[9] || (intnum[9] == 0) && ((count*10)%11 == 10)||(count2*10)%11 == 11){check = true}
-
     for (var i = 0; i < 10; i++) {  
         count2 += intnum[i]*k;
         k--;
     }
-
     if((count2*10)%11 == intnum[10] || (intnum[10] == 0) && ((count2*10)%11 == 10)||(count2*10)%11 == 11){check = true}
     
 
@@ -37,6 +47,7 @@ function validarCPF() {
     }
     else{return false}
 
+    //uma funação que irá atualizar o texto no documento em si
     alteraCPF();
 }
 
