@@ -68,12 +68,14 @@ function alteraCPFs(){
         inputs.value = valorFormatado;
     }
 }
+
 //Pesquisa apenas um input
 function alteraCPF(){
     inputs = document.querySelector('input[name="CPF"]');
     valorFormatado = formatarCPF(inputs.value);
     inputs.value = valorFormatado;
 }
+
 // 55 54 999223482 /13/
 // 55 54 99223482  /12/
 // 54 999223482    /11/
