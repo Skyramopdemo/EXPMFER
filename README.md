@@ -1,6 +1,6 @@
 # EXPMFER
 
-# Pastas
+## Pastas
 Temos 5 pastas principais, sendo elas
 - Declaração de Residência
 - JS - para apoio
