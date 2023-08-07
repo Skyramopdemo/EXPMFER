@@ -2,7 +2,7 @@
  * Este algoritmo é responsável por validar o CPF de UM campo com o name="CPF".
  * O validador utiliza de 2 for, cada um criando uma soma que será verificado posteriormente
  * 
- * @returns {boolean} se está ou não ok o CPF
+ * @returns {boolean}
  */
 function validarCPF() {
     //Pega o valor do input que tem o name="CPF"
