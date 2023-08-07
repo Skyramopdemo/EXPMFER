@@ -20,99 +20,44 @@
             table, td{border: 0.1vw solid black}
             
             
-            ul:first-child, ol:first-child{
-                margin-top: 2vh;
-            }
-            ul, ol{
-                margin: 0;
-            }
+            ul:first-child, ol:first-child{margin-top: 2vh;}
+            ul, ol{margin: 0;}
 
             input,table{width: 100%;}
 
-            .out, td{
-                font-weight: bold;
-            }
+            .out, td{font-weight: bold;}
 
-            .out{
-                margin-top: 2vh;
-                margin-bottom: 0;
-            }
+            .out{margin-top: 2vh;margin-bottom: 0;}
             
-            table{
-                text-align: left;
-            }
-            button{
-                font-size: 0.8vw;
-                width: 10vw;
-                border-width: 0.1vw;
-            }
+            table{text-align: left;}
+            button{font-size: 0.8vw;width: 10vw;border-width: 0.1vw;}
 
             h3{font-size: 1.3vw;}
             tr{font-size: 0.7vw; line-height: 1vh;}
             
-            div p{
-                text-align: justify;
-                margin: 1vh 0vh;
-            }
+            div p{text-align: justify;margin: 1vh 0vh;}
             img{width: 10%;height: 10%;}
             
-            footer p{
-                text-align: center;
-                font-size: 1vw;
-                margin: 0;
-                font-size: 1vw;
-            }
-            footer{
-                margin-top: 4vh;
-                position: relative;
-                left: 40%;
-                border-top: 0.1vw solid black;
-                width: 20%;
-            }
-            td:first-child{
-                width: 10%;
-            }
+            footer p{text-align: center;font-size: 1vw;margin: 0;font-size: 1vw;}
+            footer{margin-top: 4vh;position: relative;left: 40%;border-top: 0.1vw solid black;width: 20%;}
+            td:first-child{width: 10%;}
 
-            .out > tr{
-                margin-bottom: 1vh;
-            }
+            .out > tr{margin-bottom: 1vh;}
 
-            #text p, li{
-                font-size: 0.8vw;
-            }
-            li p{
-                margin: 0;
-            }
-            @page{
-                margin: 0;
-            }
+            #text p, li{font-size: 0.8vw;}
+            li p{margin: 0;}
+            @page{margin: 0;}
             @media print {
-                @page{
-                    size: portrait;
-                }
-                footer p{
-                    font-size: 2.5vw !important;
-                }
-                li, #text p, .out{
-                    font-size: 1.5vw !important;
-                }
-                h3{
-                    font-size: 1em !important;
-                }
-                td:first-child{
-                    width: 15%;
-                }
-                footer{
-                    margin-top: 9%;
-                }
-                tr{
-                    font-size: 0.7em;   
-                }  
+                @page{size: portrait;}
+                footer p{font-size: 2.5vw !important;}
+                li, #text p, .out{font-size: 1.5vw !important;}
+                h3{font-size: 1em !important;}
+                td:first-child{width: 15%;}
+                footer{margin-top: 9%;}
+                tr{font-size: 0.7em;}  
             }
             @media screen and (max-width: 1440px){
-                li, #text p, .out{
-                    font-size: 1vw !important;
-                }
+                li, #text p, .out{font-size: 1vw !important;}
                 h3{font-size: 2vw;}
                 tr{font-size: 1.1vw; line-height: 1vw;}
             }
@@ -122,15 +67,10 @@
                 div p{margin-top: 0.5vh;}
             }
             @media screen and (max-width: 360px){
-                li, #text p, .out{
-                    font-size: 1.5vw !important;
-                }
+                li, #text p, .out{font-size: 1.5vw !important;}
                 h3{font-size: 2.5vw;}
                 tr{font-size: 1.1vw; line-height: 1vw;}
-                button{
-                    font-size: 1vw;
-                    width: 15vw;
-                }
+                button{font-size: 1vw;width: 15vw;}
             }
         </style>
         <div style="text-align: center;">
@@ -139,49 +79,43 @@
 
         <h3 style="text-align: center;">PROCURA&Ccedil;&Atilde;O DIGITAL &ndash; SEI &ndash; PESSOA JUR&Iacute;DICA</h3>
 
-        <form  onsubmit="imprime()">
+        <form onsubmit="imprime()">
             <p class="out">OUTORGANTE PESSOA JUR&Iacute;DICA:</p>
-
             <table>
                 <tr>
-                    <td >Raz&atilde;o Social:</td>
+                    <td>Raz&atilde;o Social:</td>
                     <td colspan="3"><input type="text" name="Razão Social" required></td>
                 </tr>
                 <tr>
-                    <td >CNPJ:</td>
+                    <td>CNPJ:</td>
                     <td colspan="3"><input type="text" name="CNPJ" required></td>
                 </tr>
                 <tr>
-                    <td >Endere&ccedil;o:</td>
+                    <td>Endere&ccedil;o:</td>
                     <td ><input type="text" name="Endereço" required></td>
-                    <td >Bairro:</td>
-                    <td ><input type="text" name="Bairro" required></td>
+                    <td>Bairro:</td>
+                    <td><input type="text" name="Bairro" required></td>
                 </tr>
                 <tr>
-                    <td >Cidade/UF:</td>
-                    <td ><input type="text" name="Cidade/UF" required></td>
-                    <td >CEP:</td>
-                    <td ><input type="text" name="CEP" required></td>
+                    <td>Cidade/UF:</td>
+                    <td><input type="text" name="Cidade/UF" required></td>
+                    <td>CEP:</td>
+                    <td><input type="text" name="CEP" required></td>
                 </tr>
                 <tr>
-                    <td >E-mail:</td>
-                    <td ><input type="text" name="E-mail" required></td>
-                    <td >Telefone:</td>
-                    <td ><input type="text" name="Telefone" required></td>
+                    <td>E-mail:</td>
+                    <td><input type="text" name="E-mail" required></td>
+                    <td>Telefone:</td>
+                    <td><input type="text" name="Telefone" required></td>
                 </tr>
                 <tr>
-                    <td >Resp. Legal:</td>
-                    <td ><input type="text" name="Responsável Legal" required></td>
-                    <td >CPF:</td>
-                    <td ><input type="text" name="CPF" required></td>
+                    <td>Resp. Legal:</td>
+                    <td><input type="text" name="Responsável Legal" required></td>
+                    <td>CPF:</td>
+                    <td><input type="text" name="CPF" required></td>
                 </tr>
-                
-                
-                
             </table>
         
-
-    
             <p class="out">OUTORGADO (Usu&aacute;rio externo do SEI):</p>
 
             <table>
