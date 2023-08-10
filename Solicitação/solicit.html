@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta author="HGA">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+    <link rel="shortcut icon" href="https://farroupilha.rs.gov.br/uploads/config/18/3592braso_40x40.ico">
+
+    <title>Solicitação de Prorrogação de Prazo</title>
+</head>
+
+<body onload="verifyNav()">
+    <style>
+        body {
+            margin: 3% 10%;
+        }
+
+        input:-webkit-autofill {
+            -webkit-box-shadow: 0 0 0 30px white inset
+        }
+
+        img{
+            width: 10%;
+            height: 10%;
+        }
+
+        p,
+        h1,
+        td,
+        input {
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        input,
+        textarea {
+            outline: 0;
+            border-width: 0;
+        }
+        #data, footer p{text-align: center;}
+        #data p{margin-top: 5vw;}
+        footer {
+            position: relative;
+            margin-top: 6vw;
+            width: 50%;
+            left: 25%;
+            border-top: 0.1vw solid black;
+        }
+
+        @page {
+            margin: 0;
+        }
+
+        p {
+            margin: 0;
+        }
+
+        button {
+            border-width: 0.1vw;
+            font-size: 0.8vw;
+            width: 10vw;
+        }
+
+        h1 {
+            font-size: 1.7vw;
+            margin-bottom: 0;
+        }
+
+        .text{
+            margin-top: 3vw;
+            margin-bottom: 1vw;
+        }
+
+        p,
+        input,
+        textarea {
+            font-size: 1.3vw;
+            line-height: 1.3vw;
+        }
+
+        td {
+            font-weight: bold;
+            font-size: 0.8vw;
+        }
+
+
+        table,
+        input {
+            width: 100%;
+        }
+
+        table,
+        td {
+            border: 0.1vw solid black;
+        }
+
+        #conclu {
+            padding-top: 1vw;
+            text-align: center;
+        }
+
+        td:not(:has(input)) {
+            background-color: rgb(240, 240, 240);
+        }
+
+        textarea {
+            resize: none;
+            height: 100%;
+            width: 100%;
+        }
+
+        @media print {
+            @page {
+                size: A4 portrait;
+            }
+
+            td:first-child{
+                width: 20%;
+            }
+
+            body {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            #data p{
+                margin-top: 50px;
+                font-size: 17px;
+                line-height: 17px;
+            }
+
+            h1 {
+                font-size: 20px;
+            }
+            .text{
+                font-size: 17px;
+                line-height: 17px;
+            }
+
+            button {
+                visibility: hidden;
+            }
+            .text {
+                margin-top: 30px;
+            }
+
+            footer {
+                margin-top: 125px;
+            }
+            td{
+                padding: 20px, 20px, 20px, 20px;
+            }
+            td p, input, textarea{
+                font-size: 13px;
+                line-height: 13px;
+            }
+        }
+    </style>
+
+    <div class="text-center">
+        <img src="https://farroupilha.rs.gov.br/uploads/config/16025/brasaofarroupilhanovo.png">
+    </div>
+    <div class="text-center">
+        <h1>SOLICITA&Ccedil;&Atilde;O DE PRORROGA&Ccedil;&Atilde;O DE PRAZO</h1>
+    </div>
+    <form onsubmit="imprime()">
+        <p class="text"><strong>DADOS DO REQUERENTE</strong></p>
+        <table>
+            <tr>
+                <td>
+                    <p>Nome do Requerente:</p>
+                </td>
+                <td colspan="3">
+                    <input type="text" name="Nome do Requerente" required>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>CPF/CNPJ:</p>
+                </td>
+                <td>
+                    <input type="text" name="CPF/CNPJ" required>
+                </td>
+                <td>
+                    <p>RG:</p>
+                </td>
+                <td>
+                    <input type="text" name="RG" required>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>Endere&ccedil;o completo:</p>
+                </td>
+                <td colspan="3">
+                    <input type="text" name="Endereço completo" required>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>CEP:</p>
+                </td>
+                <td>
+                    <input type="text" name="CEP" required>
+                </td>
+                <td>
+                    <p>Bairro:</p>
+                </td>
+                <td>
+                    <input type="text" name="Bairro" required>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>Telefone fixo:</p>
+                </td>
+                <td>
+                    <input type="text" name="Telefone fixo" required>
+                </td>
+                <td>
+                    <p>Celular:</p>
+                </td>
+                <td>
+                    <input type="text" name="Celular" required>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>E-mail:</p>
+                </td>
+                <td colspan="3">
+                    <input type="text" name="E-mail" required>
+                </td>
+            </tr>
+
+        </table>
+        <p class="text"><strong>DADOS DA NOTIFICAÇÃO</strong></p>
+        <table>
+            <tr>
+                <td>
+                    <p>Nº Notificação:</p>
+                </td>
+                <td>
+                    <input type="text" name="Nº Notificação" required>
+                </td>
+                <td>
+                    <p>Nº Processo:</p>
+                </td>
+                <td>
+                    <input type="text" name="Nº Processo" required>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>Local da Infração:</p>
+                </td>
+                <td colspan="3">
+                    <input type="text" name="Local da Infração" required>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>Setor que Notificou:</p>
+                </td>
+                <td colspan="3">
+                    <input type="text" name="Setor que Notificou" required>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>Justificativa Detalhada da Solicitação:</p>
+                </td>
+                <td colspan="3">
+                    <textarea rows="5" id="textarea" type="text" name="Justificativa Detalhada da Solicitação" maxlength="150" required></textarea>
+                </td>
+            </tr>
+        </table>
+        <div id="data">
+            <p>
+                <span id="cidade"></span>,
+                <span id="dataday" class="dataV"></span>
+                de
+                <span id="datamonth" class="dataV"></span>
+                de
+                <span id="datayear" class="dataV"></span>
+            </p>
+        </div>
+        <div id="conclu">
+            <button type="submit" onclick="verify()">Salvar como PDF</button>
+        </div>
+    </form>
+    <footer class="text-center">
+        <h1>Assinatura do Declarante</h1>
+    </footer>
+    <script>
+        const months = ["janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"];
+        var dia = new Date();
+
+        document.getElementById("dataday").innerHTML = dia.getDate();
+        document.getElementById("datamonth").innerHTML = months[dia.getMonth()];
+        document.getElementById("datayear").innerHTML = dia.getFullYear();
+
+        function imprime() {
+            var but = document.getElementById("conclu")
+            but.style.display = "none";
+            window.focus();
+            window.print();
+            but.style.display = "";
+        }
+
+        function verify() {
+            var x = document.querySelectorAll("input, select, textarea");
+
+            for (var i = 0; i < x.length; i++) {
+
+                if(x[i].hasAttribute('required') && x[i].value == ""){
+                    alert("Não foi preenchido o campo: " + x[i].getAttribute("name"));
+                    break; 
+                }
+            
+            }
+        }
+        function verifyNav() {
+            if (window.safari !== undefined) {
+                document.body.innerHTML = "";
+                document.body.innerHTML = "<h1 style='text-align: center; margin-top: 15%; color: red;'>NAVEGADOR SEM SUPORTE!</h1><h3 style='text-align: center;'>UTILIZE UM NAVEGADOR COMPATÍVEL: <a href='https://www.mozilla.org/pt-BR/firefox/new/' style='text-decoration: none; color:black'>Firefox</a> Ou <a href='https://www.google.com/intl/pt-BR/chrome/' style='text-decoration: none; color:black'>Google Chrome</a></h3>"
+            }
+        }
+
+    </script>
+</body>
+
+</html>
