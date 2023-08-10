@@ -6,10 +6,14 @@ Temos 5 pastas principais, sendo elas
   - Tem o documento de Declaração de Residência
 - JS - para apoio
   - Arquivo JS com vários scripts de das mais diversas funcionalidades
-- Procuração Pessoa
-  - Arquivos de Procurações
+- Procurações
+  - Procuração Pessoa
+    - Procuração Pessoa Física
+    - Procuração Pessoa Jurídica
 - Requerimentos
   - Arquivos de Requerimentos
+- Solicitações
+  - Arquivos de Solicitações
 - Termo
   - Arquivos de Termos
 
