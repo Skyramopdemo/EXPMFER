@@ -126,9 +126,6 @@ function validarDataNAtual(){
 
     if(diffTime < 0){alert("DEU MERDA");}   
 }
-function alteraDado(obj, id){
-    document.getElementById(id).innerHTML = obj.value;
-}
 
 /** alteraDado()
  * Adiciona o texto de um obj (input) a um id (texto em si ex: label, span, p, ...).
