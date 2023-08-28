@@ -17,8 +17,3 @@ Temos 5 pastas principais, sendo elas
   - Arquivos de Solicitações
 - Termo
   - Arquivos de Termos
-
-```
-```
-
-### Como Utilizar
