@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta author="Henrique Gabriel Albring @Skyramopdemo">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Requerimento de Recursos Humanos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+    <link rel="shortcut icon" href="https://farroupilha.rs.gov.br/uploads/config/18/3592braso_40x40.ico">
+    
+</head>
+<body>
+    <style>
+        body{margin: 2% 5%;}
+        input:-webkit-autofill{-webkit-box-shadow: 0 0 0 30px white inset}
+        p, h1, h3, h4, td, input{font-family: 'Times New Roman', Times, serif;}
+        input{border: 0px; border-bottom: 0.1vw solid black; outline: none;}
+
+        textarea{
+            width: 100%;
+            resize: none;
+        }
+
+        img{width: 10%; height: 10%;}
+
+        div{
+            margin-top: 0.5vw;
+        }
+
+        @page{margin: 0;}
+        p{
+            margin: 0;
+            text-align: justify;
+        }
+
+        button{border-width: 0.1vw; font-size: 0.8vw; width: 10vw;}
+        h1{font-size: 1.7vw;margin-bottom: 0;}
+        h3{font-size: 1.4vw; text-align: center;}
+        p, footer p, input, textarea, h4{font-size: 1vw; line-height: 1vw;}
+
+        input[type='checkbox']{appearance:none;border:0 solid black;height:1vw;width:1vw;}
+        input[type='checkbox']:checked:before{content:'X'; background:white; width:100%; height:100%; top:0;left:0;display:flex; align-items:center; justify-content:center; color:black; font-weight:bold;}
+
+        table{
+            width: 100%;
+        }
+
+        td:has(p){
+            width: 5%;
+        }
+
+
+        td:has(.first-input){
+            width: 65%;
+        }
+        .inputs{
+            width: 100%
+        }
+
+        #space{
+            padding-left: 2vw;
+        }
+
+        footer div{
+            position: relative;
+            left: 35%;
+            width: 30%;
+            border-top: 0.1vw solid black;
+        }
+
+        @media print {
+            
+            td:has(p){
+                width: 10%;
+            }
+
+            #page-break{
+                page-break-after: always;
+            }
+    
+            #newpage{
+                margin-bottom: 5%;
+            }
+            @page{size: A4 portrait; margin-top: 8pt; margin-bottom: 8pt;}
+            body{-webkit-print-color-adjust: exact;print-color-adjust: exact;}
+
+            input{
+                border-width: 1px;
+            }
+
+            #space{
+                padding-left: 20px;
+            }
+
+            footer{
+                margin-top: 10pt;
+            }
+
+            h1{font-size: 17pt;}
+            h3{font-size: 13pt;}
+            p, input, h4, span{font-size: 10pt; line-height: 10pt;}
+
+            div{margin-top: 8pt;}
+
+            button{visibility: hidden;}
+        }
+    </style>
+    <div class="text-center">
+        <img src="https://farroupilha.rs.gov.br/uploads/config/16025/brasaofarroupilhanovo.png">
+    </div>
+    <div class="text-center">
+        <h1>REQUERIMENTO DE RECURSOS HUMANOS</h1>
+    </div>
+    <form onsubmit="imprime()" method="post" id="form">
+        <table>
+            <tr>
+                <td>
+                    <p>Nome: </p>
+                </td>
+                <td>
+                    <input type="text" placeholder="" required name="Nome do Requerente" class="inputs first-input">
+                </td>
+                <td>
+                    <p>Telefone: </p>
+                </td>
+                <td>
+                    <input type="text" placeholder="" required name="Telefone" class="inputs">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>Cargo: </p>
+                </td>
+                <td>
+                    <input type="text" placeholder="" required name="Cargo" class="inputs first-input">
+                </td>
+                <td>
+                    <p>Matrícula: </p>
+                </td>
+                <td>
+                    <input type="text" placeholder="" required name="Matrícula" class="inputs">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>E-mail: </p>
+                </td>
+                <td colspan="3">
+                    <input type="text" placeholder="" required name="E-mail" class="inputs">
+                </td>
+            </tr>
+        </table>
+        
+        <h3 class="text-center">REQUER:</h3>
+
+        <div>
+            <p>
+                (<input type="checkbox">)
+                licença para tratamento de saúde, pelo prazo de
+                <input type="text" placeholder="">,
+                com base nos arts. 177 e seguintes da Lei Municipal nº 3.305, de 22/10/2007, anexando, para tanto, laudo médico.
+            </p>
+        </div>
+        <div>
+            <p>
+                (<input type="checkbox">)
+                licença por acidentes em serviço, pelo prazo de
+                <input type="text" placeholder="">,
+                com base nos arts. 186 e seguintes da Lei Municipal nº 3.305, de 22/10/2007, anexando, para tanto, laudo médico e documentos comprobatórios do acidente.
+            </p>
+        </div>
+        <div>
+            <p>
+                (<input type="checkbox">)
+                licença por motivo de doença em pessoa da família, pelo prazo de
+                <input type="text" placeholder="">,
+                com base no art. 87 da Lei Municipal nº 3.305, de 22/10/2007, em razão de doença de: <br>
+                <span id="space"></span>
+                (<input type="checkbox">) cônjuge ou companheiro 
+                (<input type="checkbox">) ascendente
+                (<input type="checkbox">) descendente
+                (<input type="checkbox">) padrasto
+                (<input type="checkbox">) madastra
+                (<input type="checkbox">) enteado
+                (<input type="checkbox">) colateral
+                (<input type="checkbox">) dependente, anexado, para tanto, laudo médico.
+            </p>
+        </div>
+        <div>
+            <p>
+                (<input type="checkbox">)
+                licença para atividade política, com base no art. 90 da Lei Municipal nº 3.305, de 22.10.2007, anexando, para tanto, ata de convenção partidária em que foi escolhido candidato.
+            </p>
+        </div>
+        <div>
+            <p>
+                (<input type="checkbox">)
+                licença para tratar de interesses particulares, pelo prazo de
+                <input type="text" placeholder=""> 
+                (máximo três anos consecutivos), com base no art. 91 da Lei Municipal nº 3.305, de 22/10/2007, optando pelo: <br>
+                <span id="space"></span>
+                (<input type="checkbox">)
+                não recolhimento
+                (<input type="checkbox">)
+                recolhimento das contribuições previdenciárias estabelicidas no incisos I e II do art. 4º da Lei Municipal nº 2.993, de 31/05/2005, nos termos do art. 6º da mesma Lei, e Decreto nº 4.629, de 13/10/2008.
+            </p>
+        </div>
+        <div>
+            <p>
+                (<input type="checkbox">)
+                licença para o desempenho de mandato classista, pelo prazo de
+                <input type="text" placeholder="">
+                (igual ao do mandato), com base no art. 92 da Lei Municipal nº 3.305, de 22/10/2007, anexando, para tanto, documento comprobatório de eleição.
+            </p>
+        </div>
+        <div>
+            <p>
+                (<input type="checkbox">)
+                licença especial para fins de aposentadoria, com base no art. 93 da Lei Municipal nº 3.305, de 22/10/2007, anexando para tanto, o respectivo pedido de aposentadoria.
+            </p>
+        </div>
+        <div>
+            <p>
+                (<input type="checkbox">)
+                licença à gestante, com base no art. 182 da Lei Municiapl nº 3.305, de 22/10/2007, anexando para tanto: <br>
+                <span id="space"></span>
+                (<input type="checkbox">)
+                laudo médico
+                (<input type="checkbox">)
+                certidão de nascimento.
+            </p>
+        </div>
+        <div>
+            <p>
+                (<input type="checkbox">)
+                repouso remunerado de trinta dias, com base no art. 182, § 4º, da Lei Municipal nº 3.305, de 22/10/2007, anexando, para tanto, laudo médico.
+            </p>
+        </div>
+        <div>
+            <p>
+                (<input type="checkbox">)
+                uma hora de descanso durante a jornada de trabalho, para amamentar o próprio filho até seis meses de idade, com base no art. 183 da Lei Municipal nº 3.305, de 22/10/2007, anexando, para tanto, certidão de nascimento.
+            </p>
+        </div>
+        <div>
+            <p>
+                (<input type="checkbox">)
+                licença à adotante, com base no art. 184 da Lei Municipal nº 3.305, de 22/10/2007, anexando, para tanto, documento comprobatório da adoção.
+            </p>
+        </div>
+        <div>
+            <p>
+                (<input type="checkbox">)
+                licença-paternidade, com base no art. 185 da Lei Municipal nº 3.305, de 22/10/2007, anexando, para tanto: <br>
+                <span id="space"></span>
+                (<input type="checkbox">)
+                certidão de nascimento,
+                (<input type="checkbox">)
+                documento comprobatório da adoção.
+            </p>
+        </div>
+        <div>
+            <p>
+                (<input type="checkbox">)
+                auxílio-natalidade, com base no art. 173 da Lei Municipal nº 3.305, de 22/10/2007, anexando, para tanto, certidão de nascimento de filho.
+            </p>
+        </div>
+        <div>
+            <p>
+                (<input type="checkbox">)
+                salário-família, com base no art. 174 da Lei Municipal nº 3.305, de 22/10/2007, anexando, para tanto: <br>
+                <span id="space"></span>
+                (<input type="checkbox">)
+                prova de filiação
+                (<input type="checkbox">)
+                condição de equiparado
+                (<input type="checkbox">)
+                prova de invalidez.  
+            </p>
+        </div>
+        <div>
+            <p>
+                (<input type="checkbox">)
+                auxílio-funeral, com base no art. 197 da Lei Municipal nº 3.305, de 22/10/2007, anexando, para tanto, certidão de óbito. OBS. Nos termos do art. 211 da Lei Municipal nº 3.305, de 22/10/2007, considera-se da família do servidor, além do cônjuge e filhos, quaisquer pessoas que vivam às suas expensas e constem do seu assentamento individual, equiparando-se ao cônjuge a companheira ou companheiro, que comprove união estável como entidade familiar.
+            </p>
+        </div>
+        <div>
+            <p>
+                (<input type="checkbox">)
+                auxílio-reclusão, com base no art. 199 da Lei Municipal nº 3.305, de 22/10/2007, anexando, para tanto, prova da reclusão. OBS. Nos termos do art. 211 da Lei Municipal nº 3.305, de 22/10/2007, considera-se da família do servidor, além do cônjuge e filhos, quaisquer pessoas que vivam às suas expensas e constem do seu assentamento individual, equiparando-se ao cônjuge a companheira ou companheiro, que comprove união estável como entidade familiar.
+            </p>
+        </div>
+        <div>
+            <p>
+                (<input type="checkbox">)
+                substituição do valor do prêmio por assiduidade por dois meses de licença, com base no art. 77, § 2º, da Lei Municipal nº 3.305, de 22/10/2007, e Decreto nº 4.516, de 12/11/2007.
+            </p>
+        </div>
+
+
+        <div>
+            <p>
+                (<input type="checkbox">)
+                adicional de insalubridade, em grau: <br>
+                <span id="space"></span>
+                (<input type="checkbox">)
+                máximo
+                (<input type="checkbox">)
+                médio
+                (<input type="checkbox">)
+                mínimo, <br>
+                <span id="space"></span>com base no art. 81 da Lei Municipal nº 3.305, de 22/10/2007, e Lei Municipal nº 2.176, de 22/12/1994, tendo em vista o desempenho de atividades de
+                <input type="text" placeholder="">
+                .
+            </p>
+        </div>
+        
+
+        <div id="page-break"></div>
+        <div id="newpage"></div>
+
+        
+        <div>
+            <p>
+                (<input type="checkbox">)
+                adicional de periculosidade, com base no art. 81 da Lei Municipal nº 3.305, de 22/10/2007, e Lei Municipal nº 2.176, de 22/12/1994, tendo em vista o desempenho de atividades de
+                <input type="text" placeholder="">
+                .
+            </p>
+        </div>
+        <div>
+            <p>
+                (<input type="checkbox">)
+                concessão de férias relativas ao período aquisitivo 
+                <input type="text" placeholder="">
+                em duas etapas, com base no art. 83, § 2º, da Lei Municipal nº 3.305, de 22/10/2007.
+            </p>
+        </div>
+        <div>
+            <p>
+                (<input type="checkbox">)
+                relotação para
+                <input type="text" placeholder="">
+                , com  base  no  art. 24,  § 3º,  da  Lei  Municipal  nº  3.305,  de  22/10/2007,  em  razão  de
+                <input type="text" placeholder="">
+                .
+            </p>
+        </div>
+        <div>
+            <p>
+                (<input type="checkbox">)
+                readaptação para cargo de atribuições e responsabilidades compatíveis com a limitação sofrida em sua capacidade: <br>
+                <span id="space"></span>
+                (<input type="checkbox">)
+                física 
+                (<input type="checkbox">)
+                mental, com base no art. 29 da Lei Municipal nº 3.305, de 22/10/2007, anexando, para tanto, laudo médico. 
+            </p>
+        </div>
+        <div>
+            <p>
+                (<input type="checkbox">)
+                reversão, com base no art. 30, § 1º, da Lei Municipal nº 3.305, de 22/10/2007, anexando, para tanto, laudo médico.
+            </p>
+        </div>
+        <div>
+            <p>
+                (<input type="checkbox">)
+                horário especial para servidor estudante, com base no art. 96, § 3º, da Lei Municipal nº 3.305, de 22/10/2007, anexando, para tanto documentos comprobatórios da matrícula e do horário estudantil.
+            </p>
+        </div>
+
+        <div>
+            <p>
+                (<input type="checkbox">)
+                abono de permanência, com base no: <br>
+                <span id="space"></span>
+                (<input type="checkbox">)
+                art. 40, § 19, da Constituição Federal, na redação determinada pela Emenda Constitucional nº 41/2003 <br>
+                <span id="space"></span>
+                (<input type="checkbox">)  
+                art. 2º, § 5º,  da Emenda Constitucional nº 41/2003 <br>
+                <span id="space"></span>
+                (<input type="checkbox">) 
+                art. 3º, § 1º,  da Emenda Constitucional nº 41/2003, em razão de optar por permanecer em atividade, anexando, para tanto, <br>
+                <span id="space"></span>
+                (<input type="checkbox">) 
+                certidão de tempo de contribuição expedida pelo INSS, se houve contribuições para o INSS <br>
+                <span id="space"></span>
+                (<input type="checkbox">)
+                certidão de tempo de contribuição expedia por outros órgãos ou entidades públicas, se houve contribuições para outros órgãos ou entidades públicas <br>
+                <span id="space"></span>
+                (<input type="checkbox">)
+                certidão de tempo militar expedida pelo respectivo órgão ou certificado de reservista, se houve prestação de serviço militar.
+            </p>
+        </div>
+        <div>
+            <p>
+                (<input type="checkbox">)
+                averbação de tempo de contribuição, anexando, para tanto, certidão original expedida pelo(a)
+                <input type="text" placeholder="">
+                .
+            </p>
+        </div>
+        <div>
+            <p>
+                (<input type="checkbox">)
+                averbação de tempo militar, anexando, para tanto: <br>
+                <span id="space"></span>
+                (<input type="checkbox">)  
+                certidão original expedida pelo(a)
+                <input type="text" placeholder="">
+                (<input type="checkbox">)
+                certificado de reservista, em cópia autenticada em tabelionato.
+            </p>
+        </div>
+        <div>
+            <p>
+                (<input type="checkbox">)
+                certidão de tempo de contribuição, para fins de 
+                <input type="text" placeholder="">
+                .
+            </p>
+        </div>
+        <div>
+            <p>
+                (<input type="checkbox">)
+                declaração para fins de
+                <input type="text" placeholder="">
+                .
+            </p>
+        </div>
+        <div>
+            <p>
+                (<input type="checkbox">)
+                estudo de viabilidade de aposentadoria, anexando, para tanto: <br>
+                <span id="space"></span>
+                (<input type="checkbox">)  
+                certidão de tempo de contribuição expedida pelo INSS, se houve contribuições para o INSS, <br>
+                <span id="space"></span>
+                (<input type="checkbox">)
+                certidão de tempo de contribuição expedia por outros órgãos ou entidades públicas, se houve contribuições para outros órgãos ou entidades públicas, <br>
+                <span id="space"></span>
+                (<input type="checkbox">)
+                certidão de tempo militar expedida pelo respectivo órgão ou Certificado de Reservista, se houve prestação de serviço militar.
+            </p>
+        </div>
+        <div>
+            <p>
+                (<input type="checkbox">)
+                mudança do nível
+                <input type="text" placeholder=""> 
+                para o nível
+                <input type="text" placeholder="">
+                , com base no art. 6º da Lei Municipal nº 2.637, de 23/10/2001, anexando, para tanto, comprovante da nova habilitação. 
+            </p>
+        </div>
+        <div>
+            <p>
+                (<input type="checkbox">)
+                mudança do nível
+                <input type="text" placeholder=""> 
+                para o nível
+                <input type="text" placeholder="">
+                , com base no art. 16 da Lei Municipal nº 1.717, de 11/04/1990, anexando, para tanto, comprovante da nova habilitação. 
+            </p>
+        </div>
+        <div>
+            <p>
+                (<input type="checkbox">)
+                mudança da classe
+                <input type="text" placeholder=""> 
+                para a classe
+                <input type="text" placeholder="">
+                , com base nos arts. 7º a 10 da Lei Municipal nº 2.637, de 23/10/2001, anexando, para tanto, comprovante de qualificação na área de educação. 
+            </p>
+        </div>
+        <div>
+            <p>
+                (<input type="checkbox">)
+                mudança da classe
+                <input type="text" placeholder=""> 
+                para a classe
+                <input type="text" placeholder="">
+                , com base nos arts. 8º a 15 da Lei Municipal nº 1.717, de 11/04/1990, anexando, no caso de mudança para a classe E, comprovante de habilitação. 
+            </p>
+        </div>
+        <div>
+            <p>
+                (<input type="checkbox">)
+                exoneração do cargo de provimento efetivo de
+                <input type="text" placeholder="">
+                , com base no art. 37, I, da Lei Municipal nº 3.305, de 22/10/2007;
+            </p>
+        </div>
+        <div>
+            <p>
+                (<input type="checkbox">)
+                exoneração do cargo em comissão de
+                <input type="text" placeholder="">
+                , com base no art. 37, I, da Lei Municipal nº 3.305, de 22/10/2007;
+            </p>
+        </div>
+        <div>
+            <p>
+                (<input type="checkbox">)
+                dispensa da função de confiança de
+                <input type="text" placeholder="">
+                , com base no art. 38 da Lei Municipal nº 3.305, de 22/10/2007;
+            </p>
+        </div>
+        <div>
+            <p>
+                (<input type="checkbox">)
+                outros:
+            </p>
+            <div>
+                <span id="span">
+                    <textarea rows="3" id="textArea"></textarea>
+                </span>
+            </div>
+        </div>
+        <div id="data">
+            <p>Farroupilha, <span id="dataday" class="dataV"></span> de <span id="datamonth" class="dataV"></span> de <span id="datayear" class="dataV"></span>.</p>
+        </div>
+        <div id="conclu" onclick="verify()">
+            <button type="submit">Salvar como PDF</button>
+        </div>
+    </form>
+    <footer class="text-center">
+        <div>
+            <h4>Assinatura do Requerente</h4>
+        </div>
+    </footer>
+
+    <script>
+        const months = ["janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"];
+        var dia = new Date();
+
+        document.getElementById("dataday").innerHTML = dia.getDate();
+        document.getElementById("datamonth").innerHTML = months[dia.getMonth()];
+        document.getElementById("datayear").innerHTML = dia.getFullYear();
+
+        function imprime() {
+            var but = document.getElementById("conclu")
+            alteraDado('textArea', 'span');
+            but.style.display = "none";
+            window.focus();
+            window.print();
+            but.style.display = "";
+        }
+
+        function verify(){
+            var x = document.querySelectorAll("input");
+
+            for (var i = 0; i < x.length; i++) {  
+                if(x[i].hasAttribute('required') && x[i].value == ""){
+                    alert("Não foi preenchido o campo: " + x[i].getAttribute("name"));
+                    break; 
+                }
+            }
+        }
+
+        function alteraDado(obj, id){document.getElementById(id).innerHTML = document.getElementById(obj).value; console.log("chegou")}
+    </script>
+</body>
+</html>
