@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta author="Henrique Gabriel Albring @Skyramopdemo">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+    <link rel="shortcut icon" href="https://farroupilha.rs.gov.br/uploads/config/18/3592braso_40x40.ico">
+    
+    <title>Requerimento de Baixa de Alvará</title>
+</head>
+
+<body onload="verifyNav()">
+    <style>
+        body{margin: 3% 10%;}
+        input:-webkit-autofill{-webkit-box-shadow: 0 0 0 30px white inset}
+        p, h1, td, input{font-family: 'Times New Roman', Times, serif;}
+        input{outline: 0; border-width: 0;}
+        @page{margin: 0;}
+        p{margin: 0;}
+
+        img{width: 10%; height: 10%;}
+
+        footer p, #conclu, #tata, tfoot{text-align: center;}
+        footer{position: relative; margin-top: 6vw; width: 50%; left: 25%; border-top: 0.1vw solid black;}
+
+        h1{font-size: 1.5vw;margin-bottom: 0;}
+        li, p, footer p, input, td{font-size: 1.3vw; line-height: 1.5vw;}
+        
+        input[type='submit'], #tata{font-size: 0.8vw; width: 100%;}
+        input[type='radio'],input[type='checkbox']{appearance:none;border:0 solid black;height:1.3vw;width:1.3vw;}
+        input[type='radio']:checked:before, input[type='checkbox']:checked:before{content:'X'; background:white; width:100%; height:100%; top:0;left:0;display:flex; align-items:center; justify-content:center; color:black; font-weight:bold;}
+        
+
+        table, input{width: 100%;}
+        table, td, input[type='submit']{border: 0.1vw solid black;}
+        td{font-weight: bold;padding-bottom: 0.2vw;}
+        td:not(:has(input)){background-color: rgb(240, 240, 240);}
+
+        ul{padding-left: 3vw;}
+
+        .sub{margin-top: 2vw;}
+
+        td:first-child{width: 25%;}
+        td:has(input[type='radio']), td:has(input[type='checkbox']){text-align: center;width: 5%;}
+
+
+        @media print{
+            @page{size: A4 portrait;}
+            body{-webkit-print-color-adjust: exact;print-color-adjust: exact;}
+            input[type='submit'], #tata{visibility: hidden; height: 0px;}
+
+            #inscricao{margin-top: -0.8vw;}
+
+            h1{font-size: 10pt;}
+            li, p, footer p, input, td{font-size: 8pt; line-height: 10pt;}
+            ul{padding-left: 20px;}
+            
+            table, td, input[type='submit']{border: 1px solid black;}
+            td{font-weight: bold;padding-bottom: 4px;}
+    
+            footer{position: relative; margin-top: 40px; width: 50%; left: 25%; border-top: 1px solid black;}
+
+            .sub{margin-top: 13px;}
+        }
+
+    </style>
+    <div class="text-center">
+        <img src="https://farroupilha.rs.gov.br/uploads/config/16025/brasaofarroupilhanovo.png">
+    </div>
+    <div class="text-center">
+        <h1>REQUERIMENTO DE BAIXA DE ALVARÁ</h1>
+    </div>
+
+    <form onsubmit="imprime()" method="post" id="form">
+
+        <p class="sub"><strong>IDENTIFICAÇÃO DO EMPREENDEDOR:</strong></p>
+
+        <table>
+            <tr>
+                <td id="razaosocial">Nome ou Razão Social:</td>
+                <td colspan="3"><input type="text" name="Nome ou Razão Social" required></td>
+            </tr>
+            <tr>
+                <td>CPF/CNPJ:</td>
+                <td colspan="3"><input type="text" name="CPF/CNPJ" required></td>
+            </tr>
+            <tr>
+                <td>Endere&ccedil;o:</td>
+                <td colspan="3"><input type="text" name="Endereço" required></td>
+            </tr>
+            <tr>
+                <td>Bairro:</td>
+                <td><input type="text" name="Bairro" required></td>
+                <td>CEP:</td>
+                <td><input type="text" name="CEP" required></td>
+            </tr>
+            <tr>
+                <td>E-mail:</td>
+                <td colspan="3"><input type="text" name="E-mail" required></td>
+            </tr>
+            <tr>
+                <td>Telefone fixo:</td>
+                <td><input type="text" name="Telefone fixo"></td>
+                <td>Celular:</td>
+                <td><input type="text" name="Celular" required></td>
+            </tr>
+        </table>
+
+        <p class="sub">ATIVIDADE PRINCIPAL:</p>
+        <table>
+            <tr>
+                <td>[<input type="radio" name="atividade">]</td>
+                <td>1-Autônomo</td>
+                <td>[<input type="radio" name="atividade">]</td>
+                <td>2-Profissional Liberal</td>
+                <td>[<input type="radio" name="atividade">]</td>
+                <td>3-Prestador de Serviço</td>
+            </tr>
+            <tr>
+                <td>[<input type="radio" name="atividade">]</td>
+                <td>4-Comércio</td>
+                <td>[<input type="radio" name="atividade">]</td>
+                <td>5-Indústria</td>
+                <td>[<input type="radio" name="atividade">]</td>
+                <td><input type="text"></td>
+            </tr>
+        </table>
+
+        <p class="sub">ENQUADRAMENTO:</p>
+        <table>
+            <tr>
+                <td>[<input type="radio" name="enquadramento">]</td>
+                <td>1-Geral</td>
+                <td>[<input type="radio" name="enquadramento">]</td>
+                <td>2-Microempreendedor individual</td>
+                <td>[<input type="radio" name="enquadramento">]</td>
+                <td>3-Optante pelo Simples</td>
+            </tr>
+        </table>
+        
+        <p class="sub">SITUAÇÃO ESPECIAL:</p>
+        <table>
+            <tr>
+                <td>[<input type="radio" name="situacao">]</td>
+                <td>1-Alvará Definitivo</td>
+                <td>[<input type="radio" name="situacao">]</td>
+                <td>2-Alvará Provisório</td>
+                <td>[<input type="radio" name="situacao">]</td>
+                <td>3-Referência e Contato</td>
+            </tr>
+        </table>
+        
+        <p class="sub">ESPÉCIE DE ESTABELECIMENTO:</p>
+        <table>
+            <tr>
+                <td>[<input type="radio" name="especie">]</td>
+                <td>1-Matriz</td>
+                <td>[<input type="radio" name="especie">]</td>
+                <td>2-Filial</td>
+                <td>[<input type="radio" name="especie">]</td>
+                <td>3-Agência</td>
+            </tr>
+            <tr>
+                <td>[<input type="radio" name="especie">]</td>
+                <td>4-Sucursal</td>
+                <td>[<input type="radio" name="especie">]</td>
+                <td>5-Depósito</td>
+                <td>[<input type="radio" name="especie">]</td>
+                <td>6-Outros</td>
+            </tr>
+        </table>
+        
+        <p class="sub">NATUREZA DA PESSOA:</p>
+        <table>
+            <tr>
+                <td>[<input type="radio" name="natureza">]</td>
+                <td>1-Físcal</td>
+                <td>[<input type="radio" name="natureza">]</td>
+                <td>2-Associação</td>
+                <td>[<input type="radio" name="natureza">]</td>
+                <td>3-Jurídica Privada</td>
+            </tr>
+            <tr>
+                <td>[<input type="radio" name="natureza">]</td>
+                <td>4-Jurídica Pública</td>
+                <td>[<input type="radio" name="natureza">]</td>
+                <td colspan="3"><input type="text"></td>
+            </tr>
+        </table>
+
+        <p class="sub">TIPO DO IMPOSTO:</p>
+        <table>
+            <tr>
+                <td>[<input type="radio" name="tipo">]</td>
+                <td>1- ISSQN Mensal</td>
+                <td>[<input type="radio" name="tipo">]</td>
+                <td>2- ISSQN Fixo</td>
+                <td>[<input type="radio" name="tipo">]</td>
+                <td>3- ISSQN Fixo Sociedade</td>
+            </tr>
+        </table>
+
+        <p class="sub">DECLARAÇÕES:</p>
+        <table>
+            <tr>
+                <td>[<input type="radio" name="declaracao">]</td>
+                <td>Inatividade</td>
+                <td>Declaro para os devidos fins que a empresa supracitada encontra-se inativa e fora de operação.</td>
+            </tr>
+            <tr>
+                <td>[<input type="radio" name="declaracao">]</td>
+                <td>Extravio</td>
+                <td>Declaro para fins de baixa de alvará, que extraviei o alvará físico e assumo todas as responsabilidades em eventual uso indevido do mesmo.</td>
+            </tr>
+        </table>
+
+        <div class="sub">
+            <p>Por meio deste, declaro reconhecer que o processo solicitado via protocolo referente à baixa do alvará:</p>
+        </div>
+        <div class="sub">
+            <ul>
+                <li>Poderá ocasionar no lançamento e ou relançamento de dívidas do exercício corrente de forma proporcional até a data do pedido protocolado, conforme estabelece o Decreto Municipal nº 4.516, de 17 de maio de 2019;</li>
+                <li>Não quitará ou cancelará as dívidas não quitadas de exercícios financeiros anteriores;</li>
+                <li>Cessará o lançamento de novas dívidas somente a partir da data da baixa do alvará.</li>
+            </ul>
+        </div>
+        <div class="sub">
+            <p>Fica o contribuinte desde já cientificado que, ao final do processo protocolado, deverá verificar sua situação financeira junto ao Município e que o não pagamento dos débitos resultantes implicará inscrição em dívida ativa, bem como sua inclusão nos cadastros de classificação de crédito e eventual cobrança extrajudicial ou judicial.</p>
+        </div>
+        <div class="sub">
+            <p>Obs.: O termo "dívidas" acima se refere à Taxa de Serviço de Saúde Pública, à Taxa de Licença para localização ou Exercício de Atividade, ao Imposto Sobre Serviço de Qualquer Natureza (ISSQN) e às parcelas do Simples Nacional e do MEI - Micro Empreendedor Individual.</p>
+        </div>
+
+        <input type="submit" id="conclu">
+    </form>
+
+    <footer class="text-center">
+        <h1>Assinatura do Declarante</h1>
+    </footer>
+    <script>
+        function imprime() {
+            var but = document.getElementById("conclu")
+            var tat = document.getElementById("tata")
+            tat.style.display = "none"
+            but.style.display = "none";
+            excluirCampos();
+            window.focus();
+            window.print();
+            but.style.display = "";
+        }
+
+        function verify(){
+            var z = validarCPF();
+
+            var x = document.querySelectorAll("input, select")
+            for (var i = 0; i < x.length; i++) { 
+                if(z == false && document.querySelector('input[name="CPF"]').value.replace(/[\s]/g, "") != ""){
+                    alert("O número de CPF está incorreto.")
+                    break
+                } 
+                if(x[i].hasAttribute('required') && x[i].value.replace(/[\s]/g, "") == ""){
+                    alert("Não foi preenchido o campo: " + x[i].getAttribute("name"));
+                    break; 
+                }            
+            }
+        }
+        function verifyNav(){
+            if(window.safari !== undefined){
+                document.body.innerHTML = "";
+                document.body.innerHTML = "<h1 style='text-align: center; margin-top: 15%; color: red;'>NAVEGADOR SEM SUPORTE!</h1><h3 style='text-align: center;'>UTILIZE UM NAVEGADOR COMPATÍVEL: <a href='https://www.mozilla.org/pt-BR/firefox/new/' style='text-decoration: none; color:black'>Firefox</a> Ou <a href='https://www.google.com/intl/pt-BR/chrome/' style='text-decoration: none; color:black'>Google Chrome</a></h3>"
+            }
+        }
+
+    </script>
+</body>
+</html>
