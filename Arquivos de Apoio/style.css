@@ -2,6 +2,7 @@
 body{margin: 2% 10%;}
 input:-webkit-autofill{-webkit-box-shadow: 0 0 0 30px white inset}
 p, span, h1, h2, h3, h4, h5, td, ul, ol, li, input, select, textarea{font-family: 'Times New Roman', Times, serif;}
+
 /* BRASÃO */
 img {width: 10%; height: 10%;}
 
