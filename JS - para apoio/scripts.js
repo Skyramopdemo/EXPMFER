@@ -6,43 +6,43 @@
  */
 function validarCPF() {
     //Pega o valor do input que tem o name="CPF"
-    inputs = document.querySelector('input[name="CPF"]').value;
+    input = document.querySelector('input[name="CPF"]').value;
     //Remove tudo que não é número do valor
-    inputs = inputs.replace(/[^\d]/g, ''); 
+    inputFiltrado = input.replace(/[^\d]/g, ''); 
     //Cria um array, com todos os digitos do input 
-    num = inputs.toString().split("");
-    //Utiliza o array para tornalos númeors
-    intnum = num.map(function(digito){return parseInt(digito, 10)})
+    numerosString = inputFiltrado.toString().split("");
+    //Utiliza o array para tornalos números
+    numerosInt = numerosString.map(function(digito){return parseInt(digito, 10)})
 
     const regex = /^(\d)\1+$/;
-    check = false
-    count = 0
-    count2 = 0
+    check1 = false
+    check2 = false
+    contador1 = 0
+    contador2 = 0
     var j = 10
     var k = 11
 
     //Verifica se o array tem tamanho diferente de 11, caso seja verdade retorna false
-    if(num.length != 11){return false;}
+    if(numerosString.length != 11){return false;}
     //Verifica se o texto não é apenas números repetidos.
-    if(regex.test(inputs)){return false}
+    if(regex.test(inputFiltrado)){return false}
 
 
     //Fors e Ifs para verificar a validade do cpf, caso esteje ok, o check se tornará true;
-    for (var i = 0; i < 9; i++) {  
-        count += intnum[i]*j;
+    for (var index = 0; index < 9; index++) {  
+        contador1 += numerosInt[index]*j;
         j--;
     }
-    if((count*10)%11 == intnum[9] || (intnum[9] == 0) && ((count*10)%11 == 10)||(count2*10)%11 == 11){check = true}
-    for (var i = 0; i < 10; i++) {  
-        count2 += intnum[i]*k;
+    if((contador1*10)%11 == numerosInt[9] || (numerosInt[9] == 0) && ((contador1*10)%11 == 10)||(contador2*10)%11 == 11){check1 = true}
+    for (var index = 0; index < 10; index++) {  
+        contador2 += numerosInt[index]*k;
         k--;
     }
-    if((count2*10)%11 == intnum[10] || (intnum[10] == 0) && ((count2*10)%11 == 10)||(count2*10)%11 == 11){check = true}
+    if((contador2*10)%11 == numerosInt[10] || (numerosInt[10] == 0) && ((contador2*10)%11 == 10)||(contador2*10)%11 == 11){check2 = true}
     
-
-    if(check == true){
-        var d = document.getElementById('cpfvalidar');
-        d.removeAttribute('required');
+    if(check1 == true && check2 == true){
+        var cpfSecundario = document.getElementById('cpfvalidar');
+        cpfSecundario.removeAttribute('required');
     }
     else{return false}
 
@@ -133,65 +133,6 @@ function validarDataNAtual(){
  * @param {String} id  - id do objeto alvo que terá seu innerHTML aletrado
  */
 function alteraDado(obj, id){document.getElementById(id).innerHTML = obj.value;}
-
-
-function voidSort(array){return [0];}
-
-function integerSort(array, start) {
-    n = []
-    for (i = 0; i < array.length; i++) {
-        n[i] = i+start;
-        return n
-    }
-    return n;
-}
-
-function caosSort(array) {
-    n = Math.random();
-    if(n < 0.5){
-        return [0]
-    }else{
-        return [1]
-    }
-}
-
-function alreadSorted(array){
-    return array
-}
-
-function communistSort(array){
-    sum = 0
-    arr = []
-    for (i = 0; i < array.length; i++) {
-        sum += array[i];
-    }
-    med = sum / array.length;
-    for (i = 0; i < array.length; i++) {
-        arr[i] = med;
-    }
-    return arr
-}
-
-function captalistSort(array) {
-    sum = 0
-    for (i = 0; i < array.length; i++) {
-        sum += array[i];
-        array[i] = 0;
-    }
-    array[0] = sum;
-    return array;
-}
-
-function investSort() {
-    //percorre faz a média
-    //percorre tira todos abaixo da média, soma os valores dos tirados, e pega o maior valor restante
-    //percorre e relaciona a porcentagem do valor com o maior e adiciona com a soma dos valores tirados
-}
-
-
-
-
-
 
 function randArray(size){
     array = []
