@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta author="Henrique Gabriel Albring @Skyramopdemo">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+    <link rel="shortcut icon" href="https://farroupilha.rs.gov.br/uploads/config/18/3592braso_40x40.ico">
+
+    <title>Declaração para Isenção de IPTU - Lei Nº 4.380/2017 e Decreto Nº 6.366/2018</title>
+</head>
+
+<body>
+    <style>
+        body {
+            margin: 3% 10%;
+        }
+
+        input:-webkit-autofill {
+            -webkit-box-shadow: 0 0 0 30px white inset
+        }
+
+        p,
+        h1,
+        td,
+        input {
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        input {
+            outline: 0;
+            border-width: 0;
+        }
+
+        @page {
+            margin: 0;
+        }
+
+        p {
+            margin: 0;
+        }
+
+        img {
+            width: 10%;
+            height: 10%;
+        }
+
+        footer p,
+        #conclu{
+            text-align: center;
+        }
+
+        footer {
+            position: relative;
+            margin-top: 6vw;
+            width: 50%;
+            left: 25%;
+            border-top: 0.1vw solid black;
+        }
+
+        h1 {
+            font-size: 1.5vw;
+            margin-bottom: 0;
+        }
+
+        li,
+        p,
+        footer p,
+        input,
+        td {
+            font-size: 1.3vw;
+            line-height: 1.5vw;
+        }
+
+        input[type='submit']{
+            font-size: 0.8vw;
+            width: 100%;
+        }
+
+        input[type='radio'],
+        input[type='checkbox'] {
+            appearance: none;
+            border: 0 solid black;
+            height: 1.3vw;
+            width: 1.3vw;
+        }
+
+        input[type='radio']:checked:before,
+        input[type='checkbox']:checked:before {
+            content: 'X';
+            background: white;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: black;
+            font-weight: bold;
+        }
+
+        table{
+            width: 100%;
+        }
+
+        input {
+            border-bottom: 0.1vw solid black;
+        }
+
+        input[type="submit"]{
+            border: 0.1vw solid black;
+        }
+
+
+        td {
+            font-weight: bold;
+            padding-bottom: 0.2vw;
+        }
+
+        td:not(:has(input)) {
+            background-color: rgb(240, 240, 240);
+        }
+
+        ol, ul {
+            padding-left: 3vw;
+        }
+
+        .sub {
+            margin-top: 2.5vw;
+        }
+
+
+        #questionario td:first-child {
+            width: 50%;
+        }
+
+        #questionario td:has(input[type='radio']),
+        td:has(input[type='checkbox']) {
+            text-align: center;
+            width: 5%;
+        }
+
+        td p{
+            display: flex;
+            align-items: center;
+        }
+        td p input{
+            flex: 1;
+        }
+
+        #ciencia{width: 100%; text-align: center;}
+
+        @media print {
+            @page {
+                size: A4 portrait;
+            }
+
+            body {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            input[type='submit']{
+                visibility: hidden;
+                height: 0px;
+            }
+
+            h1 {
+                font-size: 10pt;
+            }
+
+            li,
+            p,
+            footer p,
+            input,
+            td {
+                font-size: 8pt;
+                line-height: 10pt;
+            }
+
+            ol, ul {
+                padding-left: 20px;
+            }
+
+            
+            input {
+                border-bottom: 1px solid black;
+            }
+
+            td {
+                font-weight: bold;
+                padding-bottom: 4px;
+            }
+
+            footer {
+                position: relative;
+                margin-top: 100px;
+                width: 50%;
+                left: 25%;
+                border-top: 1px solid black;
+            }
+
+            .sub {
+                margin-top: 13px;
+            }
+        }
+    </style>
+    <div class="text-center">
+        <img src="https://farroupilha.rs.gov.br/uploads/config/16025/brasaofarroupilhanovo.png">
+    </div>
+    <div class="text-center">
+        <h1>DECLARAÇÃO PARA ISENÇÃO DE IPTU - LEI Nº 4.380/2017 E DECRETO Nº 6.366/2018</h1>
+    </div>
+
+    <form onsubmit="imprime()" method="post" id="form" class="sub">
+        <table>
+            <tr>
+                <td colspan="2">
+                    <p>Nome:<input type="text" name="Nome" required></p>
+                </td>
+            </tr>
+            <tr>
+                <td><p>CPF:<input type="text" name="CPF" oninput="alteraCPF()" maxlength="14" required></p></td>
+                <td><p>Identidade:<input type="text" name="Identidade" required></p></td>
+            </tr>
+            <tr>
+                <td><p>Logradouro:<input type="text" name="Logradouro" required></p></td>
+                <td><p>Nº:<input type="text" name="Número Logradouro" required><p></td>
+            </tr>
+            <tr>
+                <td colspan="2"><p>Bairro:<input type="text" name="Bairro" required></p></td>
+            </tr>
+            <tr>
+                <td><p>Inscrição cadastral:<input type="text" name="Inscrição cadastral" required></p></td>
+                <td><p>Cad. Único:<input type="text" name="Cad. Único" required></p></td>
+            </tr>
+            <tr>
+                <td colspan="2"><p>O requerente possui outros imóveis:<input type="text" name="O requerente possui outros imóveis" required></p></td>
+            </tr>
+            <tr>
+                <td colspan="2"><p>Renda bruta total do requerente:<input type="text" name="Renda bruta total do requerente" required></p></td>
+            </tr>
+            <tr>
+                <td colspan="2"><p>O requerente reside em Farroupilha desde (ano):<input type="text" name="O requerente reside em Farroupilha desde (ano)" required></p></td>
+            </tr>
+            <tr>
+                <td colspan="2"><p>Fone de contato:<input type="text" name="Fone de contato" required></p></td>
+            </tr>
+        </table>
+
+        <div class="sub">
+            <p>
+                Estou ciente de que omitir, em documento público ou particular, declaração que dele devia constar, ou
+                nele inserir ou fazer inserir declaração falsa ou diversa da que devia ser escrita, com o fim de
+                prejudicar direito, criar obrigação ou alterar a verdade sobre o fato juridicamente relevante é crime de
+                falsidade ideológica, conforme Art. 299 do Código Penal, podendo ocasionar pena de reclusão, de um a
+                cinco anos, e multa, se o documento é público.
+            </p>
+            <div id="ciencia">
+                <p>Sim(<input type="checkbox" required name="Estou ciente">)</p>
+            </div>
+        </div>
+
+
+
+        <input type="submit" id="conclu" class="sub" onclick="return verify()">
+    </form>
+
+    <div id="data">
+        <p>
+            Farroupilha
+            ,
+            <span id="dataday" class="dataV"></span>
+            de
+            <span id="datamonth" class="dataV"></span>
+            de
+            <span id="datayear" class="dataV"></span>
+        </p>
+    </div>
+
+    <footer class="text-center">
+        <h1>Assinatura do Requerente</h1>
+    </footer>
+
+    <div class="sub">
+        <p>RELAÇÃO DE DOCUMENTOS A SEREM JUNTADOS:</p>
+        <ol type="a">
+            <li>Matrícula do imóvel, com no máximo 180 dias;</li>
+            <li>Cópia do recibo da água, luz ou telefone;</li>
+            <li>Cópia do CPF e do RG;</li>
+            <li>Laudo médico-pericial, com no máximo 2 anos;</li>
+            <li>Se o imóvel estiver em nome diverso do requerente:
+                <ul>
+                    <li>Matrícula com no máximo 180 dias e comprovante de posse, por exemplo, contrato de locação, comodato ou termo de cedência</li>
+                </ul>
+            </li>
+            <li>Renda:
+                <ul>
+                    <li>Imposto de renda ou Carteira de Trabalho;</li>
+                    <li>Previdência Social (CTPS) ou folhas de pagamento dos três meses anteriores à data do requerimento;</li>
+                </ul>
+            </li>
+        </ol>
+    </div>
+
+    <script>
+        const months = ["janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"];
+        var dia = new Date();
+
+        document.getElementById("dataday").innerHTML = dia.getDate();
+        document.getElementById("datamonth").innerHTML = months[dia.getMonth()];
+        document.getElementById("datayear").innerHTML = dia.getFullYear();
+
+        function imprime() {
+            var but = document.getElementById("conclu")
+            but.style.display = "none";
+            window.focus();
+            window.print();
+            but.style.display = "";
+        }
+
+        function verify(){
+            var z = validarCPF();
+
+            var x = document.querySelectorAll("input, select");
+            for (var i = 0; i < x.length; i++) { 
+                if(z == false && document.querySelector('input[name="CPF"]').value.replace(/[\s]/g, "") != ""){
+                    alert("O número de CPF está incorreto.");
+                    return false;
+                    break
+                }  
+                if(x[i].hasAttribute('required') && x[i].value.replace(/[\s]/g, "") == ""){
+                    alert("Não foi preenchido o campo: " + x[i].getAttribute("name"));
+                    return false;
+                    break; 
+                }          
+            }
+        }
+
+        function validarCPF() {
+            inputs = document.querySelector('input[name="CPF"]').value;
+            inputs = inputs.replace(/[^\d]/g, '');  
+            num = inputs.toString().split("");
+            intnum = num.map(function(digito){return parseInt(digito, 10)})
+
+            const regex = /^(\d)\1+$/;
+            check = false
+            check2 = false
+            count = 0
+            count2 = 0
+            var j = 10
+            var k = 11
+
+            if(num.length != 11){return false;}
+            if(regex.test(inputs)){return false}
+
+
+
+            for (var i = 0; i < 9; i++) {  
+                count += intnum[i]*j;
+                j--;
+            }
+
+            if((count*10)%11 == intnum[9] || (intnum[9] == 0) && ((count*10)%11 == 10)||(count2*10)%11 == 11){check = true}
+
+            for (var i = 0; i < 10; i++) {  
+                count2 += intnum[i]*k;
+                k--;
+            }
+
+            if((count2*10)%11 == intnum[10] || (intnum[10] == 0) && ((count2*10)%11 == 10)||(count2*10)%11 == 11){check2 = true}
+            
+
+            if(check == true && check2 == true){
+                return;
+            }
+
+            alteraCPF();
+        }
+
+        function formatarCPF(cpf) {
+            cpf = cpf.replace(/[^\d]/g, '');  
+            var formatado = cpf;
+
+            if (cpf.length > 3) {formatado = cpf.substring(0, 3) + '.' + cpf.substring(3);}
+            if (cpf.length > 6) {formatado = formatado.substring(0, 7) + '.' + formatado.substring(7);}
+            if (cpf.length > 9) {formatado = formatado.substring(0, 11) + '-' + formatado.substring(11);}
+
+            return formatado;
+        }
+
+        function alteraCPF(){
+            inputs = document.querySelector('input[name="CPF"]');
+            valorFormatado = formatarCPF(inputs.value);
+            inputs.value = valorFormatado;
+        }
+
+        function verifyNav() {
+            if (window.safari !== undefined) {
+                document.body.innerHTML = "";
+                document.body.innerHTML = "<h1 style='text-align: center; margin-top: 15%; color: red;'>NAVEGADOR SEM SUPORTE!</h1><h3 style='text-align: center;'>UTILIZE UM NAVEGADOR COMPATÍVEL: <a href='https://www.mozilla.org/pt-BR/firefox/new/' style='text-decoration: none; color:black'>Firefox</a> Ou <a href='https://www.google.com/intl/pt-BR/chrome/' style='text-decoration: none; color:black'>Google Chrome</a></h3>"
+            }
+        }
+
+    </script>
+</body>
+
+</html>

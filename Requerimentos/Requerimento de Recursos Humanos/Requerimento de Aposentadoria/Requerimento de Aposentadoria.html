@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta author="Henrique Gabriel Albring @Skyramopdemo">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+    <link rel="shortcut icon" href="https://farroupilha.rs.gov.br/uploads/config/18/3592braso_40x40.ico">
+    
+    <title>Requerimento de Aposentadoria</title>
+</head>
+
+<body onload="verifyNav()">
+    <style id="style">
+        body {
+            margin: 3% 10%;
+        }
+
+        input:-webkit-autofill {
+            -webkit-box-shadow: 0 0 0 30px white inset
+        }
+
+        p,
+        h1,
+        h3,
+        td,
+        span,
+        input {
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        input {
+            outline: 0;
+            border-width: 0;
+        }
+
+        @page {
+            margin: 0;
+        }
+
+        p {
+            margin: 0;
+        }
+
+        img {
+            width: 10%;
+            height: 10%;
+        }
+
+        footer p,
+        #conclu {
+            text-align: center;
+        }
+
+        footer {
+            position: relative;
+            margin-top: 6vw;
+            width: 50%;
+            left: 25%;
+            border-top: 0.1vw solid black;
+        }
+
+        h1 {
+            font-size: 1.5vw;
+            margin-bottom: 0;
+        }
+
+        h3{
+            font-size: 1.4vw;
+        }
+
+        li,
+        p,
+        footer p,
+        input,
+        td {
+            font-size: 1.3vw;
+            line-height: 1.5vw;
+        }
+
+        input[type='submit'] {
+            font-size: 0.8vw;
+            width: 100%;
+        }
+
+        input[type='radio'],
+        input[type='checkbox'] {
+            appearance: none;
+            border: 0 solid black;
+            height: 1.3vw;
+            width: 1.3vw;
+        }
+
+        input[type='radio']:checked:before,
+        input[type='checkbox']:checked:before {
+            content: 'X';
+            background: white;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: black;
+            font-weight: bold;
+        }
+
+        table, textarea {
+            width: 100%;
+        }
+
+        input {
+            border-bottom: 0.1vw solid black;
+        }
+
+        input[type="submit"] {
+            border: 0.1vw solid black;
+        }
+
+
+        td {
+            font-weight: bold;
+            padding-bottom: 0.2vw;
+        }
+
+        td:not(:has(input)) {
+            background-color: rgb(240, 240, 240);
+        }
+
+        ol,
+        ul {
+            padding-left: 3vw;
+        }
+
+        ul{
+            list-style-type: none;
+        }
+
+        .sub {
+            margin-top: 2.5vw;
+        }
+
+
+        #questionario td:first-child {
+            width: 50%;
+        }
+
+        #questionario td:has(input[type='radio']),
+        td:has(input[type='checkbox']) {
+            text-align: center;
+            width: 5%;
+        }
+
+        td p {
+            display: flex;
+            align-items: center;
+        }
+
+        td p input {
+            flex: 1;
+        }
+
+        #ciencia {
+            width: 100%;
+            text-align: center;
+        }
+
+        #checkboxes p{
+            margin-top: 1vw;
+        }
+        #checkboxes ul p{
+            margin-top: 0;
+        }
+
+        @media print {
+            @page {
+                size: A4 portrait;
+            }
+
+            body {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            input[type='submit'] {
+                visibility: hidden;
+                height: 0px;
+            }
+
+            h1 {
+                font-size: 14pt;
+            }
+
+            #checkboxes p{
+                margin-top: 10px;
+            }
+
+            li,
+            p,
+            footer p,
+            input,
+            td {
+                font-size: 12pt;
+                line-height: 14pt;
+            }
+
+            #page-break{
+                page-break-after: always;
+            }
+    
+            #newpage{
+                margin-bottom: 5%;
+            }
+            ol,
+            ul {
+                padding-left: 20px;
+            }
+
+
+            input {
+                border-bottom: 1px solid black;
+            }
+
+            td {
+                font-weight: bold;
+                padding-bottom: 4px;
+            }
+
+            footer {
+                position: relative;
+                margin-top: 100px;
+                width: 50%;
+                left: 25%;
+                border-top: 1px solid black;
+            }
+
+            .sub {
+                margin-top: 13px;
+            }
+        }
+    </style>
+    <div class="text-center">
+        <img src="https://farroupilha.rs.gov.br/uploads/config/16025/brasaofarroupilhanovo.png">
+    </div>
+    <div class="text-center">
+        <h1>REQUERIMENTO DE APOSENTADORIA</h1>
+    </div>
+    <form onsubmit="imprime()" method="post">
+        <div id="form">
+            <table>
+                <tbody>
+                    <tr>
+                        <td>
+                            <p>NOME:<input type="text" name="Nome"  maxlength="80" oninput="alteraDado(this, 'name')"required></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>CARGO:<input type="text" name="Cargo"  maxlength="80" oninput="alteraDado(this, 'cargo')"required></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>MATRÍCULA:<input type="text" name="Matrícula"  maxlength="80" oninput="alteraDado(this, 'matri')"required></p>
+                        </td>   
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>ENDEREÇO:<input type="text" name="Endereço"  maxlength="80" oninput="alteraDado(this, 'ende')"required></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>TELEFONE:<input type="text" name="Telefone"  maxlength="80" oninput="alteraDado(this, 'tele')"required></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>E-MAIL:<input type="email" name="E-mail"  maxlength="80" oninput="alteraDado(this, 'email')"required></p>
+                        </td>
+                    </tr>
+                </tbody>
+                
+            </table> 
+            
+            <h3>OS DADOS INFORMADOS ACIMA SERÃO TRANSPORTATOS AOS CAMPOS ABAIXO CONFORME FOREM DIGITADOS</h3>
+        </div>
+        <div id="dados" class="sub">
+            <p>
+                Nome <span id="name"></span> , Cargo 
+                <span id="cargo"></span>, Matrícula <span id="matri"></span> 
+                e Endereço <span id="ende"></span>, requer aposentadoria, com base:</p>
+        </div>
+        <div id="checkboxes">
+            <p>(<input type="checkbox">) no art. 40, § 1º, inciso III, alínea a, combinado com os §§ 3º e 17º, da Constituição Federal, na redação determinada pela Emenda Constitucional nº 41/2003 (proventos calculados pela média das contribuições);</p>
+            <p>(<input type="checkbox">) no art. 40, §§ 3º, 5º e 17, da Constituição Federal, na redação determinada pela Emenda Constitucional nº 41/2003 (para professor e proventos calculados pela média das contribuições);</p>
+            <p>(<input type="checkbox">) no art. 2º, incisos I a III, alíneas a e b, da Emenda Constitucional nº 41/2003 (proventos calculados pela média das contribuições);</p>
+            <p>(<input type="checkbox">) no art. 2º, incisos I a III, alíneas a e b, combinado com § 4º, da Emenda Constitucional nº 41/2003 (para professor e proventos calculados pela média das contribuições);</p>
+            <p>(<input type="checkbox">) no art. 40, inciso III, alínea (  ) a (  ) b, da Constituição Federal, na redação original,  combinado com o art. 3º, § 2º, da Emenda Constitucional nº 41/2003 (aposentadoria por tempo de serviço, condições implementadas até 16.12.1998 e proventos integrais);</p>
+            <p>(<input type="checkbox">) no art. 40, § 1º, inciso III, alínea a, da Constituição Federal, na redação determinada pela Emenda Constitucional nº 20/1998, combinado com art. 3º, § 2º,  da Emenda Constitucional nº 41/2003 (aposentadoria por tempo de contribuição, condições implementadas até 31.12.2003 e proventos integrais);</p>
+            <p>(<input type="checkbox">) no art. 40, § 5º, da Constituição Federal, na redação determinada pela Emenda Constitucional nº 20/1998, combinado com o art. 3º, § 2º, da Emenda Constitucional nº 41/2003 (aposentadoria por tempo de contribuição para professor, condições implementadas até 31.12.2003 e proventos integrais);</p>
+            <p>(<input type="checkbox">) no art. 8º, incisos I a III, da Emenda Constitucional nº 20/1998, combinado com o art. 3º, § 2º, da Emenda Constitucional nº 41/2003 (aposentadoria por tempo de contribuição, condições implementadas até 31.12.2003 e proventos integrais);</p>
+            <p>(<input type="checkbox">) no art. 8º, incisos I a III, § 4º, da Emenda Constitucional nº 20/1998, combinado com o art. 3º, § 2º, da Emenda Constitucional nº 41/2003 (aposentadoria por tempo de contribuição para professor, condições implementadas até 31.12.2003 e proventos integrais);</p>
+            <p>(<input type="checkbox">) no art. 6º da Emenda Constitucional nº 41/2003 (para servidores que ingressaram no serviço público até 31.12.2003 e proventos integrais);</p>
+            <p>(<input type="checkbox">) no art. 6º da Emenda Constitucional nº 41/2003, combinado com o § 5º do art. 40 da Constituição Federal (para professores que ingressaram no serviço público até 31.12.2003 e proventos integrais);</p>
+          
+            <p>(<input type="checkbox">) no art. 3º da Emenda Constitucional nº 47/2005 (para servidores que ingressaram no serviço público até 16.12.1998 e proventos integrais);</p>
+            <p>(<input type="checkbox">) no art. 40, inciso III, alínea (  ) c (  ) d, da Constituição Federal, na redação original, combinado com o art. 3º, § 2º, da Emenda Constitucional nº 41/2003 (aposentadoria por tempo de serviço ou idade, condições implementadas até 16.12.1998 e proventos proporcionais);</p>
+            <p>(<input type="checkbox">) no art. 40, § 1º, inciso III, alínea b, da Constituição Federal, na redação determinada  pela Emenda Constitucional nº 20/1998, combinado com o art. 3º, § 2º, da Emenda Constitucional nº 41/2003 (aposentadoria por idade, condições implementadas até 31.12.2003 e proventos proporcionais);</p>
+              
+            <div id="page-break"></div>
+            <div id="newpage"></div>
+
+        
+            
+            <p>(<input type="checkbox">) no art. 40, § 1º, inciso III, alínea b, e §§ 3º e 17, da Constituição Federal, na redação da Emenda Constitucional nº 41/2003 (aposentadoria por idade e proventos proporcionais calculados sobre a média das contribuições);</p>
+            <p>(<input type="checkbox">) no art. 8º, § 1º, incisos I e II, da Emenda Constitucional nº 20/1998, combinado com o art. 3º, § 2º, da Emenda Constitucional nº 41/2003 (aposentadoria por tempo de contribuição, condições implementadas até 31.12.2003 e proventos proporcionais);</p>
+            <p>(<input type="checkbox">) no art. 2º § 1º, inciso (  ) I  (  ) II, da Emenda Constitucional nº 41/2003 (proporcionalidade sobre a média das contribuições);</p>
+            <p>(<input type="checkbox">) no art. 2º § 1º, inciso (  ) I  (  ) II, § 4º, da Emenda Constitucional nº 41/2003 (proporcionalidade sobre a média das contribuições);</p>
+            
+
+            <p>anexando, para tanto, os seguintes documentos:</p>
+            <ul>
+                <li><p>(<input type="checkbox">)certidão de tempo de contribuição expedida pelo INSS, em original, se houve contribuições para o INSS;</p></li>
+                <li><p>(<input type="checkbox">)certidão de tempo de contribuição expedia por outros órgãos ou entidades públicas, em original, se houve contribuições para outros órgãos ou entidades públicas;</p></li>
+                <li><p>(<input type="checkbox">)certidão de tempo militar expedida pela respectiva Arma ou Serviço, em original, ou certificado de reservista, em cópia autenticada em tabelionato, se houve prestação de serviço militar;</p></li>
+                <li><p>(<input type="checkbox">)cédula de identidade ou documento equivalente, em cópia autenticada em tabelionato, se a aposentadoria exigir a idade como requisito;</p></li>
+                <li><p>(<input type="checkbox">)certidão comprobatória de efetivo exercício de funções de magistério, em original, se a aposentadoria exigir como requisito o efetivo exercício de funções de magistério;</p></li>
+                <li><p>(<input type="checkbox">)certidão comprobatória do exercício de função gratificada ou cargo em comissão, em original, se houve a incorporação de parcelas decorrentes do exercício de função gratificada ou cargo em comissão;</p></li>
+                <li><p>(<input type="checkbox">)Outros; <span id="spanArea"></span></p></li>
+                <div id="textDiv"><textarea rows="3"></textarea></div>
+            </ul>
+        
+            
+        </div>
+        
+        <div id="conclu" onclick="verify()">
+            <button type="submit">Salvar como PDF</button>
+        </div>
+    </form>
+    <div class="sub">
+        <p>Nestes termos, pede deferimento.</p>
+    </div>
+    <div id="data">
+        <p>
+            Farroupilha,
+            <span id="dataday" class="dataV"></span>
+            de
+            <span id="datamonth" class="dataV"></span>
+            de
+            <span id="datayear" class="dataV"></span>
+        </p>
+    </div>
+    <footer class="text-center">
+        <h1>Assinatura do Declarante</h1>
+    </footer>
+    <div class="sub">
+        <p>Contato: <span id="tele"></span> / <span id="email"></span></p>
+    </div>
+    <script>
+        const months = ["janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"];
+        var dia = new Date();
+
+        document.getElementById("dataday").innerHTML = dia.getDate();
+        document.getElementById("datamonth").innerHTML = months[dia.getMonth()];
+        document.getElementById("datayear").innerHTML = dia.getFullYear();
+
+        
+
+        function imprime() {
+            var but = document.getElementById("conclu")
+            but.style.display = "none";
+            document.getElementById('form').innerHTML = "";
+            atualizaTextArea();
+            window.focus();
+            window.print();
+            but.style.display = "";
+        }
+
+        function alteraDado(obj, id){document.getElementById(id).innerHTML = obj.value;}
+        function alteraDados(obj, id, id2){
+            document.getElementById(id).innerHTML = obj.value;
+            document.getElementById(id2).innerHTML = '- ' + obj.value;
+        }
+
+        function verify(){
+            var z = validarCPF();
+
+            var x = document.querySelectorAll("input, select, textarea")
+            for (var i = 0; i < x.length; i++) { 
+                if(z == false && document.querySelector('input[name="CPF"]').value.replace(/[\s]/g, "") != ""){
+                    alert("O número de CPF está incorreto.")
+                    break
+                } 
+                if(x[i].hasAttribute('required') && x[i].value.replace(/[\s]/g, "") == ""){
+                    alert("Não foi preenchido o campo: " + x[i].getAttribute("name"));
+                    break; 
+                }            
+            }
+        }
+        function verifyNav(){
+            if(window.safari !== undefined){
+                document.body.innerHTML = "";
+                document.body.innerHTML = "<h1 style='text-align: center; margin-top: 15%; color: red;'>NAVEGADOR SEM SUPORTE!</h1><h3 style='text-align: center;'>UTILIZE UM NAVEGADOR COMPATÍVEL: <a href='https://www.mozilla.org/pt-BR/firefox/new/' style='text-decoration: none; color:black'>Firefox</a> Ou <a href='https://www.google.com/intl/pt-BR/chrome/' style='text-decoration: none; color:black'>Google Chrome</a></h3>"
+            }
+        }
+        function atualizaTextArea(){
+            var text = document.getElementsByTagName('Textarea');
+            var span = document.getElementById('spanArea');
+            var div = document.getElementById('textDiv');
+
+
+            if(text.value === null || text.value === undefined){
+                span.innerHTML = ""
+            }else{
+                span.innerHTML = text.value;
+            }
+
+            div.innerHTML = ""
+        }
+
+    </script>
+</body>
+</html>
