@@ -1,0 +1,27 @@
+/*CONFIGURAÇÕES PADRÕES*/
+body{margin: 2% 10%;}
+input:-webkit-autofill{-webkit-box-shadow: 0 0 0 30px white inset}
+p, span, h1, h2, h3, h4, h5, td, ul, ol, li, input, select, textarea{font-family: 'Times New Roman', Times, serif;}
+/* BRASÃO */
+img {width: 10%; height: 10%;}
+
+
+/* input Type='checkbox' ou input Type='radio' sendo marcados como X*/
+input[type='checkbox']{appearance:none;border:0 solid black;height:1vw;width:100%;}
+input[type='checkbox']:checked:before{content:'X'; background:white; width:100%; height:100%; top:0;left:0;display:flex; align-items:center; justify-content:center; color:black; font-weight:bold;}
+
+/* CONFIGURAÇÕES PADRÕES PRINT */
+@media print {
+    @page {
+        size: A4 portrait;
+    }
+    
+    body {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+    
+    button {
+        visibility: hidden;
+    }
+}
