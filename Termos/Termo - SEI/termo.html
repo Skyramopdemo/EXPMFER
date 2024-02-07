@@ -283,8 +283,8 @@
             var x = document.querySelectorAll("input, select")
             for (var i = 0; i < x.length; i++) { 
                 if(z == false && document.querySelector('input[name="CPF"]').value.replace(/[\s]/g, "") != ""){
-                    alert("O número de CPF está incorreto.")
-                    break
+                    alert("O número de CPF está incorreto.");
+                    break;
                 } 
                 if(x[i].hasAttribute('required') && x[i].value.replace(/[\s]/g, "") == ""){
                     alert("Não foi preenchido o campo: " + x[i].getAttribute("name"));
@@ -300,14 +300,15 @@
             intnum = num.map(function(digito){return parseInt(digito, 10)})
 
             const regex = /^(\d)\1+$/;
-            check = false
-            count = 0
-            count2 = 0
-            var j = 10
-            var k = 11
+            check = false;
+            check2 = false;
+            count = 0;
+            count2 = 0;
+            var j = 10;
+            var k = 11;
 
             if(num.length != 11){return false;}
-            if(regex.test(inputs)){return false}
+            if(regex.test(inputs)){return false;}
 
 
 
@@ -316,17 +317,17 @@
                 j--;
             }
 
-            if((count*10)%11 == intnum[9] || (intnum[9] == 0) && ((count*10)%11 == 10)||(count2*10)%11 == 11){check = true}
+            if((count*10)%11 == intnum[9] || (intnum[9] == 0) && ((count*10)%11 == 10)||(count2*10)%11 == 11){check = true;}
 
             for (var i = 0; i < 10; i++) {  
                 count2 += intnum[i]*k;
                 k--;
             }
 
-            if((count2*10)%11 == intnum[10] || (intnum[10] == 0) && ((count2*10)%11 == 10)||(count2*10)%11 == 11){check = true}
+            if((count2*10)%11 == intnum[10] || (intnum[10] == 0) && ((count2*10)%11 == 10)||(count2*10)%11 == 11){check2 = true;}
             
 
-            if(check == true){
+            if(check == true && check2 == true){
                 var d = document.getElementById('cpfvalidar');
                 d.removeAttribute('required');
             }
