@@ -16,7 +16,7 @@
 
 <body onload="verifyNav()">
     <style id="style">
-        body{margin: 3% 10%;}
+        body{margin: 2% 10%;}
         input:-webkit-autofill{-webkit-box-shadow: 0 0 0 30px white inset}
         p, h1, h3, td, input{font-family: 'Times New Roman', Times, serif;}
 
@@ -53,9 +53,7 @@
 
         table, input{width: 100%;}
 
-        #conclu{
-            padding-top: 1vw;
-        }
+        #conclu{padding-top: 1vw;}
 
         td{font-weight: bold;}
 
@@ -197,7 +195,7 @@
         document.getElementById("datayear").innerHTML = dia.getFullYear();
 
         function imprime() {
-            var but = document.getElementById("conclu")
+            var but = document.getElementById("conclu");
             but.style.display = "none";
             document.getElementById('form').innerHTML = "";
             window.focus();
