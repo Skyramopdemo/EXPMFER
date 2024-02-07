@@ -132,25 +132,10 @@ function validarDataNAtual(){
  * @param {Object} obj - O input que está acionando este evento
  * @param {String} id  - id do objeto alvo que terá seu innerHTML aletrado
  */
-function alteraDado(obj, id){document.getElementById(id).innerHTML = obj.value;}
-
-function randArray(size){
-    array = []
-    for (i = 0; i < size; i++) {
-        array[i] = random(0,size);
-    }
-    return array
+function alteraDado(obj, id){
+    document.getElementById(id).innerHTML = obj.value;
 }
 
-/**
- * 
- * @param {number} mn - valor mínimo que deseja gerar
- * @param {number} mx - valor máximo que deseja gerar
- * @returns {number} retorna o valor entre os o minimo e o máximo
- */
-function random(mn, mx) {
-    return Math.floor(Math.random() * (mx - mn) + mn);
-}
 
 //Meses principais
 let monthsLower = ["janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"];
