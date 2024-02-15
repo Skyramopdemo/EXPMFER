@@ -80,6 +80,10 @@
             overflow: hidden;
         }
 
+        form div{
+            margin-top: 1vw
+        }
+
         @media print{
             @page{size: A4 portrait;}
             body{-webkit-print-color-adjust: exact;print-color-adjust: exact;}
@@ -99,7 +103,7 @@
         <h1>SOLICITAÇÃO DE AUTORIZAÇÃO DE ACOMPANHANTE TERAPÊUTICO E INFORMAÇÃO DE DADOS</h1>
     </div>
     <form onsubmit="imprime()" method="post" id="form">
-        <div><p>Pais ou responsável legal</p></div>
+        <div><p>Responsável legal</p></div>
 
         <table>
             <tbody>
@@ -175,6 +179,14 @@
             <tbody>
                 <tr>
                     <td>
+                        Nome:
+                    </td>
+                    <td>
+                        <input type="text" name="Nome acompanhante"  maxlength="80" oninput="alteraDado(this, 'nome_acomp')" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
                         E-mail:
                     </td>
                     <td>
@@ -203,7 +215,7 @@
                 <p class="item">Identificação:</p>
                 <div>
                     <p class="text-underline">Solicitante:</p>
-                    <p>Pais ou Responsável Legal:</p>
+                    <p>Responsável Legal:</p>
                     <p>Nome completo: <span id="nome_resp"></span></p>
                     <p>com registro no CPF sob número <span id="cpf"></span>, domicilado(cidade) <span id="cidade"></span></p>
                     <p>Fone: <span id="tel_resp"></span> e-mail: <span id="email_resp"></span>.</p>
@@ -215,27 +227,30 @@
             <li>
                 <p class="item">Finalidade do documento:</p>
                 <div>
-                    <p>Requerer autorização para o Acompanhante Terapêutico do aluno <span class="nome_aluno"></span> e informar à escola os dados do AT que irá acompanhar o aluno, no ambiente escolar, e também informações sobre sua forma de contratação para prestação de serviço</p>
+                    <p>Requerer autorização para o(a) Acompanhante Terapêutico do aluno <span class="nome_aluno"></span> e informar à escola os dados do AT que irá acompanhar o aluno, no ambiente escolar, e também informações sobre sua forma de contratação para prestação de serviço</p>
                 </div>
             </li>
 
             <li>
                 <p class="item">Acompanhante terapêutico (AT):</p>
                 <div>
-                    <p>Profissional habilitada, para realização da intervenção compartamental e com o objetivo de auxiliar o aluno, acompanhando-o nas diferentes atividades dos ambientes escolares a fim de ajudá-lo nas diversas resoluções de problemas pertinentes ao contexto escolar; bem como nas atividades de cuidado, de higiene, de alimentação, de locomoção e outras.</p>
-                    <p>A AT irá atender somente o aluno <span class="nome_aluno"></span>, para os fins que foi contratada, sem interferir na didática da escola e na dinâmica de sala de aula, fazendo o acompanhamento no tempo integral em que o aluno permanecer na escola.</p>
-                    <p>A AT fica ciente que não poderá fazer qualquer registro fotográfico do ambiente escolar sem autorização expressa da direção escolar; bem como seguir as normas que regem a escola.</p>
+                    <p>Profissional habilitado(a), para realização da intervenção compartamental e com o objetivo de auxiliar o aluno, acompanhando-o nas diferentes atividades dos ambientes escolares a fim de ajudá-lo nas diversas resoluções de problemas pertinentes ao contexto escolar; bem como nas atividades de cuidado, de higiene, de alimentação, de locomoção e outras.</p>
+                    <p>O(a) AT irá atender somente o aluno <span class="nome_aluno"></span>, para os fins que foi contratada, sem interferir na didática da escola e na dinâmica de sala de aula, fazendo o acompanhamento no tempo integral em que o aluno permanecer na escola.</p>
+                    <p>O(a) AT fica ciente que não poderá fazer qualquer registro fotográfico do ambiente escolar sem autorização expressa da direção escolar; bem como seguir as normas que regem a escola.</p>
                 </div>
             </li>
 
             <li>
-                <p class="item">Anexar o contrato da Empresa contratada pela família, para o acompanhamento da profissional Acompanhante Terapeuta.</p>
+                <p class="item">Anexar o contrato da Empresa contratada pela família, para o acompanhamento do profissional Acompanhante Terapeuta.</p>
             </li>
 
             <li>
-                <p class="item">A profissional de AT deverá comparecer a entrevista, conforme agendamento com a equipe multidisciplinar na Secretária da Educação.</p>
+                <p class="item">O(a) profissional de AT deverá comparecer a entrevista, conforme agendamento com a equipe multidisciplinar na Secretária da Educação.</p>
                 <div>
-                    <p>Contato da profissional. Fone: <span id="tel_acomp"></span> e-mail: <span id="email_acomp"></span></p>
+                    <p>Contato do(a) profissional:</p>
+                    <p>Nome: <span id="nome_acomp"></span></p> 
+                    <p>Fone: <span id="tel_acomp"></span></p>
+                    <p>E-mail: <span id="email_acomp"></span></p>
                 </div>
             </li>
         </ol>
@@ -250,7 +265,7 @@
         </p>
     </div>
     <footer class="text-center">
-        <h1>Pais ou responsável</h1>
+        <h1>Responsável</h1>
     </footer>
     <script>
         const months = ["janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"];
