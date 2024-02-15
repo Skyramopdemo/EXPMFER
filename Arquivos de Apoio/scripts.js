@@ -137,6 +137,17 @@ function alteraDado(obj, id){
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
 //Meses principais
 let monthsLower = ["janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"];
 let monthsTitle = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
