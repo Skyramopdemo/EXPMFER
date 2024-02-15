@@ -15,7 +15,7 @@
     <title>Solicitação de Autorização de Acompanhante Terapêutico e Informação de Dados</title>
 </head>
 
-<body onload="verifyNav()">
+<body>
     <style id="style">
         body{margin: 2% 10%;}
         input:-webkit-autofill{-webkit-box-shadow: 0 0 0 30px white inset}
@@ -25,7 +25,6 @@
         #data, #conclu, footer p{text-align: center;}
 
         input{outline: 0; border-width: 0;}
-        input{border-bottom: 1px solid black;}
 
         footer{position: relative; margin-top: 6vw; width: 50%; left: 25%; border-top: 0.1vw solid black;}
 
@@ -38,8 +37,12 @@
         button{border-width: 0.1vw; width: 10vw;}
         h1{font-size: 1.7vw;margin-bottom: 0;}
         h3{font-size: 1.4vw; text-align: center;}
-        p, footer p, input, li, ol{font-size: 1.5vw; line-height: 1.5vw;}
-        td, button{font-size: 0.8vw;}
+        p, footer p, input, li, ol, td:has(input){font-size: 1.5vw; line-height: 1.5vw;}
+        button{font-size: 0.8vw;}
+
+        table, td{
+            border: 1px solid black;
+        }
 
         li{
             margin-top: 2vw;
@@ -58,22 +61,38 @@
         td{font-weight: bold;}
 
 
-        .text-underline{
+        .text-underline, #dados span{
             text-decoration: underline;
+        }
+
+
+        .ddd{
+            width: 3%;
+        }
+
+        td:not(:has(input)){
+            width: 1%;
+            white-space: nowrap;
+        }
+
+
+        td:has(.tel){
+            white-space: nowrap;
+            overflow: hidden;
         }
 
         @media print{
             @page{size: A4 portrait;}
             body{-webkit-print-color-adjust: exact;print-color-adjust: exact;}
-            h1{font-size: 22px;}
-            h3, p{font-size: 20px;}
+            h1{font-size: 18px;}
+            h3, p{font-size: 16px;}
             p{line-height: 20px;}
             button{visibility: hidden;}
 
             div h1{margin-top: 20%;}
             #dados{margin-top: 45px;} 
-            #data p{margin-top: 225px;}
-            footer{margin-top: 175px;}
+            #data p{margin-top: 50px;}
+            footer{margin-top: 75px;}
         }
 
     </style>
@@ -81,7 +100,7 @@
         <h1>SOLICITAÇÃO DE AUTORIZAÇÃO DE ACOMPANHANTE TERAPÊUTICO E INFORMAÇÃO DE DADOS</h1>
     </div>
     <form onsubmit="imprime()" method="post" id="form">
-        <div><p>Pais ou responsável legal:</p></div>
+        <div><p>Pais ou responsável legal</p></div>
 
         <table>
             <tbody>
@@ -90,7 +109,7 @@
                         Nome:
                     </td>
                     <td>
-                        <input type="text" name="Nome responsável legal"  maxlength="80" oninput="alteraDado(this, 'name')"required>
+                        <input type="text" name="Nome responsável legal"  maxlength="80" oninput="alteraDado(this, 'nome_resp')" required>
                     </td>
                 </tr>
                 <tr>
@@ -98,7 +117,7 @@
                         CPF:
                     </td>
                     <td>
-                        <input type="text" name="CPF"  oninput="alteraCPF(), alteraDado(this, 'cpf')" required maxlength="14">
+                        <input type="text" name="CPF"  oninput="alteraCPF(), alteraDado(this, 'cpf')"  maxlength="14" required>
                     </td>
                 </tr>
                 <tr>
@@ -106,7 +125,7 @@
                         Cidade:
                     </td>
                     <td>
-                        <input type="text" name="RG"  maxlength="80" oninput="alteraDado(this, 'rg')"required>
+                        <input type="text" name="Cidade"  maxlength="80" oninput="alteraDado(this, 'cidade')" required>
                     </td>
                 </tr>
                 <tr>
@@ -114,10 +133,7 @@
                         Fone:
                     </td>
                     <td>
-                        (<input type="text" name="RG"  maxlength="80" oninput="alteraDado(this, 'rg')"required>)
-                    </td>
-                    <td>
-                        <input type="text" name="RG"  maxlength="80" oninput="alteraDado(this, 'rg')"required>
+                        <input class="tel" type="text" name="Telefone responsável legal"  maxlength="80" oninput="alteraTelefone(this), alteraDado(this, 'tel_resp')" required>
                     </td>
                 </tr>
                 <tr>
@@ -125,7 +141,7 @@
                         E-mail:
                     </td>
                     <td>
-                        <input type="text" name="RG"  maxlength="80" oninput="alteraDado(this, 'rg')"required>
+                        <input type="text" name="E-mail responsável legal"  maxlength="80" oninput="alteraDado(this, 'email_resp')" required>
                     </td>
                 </tr>
             </tbody>
@@ -140,7 +156,7 @@
                         Nome:
                     </td>
                     <td>
-                        <input type="text" name="Nome aluno"  maxlength="80" oninput="alteraDado(this, 'name')"required>
+                        <input type="text" name="Nome aluno"  maxlength="80" oninput="alteraDados(this, 'nome_aluno')" required>
                     </td>
                 </tr>
                 <tr>
@@ -148,7 +164,7 @@
                         Escola:
                     </td>
                     <td>
-                        <input type="text" name="Escola"  maxlength="80" oninput="alteraDado(this, 'name')"required>
+                        <input type="text" name="Escola"  maxlength="80" oninput="alteraDado(this, 'escola')" required>
                     </td>
                 </tr>
             </tbody>
@@ -163,7 +179,7 @@
                         E-mail:
                     </td>
                     <td>
-                        <input type="email" name="E-mail acompanhante"  maxlength="80" oninput="alteraDado(this, 'name')"required>
+                        <input type="email" name="E-mail acompanhante"  maxlength="80" oninput="alteraDado(this, 'email_acomp')" required>
                     </td>
                 </tr>
                 <tr>
@@ -171,10 +187,7 @@
                         Telefone:
                     </td>
                     <td>
-                        (<input type="tel" name="Telefone acompanhante"  maxlength="80" oninput="alteraDado(this, 'name')"required>)
-                    </td>
-                    <td>
-                        <input type="tel" name="Telefone acompanhante"  maxlength="80" oninput="alteraDado(this, 'name')"required>
+                        <input class="tel" type="tel" name="Telefone acompanhante"  maxlength="80" oninput="alteraTelefone(this), alteraDado(this, 'tel_acomp')" required>
                     </td>
                 </tr>
             </tbody>
@@ -192,20 +205,18 @@
                 <div>
                     <p class="text-underline">Solicitante:</p>
                     <p>Pais ou Responsável Legal:</p>
-                    <p>Nome completo:<span></span></p>
-                    <p>com registro no CPF sob número<span></span></p>
-                    <p>, domicilado(cidade)<span></span></p>
-                    <p>Fone: (<span></span>) <span></span></p>
-                    <p>e-mail: <span></span>.</p>
-                    <p>Nome do aluno: <span></span>.</p>
-                    <p>Escola: <span></span></p>
+                    <p>Nome completo: <span id="nome_resp"></span></p>
+                    <p>com registro no CPF sob número <span id="cpf"></span>, domicilado(cidade) <span id="cidade"></span></p>
+                    <p>Fone: <span id="tel_resp"></span> e-mail: <span id="email_resp"></span>.</p>
+                    <p>Nome do aluno: <span class="nome_aluno"></span>.</p>
+                    <p>Escola: <span id="escola"></span></p>
                 </div>
             </li>
 
             <li>
                 <p class="item">Finalidade do documento:</p>
                 <div>
-                    <p>Requerer autorização para o Acompanhante Terapêutico do aluno <span></span> e informar à escola os dados do AT que irá acompanhar o aluno, no ambiente escolar, e também informações sobre sua forma de contratação para prestação de serviço</p>
+                    <p>Requerer autorização para o Acompanhante Terapêutico do aluno <span class="nome_aluno"></span> e informar à escola os dados do AT que irá acompanhar o aluno, no ambiente escolar, e também informações sobre sua forma de contratação para prestação de serviço</p>
                 </div>
             </li>
 
@@ -213,8 +224,8 @@
                 <p class="item">Acompanhante terapêutico (AT):</p>
                 <div>
                     <p>Profissional habilitada, para realização da intervenção compartamental e com o objetivo de auxiliar o aluno, acompanhando-o nas diferentes atividades dos ambientes escolares a fim de ajudá-lo nas diversas resoluções de problemas pertinentes ao contexto escolar; bem como nas atividades de cuidado, de higiene, de alimentação, de locomoção e outras.</p>
-                    <p>A AT irá atender somente o aluno <span></span>, para os fins que foi contratada, sem interferir na didática da escola e na dinâmica de sala de aula, fazendo o acompanhamento no tempo integral em que o aluno permanecer na escola.</p>
-                    <p>A AT fica ciente que não poderá fazer qualquer registro fotográfico do ambiente escolar sem autorização expressa da direção escolar; bem como seguir as normas que regem a escola./p>
+                    <p>A AT irá atender somente o aluno <span class="nome_aluno"></span>, para os fins que foi contratada, sem interferir na didática da escola e na dinâmica de sala de aula, fazendo o acompanhamento no tempo integral em que o aluno permanecer na escola.</p>
+                    <p>A AT fica ciente que não poderá fazer qualquer registro fotográfico do ambiente escolar sem autorização expressa da direção escolar; bem como seguir as normas que regem a escola.</p>
                 </div>
             </li>
 
@@ -225,7 +236,7 @@
             <li>
                 <p class="item">A profissional de AT deverá comparecer a entrevista, conforme agendamento com a equipe multidisciplinar na Secretária da Educação.</p>
                 <div>
-                    <p>Contato da profissional. Fone: (<span></span>)<span></span> e-mail: <span></span></p>
+                    <p>Contato da profissional. Fone: <span id="tel_acomp"></span> e-mail: <span id="email_acomp"></span></p>
                 </div>
             </li>
         </ol>
@@ -240,7 +251,7 @@
         </p>
     </div>
     <footer class="text-center">
-        <h1>Assinatura do Declarante</h1>
+        <h1>Pais ou responsável</h1>
     </footer>
     <script>
         const months = ["janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"];
@@ -259,10 +270,39 @@
             but.style.display = "";
         }
 
+        function formatarTelefone(tele) {
+            tele = tele.replace(/[^\d]/g, '');  
+            var formatado = tele;
+        
+            if(tele.length == 10){
+                formatado = '(' + tele.substring(0, 2) + ') ' + tele.substring(2, 6) + '-' + tele.substring(6, 10);
+            }
+            if(tele.length == 11){
+                formatado = '(' + tele.substring(0, 2) + ') ' + tele.substring(2,3) + " " + tele.substring(3, 7) + '-' + tele.substring(7, 11);
+            }
+            if(tele.length == 12){
+                formatado = '[+' + tele.substring(0, 2) + '] ' + '(' + tele.substring(2, 4) + ') ' + tele.substring(4, 8) + '-' + tele.substring(8, 12);
+            }
+            if(tele.length == 13){
+                formatado = '[+' + tele.substring(0, 2) + '] ' + '(' + tele.substring(2, 4) + ') ' + tele.substring(4,5) + " " + tele.substring(5, 9) + '-' + tele.substring(9, 13);
+            }
+        
+        
+            return formatado;
+        }
+
+        function alteraTelefone(obj){
+            valorFormatado = formatarTelefone(obj.value);
+            obj.value = valorFormatado;
+        }
+
         function alteraDado(obj, id){document.getElementById(id).innerHTML = obj.value;}
-        function alteraDados(obj, id, id2){
-            document.getElementById(id).innerHTML = obj.value;
-            document.getElementById(id2).innerHTML = '- ' + obj.value;
+        function alteraDados(obj, id){
+            var itens = document.querySelectorAll("."+id);
+            
+            for (var i = 0; i < itens.length; i++) { 
+                itens[i].innerHTML = obj.value;
+            }
         }
 
         function verify(){
@@ -280,12 +320,8 @@
                 }            
             }
         }
-        function verifyNav(){
-            if(window.safari !== undefined){
-                document.body.innerHTML = "";
-                document.body.innerHTML = "<h1 style='text-align: center; margin-top: 15%; color: red;'>NAVEGADOR SEM SUPORTE!</h1><h3 style='text-align: center;'>UTILIZE UM NAVEGADOR COMPATÍVEL: <a href='https://www.mozilla.org/pt-BR/firefox/new/' style='text-decoration: none; color:black'>Firefox</a> Ou <a href='https://www.google.com/intl/pt-BR/chrome/' style='text-decoration: none; color:black'>Google Chrome</a></h3>";
-            }
-        }
+        
+
         function validarCPF() {
             inputs = document.querySelector('input[name="CPF"]').value;
             inputs = inputs.replace(/[^\d]/g, '');  
