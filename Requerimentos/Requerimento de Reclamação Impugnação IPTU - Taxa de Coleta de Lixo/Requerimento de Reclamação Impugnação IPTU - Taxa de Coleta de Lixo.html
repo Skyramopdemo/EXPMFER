@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta author="Henrique Gabriel Albring @Skyramopdemo">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Requerimento - Reclamação/Impugnação/IPTU - Taxa de Coleta de Lixo</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+        <link rel="shortcut icon" href="https://farroupilha.rs.gov.br/uploads/config/18/3592braso_40x40.ico">
+    </head>
+    <body>
+        <style>
+            body{margin: 2% 10%;}
+            input:-webkit-autofill{-webkit-box-shadow: 0 0 0 30px white inset}
+            td input, td textarea, td select{border: none; outline: none;}
+            p, h1, td,tr, select{font-family: 'Times New Roman', Times, serif;}
+
+            table, td{border: 0.1vw solid black}
+
+            div p{
+                text-align: justify;
+                margin: 0.2vw 0vw;
+            }
+
+            td:not(:has(input)){width: 1%; white-space: nowrap;}
+
+
+            input,table, select{width: 100%; line-height: 0.8;}
+
+            td{
+                font-weight: bold;
+                padding: 0.1vw;
+            }
+            
+            table{
+                text-align: left;
+            }
+            button{
+                font-size: 1vw;
+                width: 10vw;
+                border-width: 0.1vw;
+            }
+
+            img{width: 10%;height: 10%;}
+
+            .center, td:has(input[type="checkbox"]), td:has(input[type="radio"]){text-align: center;}
+
+            button{border-width: 0.1vw; font-size: 0.8vw;}
+            h1{font-size: 1.7vw;}
+            tr{font-size: 1vw; line-height: 1vw; border-width: 0.1vw; height: 1vw;}
+            p, footer p{font-size: 1vw;}
+            input{font-size: 0.9vw;}
+
+
+            input[type='checkbox']{appearance:none; border:0 solid black; height:1vw; width:20px;}
+            input[type='checkbox']:checked:before{content:'X'; background:white; width:100%; height:100%; top:0; left:0; display:flex; align-items:center; justify-content:center; color:black; font-weight:bold;}
+
+            input[type='radio']{appearance:none; border:0 solid black; height:1vw; width:20px; }
+            input[type='radio']:checked:before{content:'X'; background:white; width:100%; height:100%; top:0; left:0; display:flex; align-items:center; justify-content:center; color:black; font-weight:bold;}
+            
+
+            input[type="date"]::-webkit-calendar-picker-indicator {
+                display: none;
+                -webkit-appearance: none;
+            }
+
+            a{text-decoration: none;}
+
+            p{margin: 0}
+
+            .out {margin-top: 1.5vw; margin-bottom: 0;}
+            .sub{margin-top: 0;}
+
+            button{
+                margin-top: 5vw;
+            }
+
+            td:has(input){
+                min-width: 50%;
+            }
+
+
+            td:not(:has(input)){
+                white-space: nowrap;
+                overflow: hidden;
+            }
+
+            select{
+                appearance: none;
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                background: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png);
+                background-repeat: no-repeat;
+                background-position-x: 98%;
+                background-position-y: -0.1vw;
+                background-size: 0.9vw 0.9vw;
+            }
+            footer p{
+                font-size: 1.2vw;
+                text-align: center;
+                margin: 0;
+            }
+            footer{
+                margin-top: 2vw;
+                position: relative;
+                left: 30%;
+                border-top: 0.1vw solid black;
+                width: 40%;
+            }
+
+            @page{
+                margin: 0;
+            }
+            @media print {
+                @page{size: A4 portrait;}
+                a{color: black;}
+                select{background: none;}
+                input[type = "checkbox"]:not(:checked){opacity: 0;}
+                body{-webkit-print-color-adjust: exact; print-color-adjust: exact;}
+
+                img, h1{margin-top: 2vw;}
+                h1{margin-bottom: 5vw;}
+                table, td{border: 0.1vw solid black !important}
+                td:has(input){padding: 0.2vw;}
+                p{margin-top: 2vw; margin-bottom: 0;}
+                footer{margin-top: 10vw;}
+                
+                td, p{font-size: 1.7vw; line-height: 1.7vw;}
+                input[type = "checkbox"]{height: 2vw; width: 2vw;}   
+                h1{font-size: 2.1vw;}
+                tr, input{font-size: 1.6vw; line-height: 1.6vw; height: 1.6vw;}
+                button{font-size: 1.5vw;}
+                footer p{font-size: 2.1vw;}
+            }
+        </style>
+        <div class="center">
+            <img src="https://farroupilha.rs.gov.br/uploads/config/16025/brasaofarroupilhanovo.png">
+        </div>
+
+        <p class="center">ESTADO DO RIO GRANDE DO SUL</p>
+        <p class="center">PREFEITURA MUNICIPAL DE FARROUPILHA</p>
+
+        <h1 class="center"><strong>REQUERIMENTO - RECLAMAÇÃO/IMPUGNAÇÃO/IPTU - TAXA DE COLETA DE LIXO</strong></h1>
+        
+        <form onsubmit="imprime()">
+
+            <p class="out"><strong>IDENTIFICAÇÃO DO PROPRIETÁRIO/CONTRIBUINTE</strong></p>
+            <table>
+                <tr>
+                    <td>Nome:</td>
+                    <td colspan="5"><input type="text" name="Nome do Proprietário/Contribuinte" required></td>
+                    <td>Telefone:</td>
+                    <td><input type="text" name="Telefone do Proprietário/Contribuinte" required></td>
+                </tr>
+                <tr>
+                    <td>E-mail:</td>
+                    <td colspan="3"><input type="text" name="E-mail do Proprietário/Contribuinte" required></td>
+                    <td>CPF/CNPJ:</td>
+                    <td><input type="text" name="CPF/CNPJ do Proprietário/Contribuinte" required></td>
+                    <td>Carteira de Identidade</td>
+                    <td><input type="text" name="Carteira de Identidade do Proprietário/Contribuinte" required></td>
+                </tr>
+                <tr>
+                    <td>Endereço do Imóvel:</td>
+                    <td><input type="text" name="Endereço do Imóvel"></td>
+                    <td>Número:</td>
+                    <td><input type="text" name="Número do Imóvel" required></td>
+                    <td>Complemento:</td>
+                    <td><input type="text" name="Complemento do Imóvel"></td>
+                    <td>Inscrição do Imóvel:</td>
+                    <td><input type="text" name="Inscrição do Imóvel" required></td>
+                </tr>
+                <tr>
+                    <td>Outras Inscrições:</td>
+                    <td colspan="7"><input type="text"></td>
+                </tr>
+            </table>
+
+            <p class="out"><strong>IDENTIFICAÇÃO DO REPRESENTANTE LEGAL</strong></p>
+            <table>
+                <tr>
+                    <td>Nome do Representate Legal:</td>
+                    <td colspan="8"><input type="text" name="Nome do Representante Legal" required></td>
+                </tr>
+                <tr>
+                    <td>E-mail:</td>
+                    <td><input type="text" name="E-mail do Representante Legal" required></td>
+                    <td>CPF:</td>
+                    <td colspan="3"><input type="text" name="CPF do Representante Legal" required></td>
+                    <td>Carteira de Identidade</td>
+                    <td><input type="text" name="Carteira de Identidade do Representante Legal" required></td>
+                </tr>
+                <tr>
+                    <td>Endereço do Representate Legal:</td>
+                    <td><input type="text" name="Endereço do Representante Legal"></td>
+                    <td>Número:</td>
+                    <td><input type="text" name="Número do Endereço do Representante Legal" required></td>
+                    <td>Complemento:</td>
+                    <td><input type="text" name="Complemento do Endereço do Representante Legal"></td>
+                    <td>Bairro:</td>
+                    <td><input type="text" name="Bairro do Representante Legal" required></td>
+                </tr>
+                <tr>
+                    <td>Cidade:</td>
+                    <td><input type="text" name="Cidade do Representante Legal"></td>
+                    <td>Estado:</td>
+                    <td><input type="text" name="Estado do Representante Legal" required></td>
+                    <td>CEP:</td>
+                    <td><input type="text" name="CEP do Representante Legal"></td>
+                    <td>Telefone:</td>
+                    <td><input type="text" name="Telefone do Representante Legal" required></td>
+                </tr>
+                <tr>
+                    <td>QUALIFICAÇÃO DO REPRESENTANTE LEGAL:</td>
+                    <td colspan="2">[<input type="radio" name="Procurador">] Procurador</td>
+                    <td colspan="2">[<input type="radio" name="Inventariante">] Inventariante</td>
+                    <td colspan="3">[<input type="radio" name="Outros">] Outros</td>
+                </tr>
+            </table>
+
+            <p class="out"><strong>ALTERAÇÃO DO ENDEREÇO PARA CORRESPONDÊNCIA</strong></p>
+            <table>
+                <tr>
+                    <td>Novo endereço para correspondência:</td>
+                    <td colspan="5"><input type="text" name="Novo endereço para correspondência" required></td>
+                    <td>Número:</td>
+                    <td><input type="text" name="Número do Novo endereço para correspondência" required></td>
+                </tr>
+                <tr>
+                    <td>Complemento:</td>
+                    <td><input type="text" name="Complemento do Novo endereço para correspondência" required></td>
+                    <td>Bairro:</td>
+                    <td><input type="text" name="Bairro do Novo endereço para correspondência" required></td>
+                    <td>Cidade</td>
+                    <td><input type="text" name="Cidade do Novo endereço para correspondência" required></td>
+                    <td>CEP</td>
+                    <td><input type="text" name="CEP do Novo endereço para correspondência" required></td>
+                </tr>
+            </table>
+
+            <p class="out"><strong>RECLAMAÇÃO / IMPUGNAÇÃO</strong></p>
+            <table>
+                <tr>
+                    <td>[<input type="checkbox" name="RECLAMAÇÃO / IMPUGNAÇÃO" required>]</td>
+                    <td colspan="2">Divergências de informações cadastrais (área - metragem, espécie/tipo construtivo, tipo de utilização do imóvel, etc.);</td>
+                </tr>
+                <tr>
+                    <td>[<input type="checkbox" required>]</td>
+                    <td colspan="2">Taxa de Coleta de Lixo - serviço não prestado ou posto à disposição (região sem serviço de coleta de lixo);</td>
+                </tr>
+                <tr>
+                    <td>[<input type="checkbox" required>]</td>
+                    <td colspan="2">Taxa de Coleta de Lixo - cobrança da Taxa de Coleta de Lixo de garagem, box, edícula, barração/galpão e telheiro, salvo se houver apenas uma ou mais destas <br> unidades autônomas sobre o terreno;</td>
+                </tr>
+                <tr>
+                    <td>[<input type="checkbox" required>]</td>
+                    <td colspan="2">Valor Venal;</td>
+                </tr>
+                <tr>
+                    <td>[<input type="checkbox" required>]</td>
+                    <td>Outros:</td>
+                    <td><input></td>
+                </tr>
+                <tr>
+                    <td>Descrição dos Fatos: <span></span></td>
+                </tr>
+            </table>
+
+
+            <p class="out"><strong>Ciência / Autorização</strong></p>
+            <table>
+                <tr>
+                    <td>[<input type="checkbox" name="Ciência / Autorização" required>]</td>
+                    <td colspan="5">Caso o resultado do pedido gere valores a restituir, autorizo a compensação dos valores excedentes com débitos vencidos, vinculados ao meu cadastro único. Na hipótese de <br> remanescerem valores a restituir após a compensação, solicito a devolução</td>
+                </tr>
+                <tr>
+                    <td>Banco:</td>
+                    <td><input type="text" name="Banco" required></td>
+                    <td>Agência:</td>
+                    <td><input type="text" name="Agência" required></td>
+                    <td>Conta:</td>
+                    <td><input type="text" name="Conta" required></td>
+                </tr>
+            </table>
+
+            <p>Caso a reclamação/impugnação seja protocolada antes do vencimento da cota única (IPTU/TcL do ano corrente) declaro estar ciente de que, em caso de indeferimento, haverá a perda do desconto e, sobre as parcelas remanescentes, incidirá multa, juros e correção monetária.</p>
+
+            <p>Nestes termos pede deferimento</p>
+            <div id="data">
+                <p>
+                    Farroupilha, 
+                    <span id="dataday" class="dataV"></span>
+                    de
+                    <span id="datamonth" class="dataV"></span>
+                    de
+                    <span id="datayear" class="dataV"></span>
+                </p>
+            </div>
+            <div id="conclu">
+                <button type="submit"  onclick="verify()">Salvar como PDF</button>
+            </div>
+
+            <footer class="text-center">
+                <p>Assinatura do Proprietário/Representante Legal</p>
+            </footer>
+        </form>
+
+        <script>
+            
+            const months = ["janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"];
+            var dia = new Date();
+
+            document.getElementById("dataday").innerHTML = dia.getDate();
+            document.getElementById("datamonth").innerHTML = months[dia.getMonth()];
+            document.getElementById("datayear").innerHTML = dia.getFullYear();
+
+            function imprime(){
+                var but = document.getElementById("conclu");           
+                but.style.display = "none";
+                window.focus();
+                window.print();
+                but.style.display = "";
+            }
+
+            function verify(){
+                var x = document.querySelectorAll("input, textarea, select");
+
+                for (var i = 0; i < x.length; i++) {  
+                    if(x[i].hasAttribute('required') && x[i].value == ""){
+                        alert("Não foi preenchido o campo: " + x[i].getAttribute("name"));
+                        break; 
+                    }
+                }
+            }
+        
+        </script>
+    </body>
+</html>
