@@ -98,7 +98,7 @@
                 margin: 0;
             }
             footer{
-                margin-top: 1vw;
+                margin-top: 2vw;
                 position: relative;
                 left: 25%;
                 border-top: 0.1vw solid black;
@@ -140,7 +140,11 @@
                 }
 
                 footer, form tr, input{font-size: 10px; line-height:  12px;}
-                #spantext{font-size: 10px;}
+
+                footer{margin-top: 30px;}
+                #spantext{font-size: 12px;}
+                
+                #desk{visibility: hidden;}
 
                 form input{border: 0}
             }
@@ -254,7 +258,7 @@
             <p>[<input type="checkbox">] Taxa de Coleta de Lixo - cobrança da Taxa de Coleta de Lixo de garagem, box, edícula, barração/galpão e telheiro, salvo se houver apenas uma ou mais destas unidades autônomas sobre o terreno;</p>
             <p>[<input type="checkbox">] Valor Venal;</p>
             <p>[<input type="checkbox">] Outros:</p> 
-            <p> Descrição dos Fatos: <input class="outros" oninput="alteraDado(this, 'spantext')" name="Descrição dos Fatos" required maxlength="500"> </p><span id="spantext"></span>
+            <p> Descrição dos Fatos: <input class="outros" id="desc"  oninput="alteraDado(this, 'spantext')" name="Descrição dos Fatos" required maxlength="500"> </p><span id="spantext"></span>
 
 
             <p class="out"><strong>Ciência / Autorização</strong></p>
@@ -295,8 +299,10 @@
             document.getElementById("datayear").innerHTML = dia.getFullYear();
 
             function imprime(){
-                var but = document.getElementById("conclu");           
+                var but = document.getElementById("conclu");
+                var des = document.getElementById("desc");           
                 but.style.display = "none";
+                des.style.display = "none"
                 window.focus();
                 window.print();
                 but.style.display = "";
