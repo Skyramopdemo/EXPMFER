@@ -82,11 +82,6 @@
             }
 
 
-            td:not(:has(input)){
-                white-space: nowrap;
-                overflow: hidden;
-            }
-
             select{
                 appearance: none;
                 -webkit-appearance: none;
@@ -103,11 +98,27 @@
                 margin: 0;
             }
             footer{
-                margin-top: 2vw;
+                margin-top: 1vw;
                 position: relative;
-                left: 30%;
+                left: 25%;
                 border-top: 0.1vw solid black;
-                width: 40%;
+                width: 50%;
+            }
+
+            .outros{
+                width: max-content;
+            }
+
+            #spantext{
+                overflow-wrap: break-word;
+                word-wrap: break-word;
+                white-space: break-word;
+            }
+
+            .qualificacao{margin: 0% 15%;}
+
+            .w5{
+                width: 5%;
             }
 
             @page{
@@ -117,22 +128,21 @@
                 @page{size: A4 portrait;}
                 a{color: black;}
                 select{background: none;}
-                input[type = "checkbox"]:not(:checked){opacity: 0;}
                 body{-webkit-print-color-adjust: exact; print-color-adjust: exact;}
 
-                img, h1{margin-top: 2vw;}
-                h1{margin-bottom: 5vw;}
-                table, td{border: 0.1vw solid black !important}
-                td:has(input){padding: 0.2vw;}
-                p{margin-top: 2vw; margin-bottom: 0;}
-                footer{margin-top: 10vw;}
-                
-                td, p{font-size: 1.7vw; line-height: 1.7vw;}
-                input[type = "checkbox"]{height: 2vw; width: 2vw;}   
-                h1{font-size: 2.1vw;}
-                tr, input{font-size: 1.6vw; line-height: 1.6vw; height: 1.6vw;}
-                button{font-size: 1.5vw;}
-                footer p{font-size: 2.1vw;}
+                button{border-width: 1px; font-size: 0px; visibility: hidden;}
+                h1{font-size: 14px;}
+                tr{font-size: 1vw; line-height: 1vw; border-width: 0.1vw; height: 1vw;}
+                p, li, footer p{font-size: 14px; margin: 0;}
+
+                .out{
+                    margin-top: 14px;
+                }
+
+                footer, form tr, input{font-size: 10px; line-height:  12px;}
+                #spantext{font-size: 10px;}
+
+                form input{border: 0}
             }
         </style>
         <div class="center">
@@ -159,14 +169,14 @@
                     <td colspan="3"><input type="text" name="E-mail do Proprietário/Contribuinte" required></td>
                     <td>CPF/CNPJ:</td>
                     <td><input type="text" name="CPF/CNPJ do Proprietário/Contribuinte" required></td>
-                    <td>Carteira de Identidade</td>
+                    <td>Carteira de Identidade:</td>
                     <td><input type="text" name="Carteira de Identidade do Proprietário/Contribuinte" required></td>
                 </tr>
                 <tr>
-                    <td>Endereço do Imóvel:</td>
+                    <td>Endereço:</td>
                     <td><input type="text" name="Endereço do Imóvel"></td>
                     <td>Número:</td>
-                    <td><input type="text" name="Número do Imóvel" required></td>
+                    <td class="w5"><input type="text" name="Número do Imóvel" required></td>
                     <td>Complemento:</td>
                     <td><input type="text" name="Complemento do Imóvel"></td>
                     <td>Inscrição do Imóvel:</td>
@@ -181,22 +191,22 @@
             <p class="out"><strong>IDENTIFICAÇÃO DO REPRESENTANTE LEGAL</strong></p>
             <table>
                 <tr>
-                    <td>Nome do Representate Legal:</td>
+                    <td>Nome:</td>
                     <td colspan="8"><input type="text" name="Nome do Representante Legal" required></td>
                 </tr>
                 <tr>
                     <td>E-mail:</td>
-                    <td><input type="text" name="E-mail do Representante Legal" required></td>
+                    <td colspan="3"><input type="text" name="E-mail do Representante Legal" required></td>
                     <td>CPF:</td>
-                    <td colspan="3"><input type="text" name="CPF do Representante Legal" required></td>
-                    <td>Carteira de Identidade</td>
+                    <td><input type="text" name="CPF do Representante Legal" required></td>
+                    <td>Carteira de Identidade:</td>
                     <td><input type="text" name="Carteira de Identidade do Representante Legal" required></td>
                 </tr>
                 <tr>
-                    <td>Endereço do Representate Legal:</td>
+                    <td>Endereço:</td>
                     <td><input type="text" name="Endereço do Representante Legal"></td>
                     <td>Número:</td>
-                    <td><input type="text" name="Número do Endereço do Representante Legal" required></td>
+                    <td class="w5"><input type="text" name="Número do Endereço do Representante Legal" required></td>
                     <td>Complemento:</td>
                     <td><input type="text" name="Complemento do Endereço do Representante Legal"></td>
                     <td>Bairro:</td>
@@ -213,10 +223,8 @@
                     <td><input type="text" name="Telefone do Representante Legal" required></td>
                 </tr>
                 <tr>
-                    <td>QUALIFICAÇÃO DO REPRESENTANTE LEGAL:</td>
-                    <td colspan="2">[<input type="radio" name="Procurador">] Procurador</td>
-                    <td colspan="2">[<input type="radio" name="Inventariante">] Inventariante</td>
-                    <td colspan="3">[<input type="radio" name="Outros">] Outros</td>
+                    <td>Qualificação:</td>
+                    <td colspan="7" class="text-center">[<input type="radio" name="Procurador">] Procurador <span class="qualificacao">[<input type="radio" name="Inventariante">] Inventariante</span> [<input type="radio" name="Outros">] Outros</td>
                 </tr>
             </table>
 
@@ -241,54 +249,24 @@
             </table>
 
             <p class="out"><strong>RECLAMAÇÃO / IMPUGNAÇÃO</strong></p>
-            <table>
-                <tr>
-                    <td>[<input type="checkbox" name="RECLAMAÇÃO / IMPUGNAÇÃO" required>]</td>
-                    <td colspan="2">Divergências de informações cadastrais (área - metragem, espécie/tipo construtivo, tipo de utilização do imóvel, etc.);</td>
-                </tr>
-                <tr>
-                    <td>[<input type="checkbox" required>]</td>
-                    <td colspan="2">Taxa de Coleta de Lixo - serviço não prestado ou posto à disposição (região sem serviço de coleta de lixo);</td>
-                </tr>
-                <tr>
-                    <td>[<input type="checkbox" required>]</td>
-                    <td colspan="2">Taxa de Coleta de Lixo - cobrança da Taxa de Coleta de Lixo de garagem, box, edícula, barração/galpão e telheiro, salvo se houver apenas uma ou mais destas <br> unidades autônomas sobre o terreno;</td>
-                </tr>
-                <tr>
-                    <td>[<input type="checkbox" required>]</td>
-                    <td colspan="2">Valor Venal;</td>
-                </tr>
-                <tr>
-                    <td>[<input type="checkbox" required>]</td>
-                    <td>Outros:</td>
-                    <td><input></td>
-                </tr>
-                <tr>
-                    <td>Descrição dos Fatos: <span></span></td>
-                </tr>
-            </table>
+            <p>[<input type="checkbox" name="RECLAMAÇÃO / IMPUGNAÇÃO">] Divergências de informações cadastrais (área - metragem, espécie/tipo construtivo, tipo de utilização do imóvel, etc.);</p>
+            <p>[<input type="checkbox">] Taxa de Coleta de Lixo - serviço não prestado ou posto à disposição (região sem serviço de coleta de lixo);</p>
+            <p>[<input type="checkbox">] Taxa de Coleta de Lixo - cobrança da Taxa de Coleta de Lixo de garagem, box, edícula, barração/galpão e telheiro, salvo se houver apenas uma ou mais destas unidades autônomas sobre o terreno;</p>
+            <p>[<input type="checkbox">] Valor Venal;</p>
+            <p>[<input type="checkbox">] Outros:</p> 
+            <p> Descrição dos Fatos: <input class="outros" oninput="alteraDado(this, 'spantext')" name="Descrição dos Fatos" required maxlength="500"> </p><span id="spantext"></span>
 
 
             <p class="out"><strong>Ciência / Autorização</strong></p>
-            <table>
-                <tr>
-                    <td>[<input type="checkbox" name="Ciência / Autorização" required>]</td>
-                    <td colspan="5">Caso o resultado do pedido gere valores a restituir, autorizo a compensação dos valores excedentes com débitos vencidos, vinculados ao meu cadastro único. Na hipótese de <br> remanescerem valores a restituir após a compensação, solicito a devolução</td>
-                </tr>
-                <tr>
-                    <td>Banco:</td>
-                    <td><input type="text" name="Banco" required></td>
-                    <td>Agência:</td>
-                    <td><input type="text" name="Agência" required></td>
-                    <td>Conta:</td>
-                    <td><input type="text" name="Conta" required></td>
-                </tr>
-            </table>
+            
+            <p>[<input type="checkbox" name="Ciência / Autorização">] Caso o resultado do pedido gere valores a restituir, autorizo a compensação dos valores excedentes com débitos vencidos, vinculados ao meu cadastro único. Na hipótese de remanescerem valores a restituir após a compensação, solicito a devolução</p>
 
-            <p>Caso a reclamação/impugnação seja protocolada antes do vencimento da cota única (IPTU/TcL do ano corrente) declaro estar ciente de que, em caso de indeferimento, haverá a perda do desconto e, sobre as parcelas remanescentes, incidirá multa, juros e correção monetária.</p>
+            <p class="out">Banco: <input type="text" name="Banco" class="outros" required> Agência: <input type="text"  class="outros" name="Agência" required> Conta: <input type="text"  class="outros" name="Conta" required></p>
 
-            <p>Nestes termos pede deferimento</p>
-            <div id="data">
+            <p class="out">Caso a reclamação/impugnação seja protocolada antes do vencimento da cota única (IPTU/TCL do ano corrente) declaro estar ciente de que, em caso de indeferimento, haverá a perda do desconto e, sobre as parcelas remanescentes, incidirá multa, juros e correção monetária.</p>
+
+            <p class="out">Nestes termos pede deferimento</p>
+            <div id="data" class="out">
                 <p>
                     Farroupilha, 
                     <span id="dataday" class="dataV"></span>
@@ -334,6 +312,11 @@
                     }
                 }
             }
+
+            function alteraDado(obj, id){
+                document.getElementById(id).innerHTML = obj.value;
+            }
+            
         
         </script>
     </body>
