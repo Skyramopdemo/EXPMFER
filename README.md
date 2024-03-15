@@ -19,4 +19,4 @@ Temos 6 pastas principais, sendo elas
 - Solicitações
   - Arquivos de Solicitações
 - Termos
-  - Arquivos de Termos
+  - Arquivos de Termos.
