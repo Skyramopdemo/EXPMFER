@@ -17,3 +17,4 @@ Temos 6 pastas principais, sendo elas
 - Requerimentos
 - Solicitações
 - Termos
+  - Arquivos de Termos.
