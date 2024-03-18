@@ -29,10 +29,10 @@
             margin: 0.2vw 0vw;
         }
 
-        td:not(:has(input)){width: 1%; white-space: nowrap;}
+        .coll_comp td:not(:has(input)){width: 1%; white-space: nowrap;}
 
 
-        input,table, select{width: 100%; line-height: 0.8;}
+        input,table{width: 100%; line-height: 0.8;}
 
         td{
             font-weight: bold;
@@ -50,7 +50,7 @@
 
         img{width: 10%;height: 10%;}
 
-        .center, td:has(input[type="checkbox"]), td:has(input[type="radio"]){text-align: center;}
+        .center, td:has(input[type="checkbox"]){text-align: center;}
 
         button{border-width: 0.1vw; font-size: 0.8vw;}
         h1{font-size: 1.7vw;}
@@ -62,14 +62,15 @@
         input[type='checkbox']{appearance:none; border:0 solid black; height:1vw; width:20px;}
         input[type='checkbox']:checked:before{content:'X'; background:white; width:100%; height:100%; top:0; left:0; display:flex; align-items:center; justify-content:center; color:black; font-weight:bold;}
 
-        input[type='radio']{appearance:none; border:0 solid black; height:1vw; width:20px; }
-        input[type='radio']:checked:before{content:'X'; background:white; width:100%; height:100%; top:0; left:0; display:flex; align-items:center; justify-content:center; color:black; font-weight:bold;}
-        
 
-        input[type="date"]::-webkit-calendar-picker-indicator {
-            display: none;
-            -webkit-appearance: none;
+        input[type='checkbox']{
+            background-color: blue;
         }
+        td:has(input[type='checkbox']){
+            background-color: red;
+        }
+
+        
 
         a{text-decoration: none;}
 
@@ -82,21 +83,7 @@
             margin-top: 5vw;
         }
 
-        td:has(input){
-            min-width: 50%;
-        }
 
-
-        select{
-            appearance: none;
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            background: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png);
-            background-repeat: no-repeat;
-            background-position-x: 98%;
-            background-position-y: -0.1vw;
-            background-size: 0.9vw 0.9vw;
-        }
         footer p{
             font-size: 1.2vw;
             text-align: center;
@@ -110,22 +97,7 @@
             width: 50%;
         }
 
-        .outros{
-            width: max-content;
-        }
-
-        #spantext{
-            overflow-wrap: break-word;
-            word-wrap: break-word;
-            white-space: break-word;
-        }
-
-        .qualificacao{margin: 0% 15%;}
-
-        .w5{
-            width: 5%;
-        }
-
+        
         @page{
             margin: 0;
         }
@@ -147,9 +119,6 @@
             footer, form tr, input{font-size: 10px; line-height:  12px;}
 
             footer{margin-top: 30px;}
-            #spantext{font-size: 12px;}
-            
-            #desk{visibility: hidden;}
 
             form input{border: 0}
         }
@@ -158,263 +127,192 @@
     <div class="center">
         <img src="https://farroupilha.rs.gov.br/uploads/config/16025/brasaofarroupilhanovo.png">
     </div>
-    <p>PREFEITURA MUNICIPAL DE FARROUPILHA-RS<p>
-    <p>CONSELHO MUNICIPAL DO IDOSO – COMID</p>
-    <p>LEI MUNICIPAL Nº 3.789, DE 27 DE MARÇO DE 2012</p>
+    <h1 class="center">PREFEITURA MUNICIPAL DE FARROUPILHA-RS<h1>
+    <p class="center">CONSELHO MUNICIPAL DO IDOSO – COMID</p>
+    <p class="center">LEI MUNICIPAL Nº 3.789, DE 27 DE MARÇO DE 2012</p>
 
-    <p>Anexo II<p>
-    <p>Resolução nº 01/2024</p>
+    <p class="center out">Anexo II<p>
+    <p class="center">Resolução nº 01/2024</p>
+
 
     <form>
 
-        <p class="out">I - IDENTIFICAÇÃO DA INSTITUIÇÃO:</p>
+        <p class="out coll_comp">I - IDENTIFICAÇÃO DA INSTITUIÇÃO:</p>
 
         <table>
             <tr>
                 <td>
                     <p>Instituição:</p>
                 </td>
-                <td>
-                    <p><input></p>
-                </td>
+                <td><input></td>
                 <td>
                     <p>CNPJ:</p>
                 </td>
-                <td>
-                    <p><input></p>
-                </td>
+                <td><input></td>
             </tr>
             <tr>
                 <td>
                     <p>Nome Fantasia:</p>
                 </td>
-                <td>
-                    <p><input></p>
-                </td>
+                <td><input></td>
                 <td>
                     <p>Data Fundação:</p>
                 </td>
-                <td>
-                    <p><input></p>
-                </td>
+                <td><input></td>
             </tr>
             <tr>
                 <td>
                     <p>Endereço:</p>
                 </td>
-                <td>
-                    <p><input></p>
-                </td>
+                <td><input></td>
                 <td>
                     <p>Nº.:</p>
                 </td>
-                <td>
-                    <p><input></p>
-                </td>
+                <td><input></td>
             </tr>
             <tr>
                 <td>
                     <p>Complemento:</p>
                 </td>
-                <td>
-                    <p><input></p>
-                </td>
+                <td><input></td>
                 <td>
                     <p>Bairro:</p>
                 </td>
-                <td>
-                    <p><input></p>
-                </td>
+                <td><input></td>
             </tr>
             <tr>
                 <td>
                     <p>Município/UF:</p>
                 </td>
-                <td>
-                    <p><input></p>
-                </td>
+                <td><input></td>
                 <td>
                     <p>CEP:</p>
                 </td>
-                <td>
-                    <p><input></p>
-                </td>
+                <td><input></td>
             </tr>
             <tr>
                 <td>
                     <p>Site:</p>
                 </td>
-                <td>
-                    <p><input></p>
-                </td>
+                <td><input></td>
                 <td>
                     <p>Telefone:</p>
                 </td>
-                <td>
-                    <p><input></p>
-                </td>
+                <td><input></td>
             </tr>
             <tr>
                 <td>
                     <p>E-mail:</p>
                 </td>
-                <td>
-                    <p><input></p>
-                </td>
+                <td colspan="3"><input></td>
             </tr>
             <tr>
                 <td>
                     <p>Nº de Inscrição no COMID (se houver):</p>
                 </td>
-                <td>
-                    <p><input></p>
-                </td>
+                <td><input></td>
                 <td>
                     <p>Início do funcionamento:</p>
                 </td>
-                <td>
-                    <p><input></p>
-                </td>
+                <td><input></td>
             </tr>
         </table>
 
-        <p class="out">II - DADOS DO DIRIGENTE DA INSTITUIÇÃO:</p>
+        <p class="out coll_comp">II - DADOS DO DIRIGENTE DA INSTITUIÇÃO:</p>
 
         <table>
             <tr>
                 <td>
                     <p>Nome:</p>
                 </td>
-                <td>
-                    <p><input></p>
-                </td>
+                <td><input></td>
                 <td>
                     <p>CPF:</p>
                 </td>
-                <td>
-                    <p><input></p>
-                </td>
+                <td><input></td>
             </tr>
             <tr>
                 <td>
                     <p>Função:</p>
                 </td>
-                <td>
-                    <p><input></p>
-                </td>
+                <td><input></td>
                 <td>
                     <p>RG:</p>
                 </td>
-                <td>
-                    <p><input></p>
-                </td>
+                <td><input></td>
             </tr>
             <tr>
                 <td>
                     <p>E-mail:</p>
                 </td>
-                <td>
-                    <p><input></p>
-                </td>
+                <td><input></td>
                 <td>
                     <p>Telefone:</p>
                 </td>
-                <td>
-                    <p><input></p>
-                </td>
+                <td><input></td>
             </tr>
         </table>
 
 
-        <p class="out">III - DADOS DO RESPONSÁVEL TÉCNICO:</p>
+        <p class="out coll_comp">III - DADOS DO RESPONSÁVEL TÉCNICO:</p>
 
         <table>
             <tr>
                 <td>
                     <p>Nome:</p>
                 </td>
-                <td>
-                    <p><input></p>
-                </td>
+                <td><input></td>
                 <td>
                     <p>CPF:</p>
                 </td>
-                <td>
-                    <p><input></p>
-                </td>
+                <td><input></td>
             </tr>
             <tr>
                 <td>
                     <p>Função:</p>
                 </td>
-                <td>
-                    <p><input></p>
-                </td>
+                <td><input></td>
                 <td>
                     <p>RG:</p>
                 </td>
-                <td>
-                    <p><input></p>
-                </td>
+                <td><input></td>
             </tr>
             <tr>
                 <td>
                     <p>E-mail:</p>
                 </td>
+                <td><input></td>
                 <td>
-                    <p><input></p>
+                    <p>Telefone:<p>
                 </td>
-                <td>
-                    <p>Telefone:</p>
-                </td>
-                <td>
-                    <p><input></p>
-                </td>
+                <td><input></td>
             </tr>
             <tr>
-                <td>
-                    <p>Registro no Conselho de Classe:</p>
-                </td>
-                <td>
-                    <p><input></p>
-                </td>
-                <td>
-                    <p><input></p>
-                </td>
-                <td>
-                    <p><input></p>
-                </td>
+                <td>Registro no Conselho de Classe:</td>
+                <td colspan="3"><input></td>
             </tr>
         </table>
 
 
-        <p class="out">IV - NATUREZA JURÍDICA:></p>
+        <p class="out">IV - NATUREZA JURÍDICA:</p>
 
         <table>
             <tr>
-                <td>
-                    <p><input></p>
-                </td>
-                <td>
+                <td>[<input type="checkbox">]</td>
+                <td colspan="5">
                     <p>Pública</p>
                 </td>
             </tr>
             <tr>
-                <td>
-                    <p><input></p>
-                </td>
+                <td>[<input type="checkbox">]</td>
                 <td>
                     <p>Privada</p>
                 </td>
-                <td>
-                    <p><input></p>
-                </td>
+                <td>[<input type="checkbox">]</td>
                 <td>
                     <p>Com fins lucrativos</p>
                 </td>
-                <td>
-                    <p><input></p>
-                </td>
+                <td>[<input type="checkbox">]</td>
                 <td>
                     <p>Sem fins lucrativos</p>
                 </td>
@@ -426,86 +324,64 @@
 
         <table>
             <tr>
-                <td>
-                    <p><input></p>
-                </td>
+                <td>[<input type="checkbox">]</td>
                 <td>
                     <p>Recursos próprios</p>
                 </td>
             </tr>
             <tr>
-                <td>
-                    <p><input></p>
-                </td>
+                <td>[<input type="checkbox">]</td>
                 <td>
                     <p>Entidade mantenedora</p>
                 </td>
             </tr>
             <tr>
-                <td>
-                    <p><input></p>
-                </td>
+                <td>[<input type="checkbox">]</td>
                 <td>
                     <p>Convênios e parcerias</p>
                 </td>
-                <td>
-                    <p><input></p>
-                </td>
+                <td>[<input type="checkbox">]</td>
                 <td>
                     <p>Municipal</p>
                 </td>
-                <td>
-                    <p><input></p>
-                </td>
+                <td>[<input type="checkbox">]</td>
                 <td>
                     <p>Estadual</p>
                 </td>
-                <td>
-                    <p><input></p>
-                </td>
+                <td>[<input type="checkbox">]</td>
                 <td>
                     <p>Federal</p>
                 </td>
             </tr>
             <tr>
-                <td>
-                    <p><input></p>
-                </td>
+                <td>[<input type="checkbox">]</td>
                 <td>
                     <p>Doações</p>
                 </td>
-                <td>
-                    <p><input></p>
-                </td>
+                <td>[<input type="checkbox">]</td>
                 <td>
                     <p>Pessoas Físicas</p>
                 </td>
-                <td>
-                    <p><input></p>
-                </td>
+                <td>[<input type="checkbox">]</td>
                 <td>
                     <p>Pessoas Jurídicas</p>
                 </td>
             </tr>
             <tr>
-                <td>
-                    <p><input></p>
-                </td>
+                <td>[<input type="checkbox">]</td>
                 <td>
                     <p>Outras. Especificar:</p>
                 </td>
-                <td>
-                    <p><input></p>
-                </td>
+                <td colspan="6"><input></td>
             </tr>
         </table>
 
 
-        <p class="out">VI - NÚMERO DE PESSOAS ATENDIDAS:</p>
+        <p class="out coll_comp">VI - NÚMERO DE PESSOAS ATENDIDAS:</p>
 
         <table>
             <tr>
-                <td>
+                <td colspan="6">
                     <p>1: Atendimentos Masculinos</p>
                 </td>
             </tr>
@@ -513,64 +389,46 @@
                 <td>
                     <p>De 60 a 64 anos:</p>
                 </td>
-                <td>
-                    <p><input></p>
-                </td>
+                <td><input></td>
                 <td>
                     <p>De 65 a 69 anos:</p>
                 </td>
-                <td>
-                    <p><input></p>
-                </td>
+                <td><input></td>
                 <td>
                     <p>De 70 a 74 anos:</p>
                 </td>
-                <td>
-                    <p><input></p>
-                </td>
+                <td><input></td>
             </tr>
             <tr>
                 <td>
                     <p>De 75 a 79 anos:</p>
                 </td>
-                <td>
-                    <p><input></p>
-                </td>
+                <td><input></td>
                 <td>
                     <p>De 80 a 84 anos:</p>
                 </td>
-                <td>
-                    <p><input></p>
-                </td>
+                <td><input></td>
                 <td>
                     <p>De 85 a 89 anos:</p>
                 </td>
-                <td>
-                    <p><input></p>
-                </td>
+                <td><input></td>
             </tr>
             <tr>
                 <td>
                     <p>De 90 a 94 anos:</p>
                 </td>
-                <td>
-                    <p><input></p>
-                </td>
+                <td><input></td>
                 <td>
                     <p>De 95 a mais:</p>
                 </td>
-                <td>
-                    <p><input></p>
-                </td>
+                <td><input></td>
                 <td>
                     <p>Total masculino:</p>
                 </td>
-                <td>
-                    <p><input></p>
-                </td>
+                <td><input></td>
             </tr>
             <tr>
-                <td>
+                <td colspan="6">
                     <p>2: Atendimentos Femininos</p>
                 </td>
             </tr>
@@ -578,64 +436,48 @@
                 <td>
                     <p>De 60 a 64 anos:</p>
                 </td>
-                <td>
-                    <p><input></p>
-                </td>
+                <td><input></td>
                 <td>
                     <p>De 65 a 69 anos:</p>
                 </td>
-                <td>
-                    <p><input></p>
-                </td>
+                <td><input></td>
                 <td>
                     <p>De 70 a 74 anos:</p>
                 </td>
-                <td>
-                    <p><input></p>
-                </td>
+                <td><input></td>
             </tr>
             <tr>
                 <td>
                     <p>De 75 a 79 anos:</p>
                 </td>
-                <td>
-                    <p><input></p>
-                </td>
+                <td><input></td>
                 <td>
                     <p>De 80 a 84 anos:</p>
                 </td>
-                <td>
-                    <p><input></p>
-                </td>
+                <td><input></td>
                 <td>
                     <p>De 85 a 89 anos:</p>
                 </td>
-                <td>
-                    <p><input></p>
-                </td>
+                <td><input></td>
             </tr>
             <tr>
                 <td>
                     <p>De 90 a 94 anos:</p>
                 </td>
-                <td>
-                    <p><input></p>
-                </td>
+                <td><input></td>
                 <td>
                     <p>De 95 a mais:</p>
                 </td>
-                <td>
-                    <p><input></p>
-                </td>
+                <td><input></td>
                 <td>
                     <p>Total feminino:</p>
                 </td>
-                <td>
-                    <p><input></p>
-                </td>
+                <td><input></td>
             </tr>
+        </table>
+        <table class="out coll_comp">
             <tr>
-                <td>
+                <td colspan="8">
                     <p>3: Grau de dependêcia:</p>
                 </td>
             </tr>
@@ -643,79 +485,58 @@
                 <td>
                     <p>Grau I:</p>
                 </td>
-                <td>
-                    <p><input></p>
-                </td>
+                <td><input></td>
                 <td>
                     <p>Grau II:</p>
                 </td>
-                <td>
-                    <p><input></p>
-                </td>
+                <td><input></td>
                 <td>
                     <p>Grau III:</p>
                 </td>
-                <td>
-                    <p><input></p>
-                </td>
+                <td><input></td>
                 <td>
                     <p>Sem grau de dependência:</p>
                 </td>
-                <td>
-                    <p><input></p>
-                </td>
+                <td><input></td>
             </tr>
             <tr>
-                <td>
-                    <p>4: Capacidade total de
-                            atendimento:</p>
+                <td colspan="8">
+                    <p>4: Capacidade total de atendimento:</p>
                 </td>
             </tr>
             <tr>
                 <td>
                     <p>Grau I:</p>
                 </td>
-                <td>
-                    <p><input></p>
-                </td>
+                <td><input></td>
                 <td>
                     <p>Grau II:</p>
                 </td>
-                <td>
-                    <p><input></p>
-                </td>
+                <td><input></td>
                 <td>
                     <p>Grau III:</p>
                 </td>
-                <td>
-                    <p><input></p>
-                </td>
+                <td><input></td>
                 <td>
                     <p>Sem grau de dependência:</p>
                 </td>
-                <td>
-                    <p><input></p>
-                </td>
+                <td><input></td>
             </tr>
         </table>
 
 
-        <p class="out">VII - DOCUMENTAÇÃO REFERENTE AO IDOSO</p>
+        <p class="out coll_comp">VII - DOCUMENTAÇÃO REFERENTE AO IDOSO</p>
 
         <table>
             <tr>
                 <td>
                     <p>1 – Prontuário individual do idoso</p>
                 </td>
-                <td>
-                    <p><input></p>
-                </td>
+                <td><input></td>
                 <td>
                     <p>Sim - anexar modelo</p>
                 </td>
-                <td>
-                    <p><input></p>
-                </td>
+                <td><input></td>
                 <td>
                     <p>Não</p>
                 </td>
@@ -724,15 +545,11 @@
                 <td>
                     <p>2 – Plano de tratamento individual</p>
                 </td>
-                <td>
-                    <p><input></p>
-                </td>
+                <td><input></td>
                 <td>
                     <p>Sim - anexar modelo</p>
                 </td>
-                <td>
-                    <p><input></p>
-                </td>
+                <td><input></td>
                 <td>
                     <p>Não</p>
                 </td>
@@ -741,15 +558,11 @@
                 <td>
                     <p>3 – Contrato de prestação de serviços</p>
                 </td>
-                <td>
-                    <p><input></p>
-                </td>
+                <td><input></td>
                 <td>
                     <p>Sim - anexar modelo</p>
                 </td>
-                <td>
-                    <p><input></p>
-                </td>
+                <td><input></td>
                 <td>
                     <p>Não</p>
                 </td>
@@ -759,22 +572,18 @@
                     <p>4 – Ficha cadastral com dados pessoais e
                         familiares</p>
                 </td>
-                <td>
-                    <p><input></p>
-                </td>
+                <td><input></td>
                 <td>
                     <p>Sim - anexar modelo</p>
                 </td>
-                <td>
-                    <p><input></p>
-                </td>
+                <td><input></td>
                 <td>
                     <p>Não</p>
                 </td>
             </tr>
         </table>
 
-        <p class="out">VIII - RECURSOS HUMANOS</p>
+        <p class="out coll_comp">VIII - RECURSOS HUMANOS</p>
 
         <table>
             <tr>
@@ -887,7 +696,6 @@
                 <td><input></td>
                 <td><input></td>
                 <td><input></td>
-                <td><input></td>
             </tr>
             <tr>
                 <td>
@@ -934,18 +742,10 @@
                     <p>Cuidador</p>
                 </td>
                 <td><input></td>
-                <td>
-                    <p><input></p>
-                </td>
-                <td>
-                    <p><input></p>
-                </td>
-                <td>
-                    <p><input></p>
-                </td>
-                <td>
-                    <p><input></p>
-                </td>
+                <td><input></td>
+                <td><input></td>
+                <td><input></td>
+                <td><input></td>
             </tr>
             <tr>
                 <td>
@@ -962,18 +762,10 @@
                     <p>Recreacionista</p>
                 </td>
                 <td><input></td>
-                <td>
-                    <p><input></p>
-                </td>
-                <td>
-                    <p><input></p>
-                </td>
-                <td>
-                    <p><input></p>
-                </td>
-                <td>
-                    <p><input></p>
-                </td>
+                <td><input></td>
+                <td><input></td>
+                <td><input></td>
+                <td><input></td>
             </tr>
             <tr>
                 <td>
@@ -982,21 +774,17 @@
                 </td>
                 <td><input></td>
                 <td><input></td>
-                <td>
-                    <p><input></p>
-                </td>
-                <td>
-                    <p><input></p>
-                </td>
-                <td>
-                    <p><input></p>
-                </td>
-                <td>
-                    <p><input></p>
-                </td>
+                <td><input></td>
+                <td><input></td>
+                <td><input></td>
             </tr>
         </table>
     </form>
+
+    
+    <footer class="center">
+        <p>Assinatura do Proprietário/Representante Legal</p>
+    </footer>
 </body>
 
 </html>
