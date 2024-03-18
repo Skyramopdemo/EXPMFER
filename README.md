@@ -6,17 +6,14 @@ Para utilizar estes arquivos você deve abrir o .HTML que desejar criar o arquiv
 
 ### Pastas
 Temos 6 pastas principais, sendo elas
-- Declaração de Residência
-  - Tem o documento de Declaração de Residência
-- JS - para apoio
-  - Arquivo JS com vários scripts de das mais diversas funcionalidades
+- Anexos
+- Declarações
+- Arquivos de Apoio
+  - Arquivos .css, .html e .js com configurações utilizadas para os documentos.
 - Procurações
   - Procuração Pessoa
     - Procuração Pessoa Física
     - Procuração Pessoa Jurídica
 - Requerimentos
-  - Arquivos de Requerimentos
 - Solicitações
-  - Arquivos de Solicitações
 - Termos
-  - Arquivos de Termos
