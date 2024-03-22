@@ -261,10 +261,9 @@
         }
 
         function verifyNav(){
-            if(window.safari !== undefined){
+            if(userAgent.match(/iPhone|iPad|iPod/)){
                 document.body.innerHTML = "";
                 document.body.innerHTML = "<h1 style='text-align: center; margin-top: 15%; color: red;'>NAVEGADOR SEM SUPORTE!</h1><h3 style='text-align: center;'>UTILIZE UM NAVEGADOR COMPATÍVEL: <a href='https://www.mozilla.org/pt-BR/firefox/new/' style='text-decoration: none; color:black'>Firefox</a> Ou <a href='https://www.google.com/intl/pt-BR/chrome/' style='text-decoration: none; color:black'>Google Chrome</a></h3>"
-                
             }
         }
 
@@ -289,7 +288,7 @@
                         return false;
                         break; 
                     } 
-                    
+
                     if(z == false && x[i].name == "CPF"){
                         alert("O número de CPF está incorreto.");
                         return false;
@@ -305,6 +304,16 @@
             return true;
         }
 
+        function calculaCPF(cpf, num){
+            var count = 0
+            var size = num - 1
+            for (var i = 0; i < size; i++) {  
+                count += cpf[i]*num;
+                num--;
+            }
+            return (count*10)%11
+        }
+
         function validarCPF() {
             inputs = document.querySelector('input[name="CPF"]').value;
             inputs = inputs.replace(/[^\d]/g, '');  
@@ -313,35 +322,18 @@
 
             const regex = /^(\d)\1+$/;
             check = true;
-            count = 0;
-            count2 = 0;
-            var j = 10;
-            var k = 11;
 
             if(num.length != 11){return false;}
             if(regex.test(inputs)){return false;}
 
-            for (var i = 0; i < 9; i++) {  
-                count += intnum[i]*j;
-                j--;
-            }
-
-            count = (count*10)%11
-
-            console.log(count)
+            count = calculaCPF(intnum, 10)
             
-            if(!((count == intnum[9])||(intnum[9] == 0 && ((count == 10)||(count == 11))))) {check = false; console.log("a")}
+            if(!((count == intnum[9])||(intnum[9] == 0 && ((count == 10)||(count == 11))))) {check = false;}
 
-            for (var i = 0; i < 10; i++) {  
-                count2 += intnum[i]*k;
-                k--;
-            }
+            count = calculaCPF(intnum, 11)
 
-            count2 = (count2*10)%11
-
-            if(!((count2 == intnum[10])||(intnum[10] == 0 && ((count2 == 10)||(count2 == 11))))) {check = false; console.log("b")}
+            if(!((count == intnum[10])||(intnum[10] == 0 && ((count == 10)||(count == 11))))) {check = false;}
             
-            console.log(check)
             if(check == true){
                 var d = document.getElementById('cpfvalidar');
                 d.removeAttribute('required');
