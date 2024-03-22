@@ -103,7 +103,7 @@
         <h1>Termo de Declaração de Concordância e Veracidade</h1>
         <h3>Cadastro de Usuários Externos no SEI da Prefeitura Municipal de Farroupilha-RS</h3>
     </div>
-    <form onsubmit="imprime()" method="post">
+    <form onsubmit="return imprime()" method="post">
         <table>
             <tr>
                 <td>Nome Completo:</td>
@@ -280,16 +280,29 @@
             var z = validarCPF();
 
             var x = document.querySelectorAll("input, select")
-            for (var i = 0; i < x.length; i++) { 
-                if(z == false && document.querySelector('input[name="CPF"]').value.replace(/[\s]/g, "") != ""){
-                    alert("O número de CPF está incorreto.");
-                    break;
-                } 
-                if(x[i].hasAttribute('required') && x[i].value.replace(/[\s]/g, "") == ""){
-                    alert("Não foi preenchido o campo: " + x[i].getAttribute("name"));
-                    break; 
-                }            
-            }
+            for (var i = 0; i < x.length; i++) {
+                
+
+                if(x[i].hasAttribute('required')){
+                    if(x[i].value.replace(/[\s]/g, "") == ""){
+                        alert("Não foi preenchido o campo: " + x[i].getAttribute("name"));
+                        return false;
+                        break; 
+                    } 
+                    
+                    if(z == false && x[i].name == "CPF"){
+                        alert("O número de CPF está incorreto.");
+                        return false;
+                    }  
+
+                }
+
+            }    
+
+            
+
+        
+            return true;
         }
 
         function validarCPF() {
@@ -299,8 +312,7 @@
             intnum = num.map(function(digito){return parseInt(digito, 10)})
 
             const regex = /^(\d)\1+$/;
-            check = false;
-            check2 = false;
+            check = true;
             count = 0;
             count2 = 0;
             var j = 10;
@@ -309,24 +321,28 @@
             if(num.length != 11){return false;}
             if(regex.test(inputs)){return false;}
 
-
-
             for (var i = 0; i < 9; i++) {  
                 count += intnum[i]*j;
                 j--;
             }
 
-            if((count*10)%11 == intnum[9] || (intnum[9] == 0) && ((count*10)%11 == 10)||(count2*10)%11 == 11){check = true;}
+            count = (count*10)%11
+
+            console.log(count)
+            
+            if(!((count == intnum[9])||(intnum[9] == 0 && ((count == 10)||(count == 11))))) {check = false; console.log("a")}
 
             for (var i = 0; i < 10; i++) {  
                 count2 += intnum[i]*k;
                 k--;
             }
 
-            if((count2*10)%11 == intnum[10] || (intnum[10] == 0) && ((count2*10)%11 == 10)||(count2*10)%11 == 11){check2 = true;}
-            
+            count2 = (count2*10)%11
 
-            if(check == true && check2 == true){
+            if(!((count2 == intnum[10])||(intnum[10] == 0 && ((count2 == 10)||(count2 == 11))))) {check = false; console.log("b")}
+            
+            console.log(check)
+            if(check == true){
                 var d = document.getElementById('cpfvalidar');
                 d.removeAttribute('required');
             }
