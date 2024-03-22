@@ -190,7 +190,7 @@
             width: 80vw;
         }
 
-        #uf {
+        #uftd {
             width: 7vw;
         }
 
@@ -274,33 +274,33 @@
         <table>
             <tr>
                 <td>Nome Completo:</td>
-                <td colspan="5"><span id="Nome Completo"><input type="text" name="Nome Completo" required></span></td>
+                <td colspan="5"><span id="nomespan"><input id="nome" type="text" name="Nome Completo" required></span></td>
             </tr>
             <tr>
                 <td id="hold">Nº Docto Identidade:</td>
-                <td id="size"><span id="Número do Documento de Identidade"><input type="text" name="Número do Documento de Identidade" required></span></td>
+                <td id="size"><span id="rgspan"><input id="rg" type="text" name="Número do Documento de Identidade" required></span></td>
                 <td>CPF:</td>
-                <td colspan="3"><span id="CPF"><input type="text" name="CPF" oninput="alteraCPF()" maxlength="14" required></span></td>
-                <td hidden><input name="CPF" id="cpfvalidar" hidden></td>
+                <td colspan="3"><span id="cpfspan"><input id="cpf" type="text" name="CPF" oninput="alteraCPF()" maxlength="14" required></span></td>
+                <td hidden><input name="CPF" class="cpfvalidar" hidden></td>
 
             </tr>
             <tr>
                 <td>E-mail:</td>
-                <td><span id="E-mail"><input type="text" name="E-mail" required></span></td>
+                <td><span id="emailspan"><input id="email" type="text" name="E-mail" required></span></td>
                 <td>Telefone:</td>
-                <td colspan="3"><span id="Telefone"><input type="text" name="Telefone" required></span></td>
+                <td colspan="3"><span id="telefonespan"><input id="telefone" type="text" name="Telefone" required></span></td>
             </tr>
             <tr>
                 <td>Endere&ccedil;o:</td>
-                <td><span id="Endereço"><input type="text" name="Endereço" required></span></td>
+                <td><span id="enderecospan"><input id="endereco" type="text" name="Endereço" required></span></td>
                 <td>Bairro:</td>
-                <td colspan="3"><span id="Bairro"><input type="text" name="Bairro" required></span></td>
+                <td colspan="3"><span id="bairrospan"><input id="bairro" type="text" name="Bairro" required></span></td>
             </tr>
             <tr>
                 <td>Cidade:</td>
-                <td><span id="Cidade"><input type="text" name="Cidade" required></span></td>
+                <td><span id="cidadespan"><input id="cidade" type="text" name="Cidade" required></span></td>
                 <td>UF:</td>
-                <td id="uf"><span id="UF"><select name="UF" required>
+                <td id="uftd"><span id="ufspan"><select id="uf" name="UF" required>
                         <option value="" selected disabled></option>
                         <option value="Acre">AC</option>
                         <option value="Alagoas">AL</option>
@@ -331,7 +331,7 @@
                         <option value="Tocantins">TO</option>
                     </select></span></td>
                 <td>CEP:</td>
-                <td id="cep"><span id="CEP"><input type="text" name="CEP" required maxlength="15"></span></td>
+                <td id="cep"><span id="cepspan"><input id="cep" type="text" name="CEP" required maxlength="15"></span></td>
             </tr>
         </table>
         <div>
@@ -417,7 +417,7 @@
         </div>
         <div id="data">
             <p>
-                <span id="Cidade da Assinatura"><input type="text" name="Cidade da Assinatura" required></span>
+                <span id="cidadefooterspan"><input id="cidadefooter" type="text" name="Cidade da Assinatura" required></span>
                 ,
                 <span id="dataday" class="dataV"></span>
                 de
@@ -451,9 +451,27 @@
                 document.body.innerHTML = "<h1 style='text-align: center; margin-top: 15%; color: red;'>NAVEGADOR SEM SUPORTE!</h1><h3 style='text-align: center;'>UTILIZE UM NAVEGADOR COMPATÍVEL: <a href='https://www.mozilla.org/pt-BR/firefox/new/' style='text-decoration: none; color:black'>Firefox</a> Ou <a href='https://www.google.com/intl/pt-BR/chrome/' style='text-decoration: none; color:black'>Google Chrome</a></h3>"
             }
         }
+        function alteraValores(){
+            inputs = document.querySelectorAll("input, select");
+    
+            for(var i = 0; i < inputs.length; i++){
+                id = inputs[i].getAttribute("id");
+
+                if(id == null){
+                    continue
+                }
+
+                document.getElementById(id+"span").innerHTML = inputs[i].value;
+
+
+                console.log(inputs[i].getAttribute("id"))
+            }
+
+            
+        }
 
         function imprime() {
-            substituirValores();
+            alteraValores()
             var but = document.getElementById("conclu")
             but.style.display = "none";
             window.focus();
@@ -508,7 +526,7 @@
                 
             }
         }
-
+        
         function validarCPF() {
             inputs = document.querySelector('input[name="CPF"]').value;
             inputs = inputs.replace(/[^\d]/g, '');
@@ -530,7 +548,7 @@
             if (!((count == intnum[10]) || (intnum[10] == 0 && ((count == 10) || (count == 11))))) { check = false; }
 
             if (check == true) {
-                var d = document.getElementById('cpfvalidar');
+                var d = document.querySelector('.cpfvalidar');
                 d.removeAttribute('required');
             }
             else { return false }
