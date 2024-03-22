@@ -274,33 +274,33 @@
         <table>
             <tr>
                 <td>Nome Completo:</td>
-                <td colspan="5"><input type="text" name="Nome Completo" required></td>
+                <td colspan="5"><span id="Nome Completo"><input type="text" name="Nome Completo" required></span></td>
             </tr>
             <tr>
                 <td id="hold">Nº Docto Identidade:</td>
-                <td id="size"><input type="text" name="Número do Documento de Identidade" required></td>
+                <td id="size"><span id="Número do Documento de Identidade"><input type="text" name="Número do Documento de Identidade" required></span></td>
                 <td>CPF:</td>
-                <td colspan="3"><input type="text" name="CPF" oninput="alteraCPF()" maxlength="14" required></td>
+                <td colspan="3"><span id="CPF"><input type="text" name="CPF" oninput="alteraCPF()" maxlength="14" required></span></td>
                 <td hidden><input name="CPF" id="cpfvalidar" hidden></td>
 
             </tr>
             <tr>
                 <td>E-mail:</td>
-                <td><input type="text" name="E-mail" required></td>
+                <td><span id="E-mail"><input type="text" name="E-mail" required></span></td>
                 <td>Telefone:</td>
-                <td colspan="3"><input type="text" name="Telefone" required></td>
+                <td colspan="3"><span id="Telefone"><input type="text" name="Telefone" required></span></td>
             </tr>
             <tr>
                 <td>Endere&ccedil;o:</td>
-                <td><input type="text" name="Endereço" required></td>
+                <td><span id="Endereço"><input type="text" name="Endereço" required></span></td>
                 <td>Bairro:</td>
-                <td colspan="3"><input type="text" name="Bairro" required></td>
+                <td colspan="3"><span id="Bairro"><input type="text" name="Bairro" required></span></td>
             </tr>
             <tr>
                 <td>Cidade:</td>
-                <td><input type="text" name="Cidade" required></td>
+                <td><span id="Cidade"><input type="text" name="Cidade" required></span></td>
                 <td>UF:</td>
-                <td id="uf"><select name="UF" required>
+                <td id="uf"><span id="UF"><select name="UF" required>
                         <option value="" selected disabled></option>
                         <option value="Acre">AC</option>
                         <option value="Alagoas">AL</option>
@@ -329,9 +329,9 @@
                         <option value="São Paulo">SP</option>
                         <option value="Sergipe">SE</option>
                         <option value="Tocantins">TO</option>
-                    </select></td>
+                    </select></span></td>
                 <td>CEP:</td>
-                <td id="cep"><input type="text" name="CEP" required maxlength="15"></td>
+                <td id="cep"><span id="CEP"><input type="text" name="CEP" required maxlength="15"></span></td>
             </tr>
         </table>
         <div>
@@ -417,7 +417,7 @@
         </div>
         <div id="data">
             <p>
-                <input type="text" name="Cidade" required>
+                <span id="Cidade da Assinatura"><input type="text" name="Cidade da Assinatura" required></span>
                 ,
                 <span id="dataday" class="dataV"></span>
                 de
@@ -446,13 +446,14 @@
 
 
         function verifyNav() {
-            if (userAgent.match(/iPhone|iPad|iPod/)) {
+            if (navigator.userAgent.match(/iPhone|iPad|iPod/)) {
                 document.body.innerHTML = "";
                 document.body.innerHTML = "<h1 style='text-align: center; margin-top: 15%; color: red;'>NAVEGADOR SEM SUPORTE!</h1><h3 style='text-align: center;'>UTILIZE UM NAVEGADOR COMPATÍVEL: <a href='https://www.mozilla.org/pt-BR/firefox/new/' style='text-decoration: none; color:black'>Firefox</a> Ou <a href='https://www.google.com/intl/pt-BR/chrome/' style='text-decoration: none; color:black'>Google Chrome</a></h3>"
             }
         }
 
         function imprime() {
+            substituirValores();
             var but = document.getElementById("conclu")
             but.style.display = "none";
             window.focus();
@@ -497,6 +498,15 @@
                 num--;
             }
             return (count * 10) % 11
+        }
+
+        function substituirValores(){
+            inputs = document.querySelectorAll('input, select')
+
+            for (var i = 0; i < inputs.size; i++) {
+                getElementById(inputs[i].name).innerHTML = inputs[i].value;
+                
+            }
         }
 
         function validarCPF() {
